@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+
+    RewriteCond %{THE_REQUEST} //+
+        RewriteRule ^(.*) /$1 [R=301,L]
+
+
+#    =============================
+
+#    =============================
+
+    RewriteRule ^$ public/ [L]
+    RewriteRule ((?s).*) public/$1 [L]
+
+</IfModule>
