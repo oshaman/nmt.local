@@ -11,13 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'ArticleController@main')->name('main');
 
 Route::view('/welcome', 'index');
-Route::view('/test', 'test');
 
+//================================================= ADMIN ============================================================
 /**
  * ADMIN PANEL
  */
@@ -42,8 +40,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
         //  show articles list
         Route::get('/', ['uses' => 'Admin\ArticlesController@index', 'as' => 'admin_articles']);
         Route::match(['get', 'post'], 'create', ['uses' => 'Admin\ArticlesController@create', 'as' => 'create_article']);
-        Route::match(['get', 'post'], 'edit/{article}', ['uses' => 'Admin\ArticlesController@edit', 'as' => 'edit_article'])->where('article', '[0-9]+');
-        Route::get('del/{article}', ['uses' => 'Admin\ArticlesController@del', 'as' => 'delete_article'])->where('article', '[0-9]+');
+        Route::match(['get', 'post'], 'edit/{article}', ['uses' => 'Admin\ArticlesController@edit', 'as' => 'edit_article'])
+            ->where('article', '[0-9]+');
+        Route::get('del/{article}', ['uses' => 'Admin\ArticlesController@del', 'as' => 'delete_article'])
+            ->where('article', '[0-9]+');
 
     });
     /**
@@ -51,18 +51,20 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
      */
     Route::group(['prefix' => 'cats'], function () {
         Route::match(['get', 'post'], '/', ['uses' => 'Admin\CatsController@index', 'as' => 'cats']);
-        Route::match(['get', 'post'], 'edit/{cat}', ['uses' => 'Admin\CatsController@edit', 'as' => 'edit_cats'])->where('cat', '[0-9]+');
+        Route::match(['get', 'post'], 'edit/{cat}', ['uses' => 'Admin\CatsController@edit', 'as' => 'edit_cats'])
+            ->where('cat', '[0-9]+');
     });
     /**
      *   Admin TAGS
      */
     Route::group(['prefix'=>'tags'], function () {
         Route::match(['get', 'post'], '/', ['uses' => 'Admin\TagsController@index', 'as' => 'admin_tags']);
-        Route::match(['get', 'post'], 'edit/{tag}', ['uses' => 'Admin\TagsController@edit', 'as' => 'edit_tags'])->where('tag', '[0-9]+');
+        Route::match(['get', 'post'], 'edit/{tag}', ['uses' => 'Admin\TagsController@edit', 'as' => 'edit_tags'])
+            ->where('tag', '[0-9]+');
         Route::get('delete/{tag}', ['uses' => 'Admin\TagsController@destroy', 'as' => 'delete_tag'])->where('tag', '[0-9]+');
     });
 });
-
+//================================================= ADMIN ============================================================
 //Auth
 Route::get('login', 'Auth\AuthController@showLoginForm')->name('login');
 Route::post('login', 'Auth\AuthController@login');

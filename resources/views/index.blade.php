@@ -76,15 +76,15 @@
             <div class="straight-block">
                 <div class="straight-left"><img src="./img/play.png" alt=""><span>Прямой эфир</span></div>
                 <div class="straight-right">
-                    <div class="news-item active">новости политики</div>
-                    <div class="news-item">новости криминала</div>
-                    <div class="news-item">новости культуры</div>
+                    <div class="news-item active"><a href="/">новости политики</a></div>
+                    <div class="news-item"><a href="/">новости криминала</a></div>
+                    <div class="news-item"><a href="/">новости культуры</a></div>
 
-                    <div class="news-item">спорт и рекорды</div>
-                    <div class="news-item">общество  и культура</div>
-                    <div class="news-item">новости города</div>
-                    <div class="news-item">чтение и аналитика</div>
-                    <div class="news-item">новости культуры</div>
+                    <div class="news-item"><a href="/">спорт и рекорды</a></div>
+                    <div class="news-item"><a href="/">общество и культура</a></div>
+                    <div class="news-item"><a href="/">новости города</a></div>
+                    <div class="news-item"><a href="/">чтение и аналитика</a></div>
+                    <div class="news-item"><a href="/">новости культуры</a></div>
 
                 </div>
             </div>
@@ -94,8 +94,8 @@
 
                     <img src="./img/news.png" alt="">
                     <div class="item-players">
-                        <p><iframe src="//www.youtube.com/embed/T5WCWpRpHDQ?&autoplay=1" width="560" height="314"
-                                   allowfullscreen="allowfullscreen"></iframe></p>
+                        <p><!--iframe src="//www.youtube.com/embed/T5WCWpRpHDQ?&autoplay=1" width="560" height="314"
+                                   allowfullscreen="allowfullscreen"></iframe--></p>
 
                         <div class="date">
                             <div class="name4">Сегодня открыли новый музей им. Булгакова</div>
@@ -189,14 +189,14 @@
             <h1 class="city-caption"><span>Новини Нашого Міста</span></h1>
             
             <div class="sect-news">
-                <div class="news-item active">все новости</div>
-                <div class="news-item">новости политики</div>
-                <div class="news-item">новости политики</div>
-                <div class="news-item">новости криминала</div>
-                <div class="news-item">новости культуры</div>
-                
-                <div class="news-item">спорт и рекорды</div>
-                <div class="news-item">архив</div>
+                <div class="news-item active"><a href="/">все новости</a></div>
+                <div class="news-item"><a href="/">новости политики</a></div>
+                <div class="news-item"><a href="/">новости политики</a></div>
+                <div class="news-item"><a href="/">новости криминала</a></div>
+                <div class="news-item"><a href="/">новости культуры</a></div>
+
+                <div class="news-item"><a href="/">спорт и рекорды</a></div>
+                <div class="news-item"><a href="/">архив</a></div>
                 <div class="clear"></div>
             </div>
             
@@ -217,38 +217,268 @@
                             </div>
                             <div class="right-coments"><img src="./img/wath.png" alt=""><span>1775</span></div>
                         </div>
+
+
+                    <div class="other-news">
+                        <div class="other-item">
+                            <div class="left-other">
+
+                                <img src="./img/news1.png" alt="">
+                            </div>
+
+                            <div class="right-other">
+                                <h4>Недоработали: киевлянам вернут деньги за частькомунальных услуг</h4>
+                                <div class="left-coments">
+                                    <img src="./img/time-efir.png" alt="">
+                                    <div class="date-neww">19.11.2017</div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="other-item">
+                            <div class="left-other">
+
+                                <img src="./img/news3.png" alt="">
+                            </div>
+
+                            <div class="right-other">
+                                <h4>Недоработали: киевлянам вернут деньги </h4>
+                                <div class="left-coments">
+                                    <img src="./img/time-efir.png" alt="">
+                                    <div class="date-neww">19.11.2017</div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="other-item">
+                            <div class="left-other">
+
+                                <img src="./img/news4.png" alt="">
+                            </div>
+
+                            <div class="right-other">
+                                <h4>Недоработали: киевлянам вернут деньги</h4>
+                                <div class="left-coments">
+                                    <img src="./img/time-efir.png" alt="">
+                                    <div class="date-neww">19.11.2017</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="mainy">
-                <div class="content-news">    
-                    <div class="imgg-news"><img src="./img/boxx.png" alt=""><div class="yelow-line">спорт</div></div>
-                    <h3>Недоработали: киевлянам вернут деньги за часть коммунальных услуг</h3>
+                    <div class="imgg-news"><img src="./img/boxx.png" alt="">
+                        <div class="yelow-line">спорт</div>
+                    </div>
+                    <div class="content-news">
+
+                        <h3>Недоработали: киевлянам вернут деньги за часть коммунальных услуг</h3>
                     <p>Киевлянам сделают перерасчет за не предоставленные коммунальные услуги. Как пишет "Вечерний Киев", речь идет про услуги по содержанию...</p></div>
-                    
+                    <div class="coments-news">
+
+                        <div class="left-coments">
+                            <img src="./img/time-efir.png" alt="">
+                            <div class="date-neww">19.11.2017</div>
+                            <div class="times-newws">20:30</div>
+                        </div>
+                        <div class="right-coments"><img src="./img/wath.png" alt=""><span>1775</span></div>
+                    </div>
+
+
+                    <div class="other-news">
+                        <div class="other-item">
+                            <div class="left-other">
+
+                                <img src="./img/new04.png" alt="">
+                            </div>
+
+                            <div class="right-other">
+                                <h4>Недоработали: киевлянам вернут деньги за частькомунальных услуг</h4>
+                                <div class="left-coments">
+                                    <img src="./img/time-efir.png" alt="">
+                                    <div class="date-neww">19.11.2017</div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="other-item">
+                            <div class="left-other">
+
+                                <img src="./img/new05.png" alt="">
+                            </div>
+
+                            <div class="right-other">
+                                <h4>Недоработали: киевлянам вернут деньги </h4>
+                                <div class="left-coments">
+                                    <img src="./img/time-efir.png" alt="">
+                                    <div class="date-neww">19.11.2017</div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="other-item">
+                            <div class="left-other">
+
+                                <img src="./img/new07.png" alt="">
+                            </div>
+
+                            <div class="right-other">
+                                <h4>Недоработали: киевлянам вернут деньги</h4>
+                                <div class="left-coments">
+                                    <img src="./img/time-efir.png" alt="">
+                                    <div class="date-neww">19.11.2017</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
                 
                 
                 <div class="mainy">
-                   <div class="content-news">
-                       <div class="imgg-news"><img src="./img/vili.png" alt=""><div class="yelow-line">политика</div></div>
-                    <h3>Недоработали: киевлянам вернут деньги за часть коммунальных услуг</h3>
+                    <div class="imgg-news"><img src="./img/vili.png" alt="">
+                        <div class="yelow-line">политика</div>
+                    </div>
+                    <div class="content-news">
+
+                        <h3>Недоработали: киевлянам вернут деньги за часть коммунальных услуг</h3>
                        <p>Киевлянам сделают перерасчет за не предоставленные коммунальные услуги. Как пишет "Вечерний Киев", речь идет про услуги по содержанию...</p></div>
+                    <div class="coments-news">
+                        <div class="left-coments">
+                            <img src="./img/time-efir.png" alt="">
+                            <div class="date-neww">19.11.2017</div>
+                            <div class="times-newws">20:30</div>
+                        </div>
+                        <div class="right-coments"><img src="./img/wath.png" alt=""><span>1775</span></div>
+                    </div>
+
+
+                    <div class="other-news">
+                        <div class="other-item">
+                            <div class="left-other">
+
+                                <img src="./img/news1.png" alt="">
+                            </div>
+
+                            <div class="right-other">
+                                <h4>Недоработали: киевлянам вернут деньги за частькомунальных услуг</h4>
+                                <div class="left-coments">
+                                    <img src="./img/time-efir.png" alt="">
+                                    <div class="date-neww">19.11.2017</div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="other-item">
+                            <div class="left-other">
+
+                                <img src="./img/news3.png" alt="">
+                            </div>
+
+                            <div class="right-other">
+                                <h4>Недоработали: киевлянам вернут деньги </h4>
+                                <div class="left-coments">
+                                    <img src="./img/time-efir.png" alt="">
+                                    <div class="date-neww">19.11.2017</div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="other-item">
+                            <div class="left-other">
+
+                                <img src="./img/news4.png" alt="">
+                            </div>
+
+                            <div class="right-other">
+                                <h4>Недоработали: киевлянам вернут деньги</h4>
+                                <div class="left-coments">
+                                    <img src="./img/time-efir.png" alt="">
+                                    <div class="date-neww">19.11.2017</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+
+                <div class="main-buty"><a href="/">все новости<span class="linn"></span></a></div>
             </div>
-            
-            
-            
-            </div></div>
+
+
+            </div>
+
+
+            <div class="inter-news">
+                <h1 class="city-caption"><span>Опрос</span></h1>
+
+
+            </div>
+
+
+        </div>
     </div>
+</div>
 
 
+<footer class="footers">
+    <div class="container">
+
+        <div class="foter-left">
+            <div class="foter-logo"><img src="./img/logo-foter.png" alt=""></div>
+            <ul>
+                <li><a href="/">Соглашение о конфиденциальности</a></li>
+                <li><a href="/">Правила пользования сайтом</a></li>
+                <li><a href="/">Реклама</a></li>
+                <li><a href="/">Редакция</a></li>
+            </ul>
 
 
+        </div>
+        <div class="foter-right">
+            <div class="foter-news">
+                <div class="news-item"><a href="/">Категория 1</a></div>
+                <div class="news-item"><a href="/">Категория 2</a></div>
+                <div class="news-item"><a href="/">Категория 3</a></div>
+                <div class="news-item"><a href="/">Категория 4</a></div>
+
+                <div class="news-item"><a href="/">Категория 5</a></div>
+                <div class="news-item"><a href="/">Категория 6</a></div>
+                <div class="clear"></div>
+            </div>
+            <div class="foter-text"><p>Наша цель - предоставлять качественную информацию бесплатно в удобном для вас
+                    месте и формате. Вам не надо искать нас – ИА «MISTO» встречает читателя каждое утро по пути на
+                    работу в метро, на транспортных развязках,  в кафе и бизнес-центрах. В течение всего дня на наших
+                    страницах в соцсетях и на сайте www.misto.ua вы получаете самые важные вести вашего города, страны и
+                    мира.</p></div>
+        </div>
+        <div class="clear"></div>
+
+        <div class="foter-bott">
+            <div class="foot-item">
+
+                <a href="/"><img src="./img/facce.png" alt=""></a>
+                <a href="/"><img src="./img/instt.png" alt=""></a>
+            </div>
 
 
+            <div class="foot-item">МІСТО 2017. Все права защищены.</div>
+            <div class="foot-item"><a href="http://freshweb.agency/"><img src="./img/fresh.png" alt=""></a></div>
+        </div>
+
+    </div>
+</footer>
 
 
-    <script src="./js/jquery-3.2.1.min.js"></script>
+<script src="./js/jquery-3.2.1.min.js"></script>
     <script src="./js/jquery.mCustomScrollbar.min.js"></script>
     <script src="./js/main.js"></script>
 </body>
