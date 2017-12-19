@@ -45,6 +45,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
         Route::get('del/{article}', ['uses' => 'Admin\ArticlesController@del', 'as' => 'delete_article'])
             ->where('article', '[0-9]+');
 
+        //SEO
+        Route::match(['post', 'get'], 'seo/{article}', 'Admin\ArticleSeoController@updateSeo')
+            ->name('admin_article_seo')->where('article', '[0-9]+');
+
     });
     /**
      *   Admin CATEGORIES

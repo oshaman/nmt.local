@@ -33,6 +33,7 @@
             <th>URL</th>
             <th>Заголовок</th>
             <th>Дата публикації</th>
+            <th>SEO</th>
             <th></th>
             <th></th>
         </tr>
@@ -44,6 +45,11 @@
                     <td>{{ $article->alias }}</td>
                     <td>{{ $article->title }}</td>
                     <td>{{ $article->created_at }}</td>
+                    <td>
+                        {!! Form::open(['url' => route('admin_article_seo',['article'=> $article->id]),'class'=>'form-horizontal','method'=>'GET']) !!}
+                        {!! Form::button('SEO', ['class' => 'btn btn-warning','type'=>'submit']) !!}
+                        {!! Form::close() !!}
+                    </td>
                     <td>
                         {!! Form::open(['url' => route('edit_article',['article'=> $article->id]),'class'=>'form-horizontal','method'=>'GET']) !!}
                         {!! Form::button('Редагувати', ['class' => 'btn btn-warning','type'=>'submit']) !!}

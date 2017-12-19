@@ -38,8 +38,7 @@
 
             <div class="players-block">
                 <div class="players-left">
-
-                    <img src="./img/news.png" alt="">
+                    {{--<img src="./img/news.png" alt="">--}}
                     <div class="item-players">
                         <p>
                             <iframe src="//www.youtube.com/embed/T5WCWpRpHDQ?&autoplay=1" width="560" height="314"

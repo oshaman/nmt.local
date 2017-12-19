@@ -25,6 +25,11 @@ class Article extends Model
         return $this->hasOne('Fresh\Nashemisto\Image');
     }
 
+    public function seo()
+    {
+        return $this->hasOne('Fresh\Nashemisto\ArticleSeo');
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */

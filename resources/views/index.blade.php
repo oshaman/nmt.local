@@ -266,7 +266,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                        </div>
                 </div>
                 
                 <div class="mainy">
@@ -335,7 +335,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                        </div>
 
 
                 </div>
@@ -406,7 +406,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                        </div>
                 </div>
 
 
@@ -419,6 +419,67 @@
 
             <div class="inter-news">
                 <h1 class="city-caption"><span>Опрос</span></h1>
+
+
+                <form action="">
+                    <div class="form-inter">
+                        <div class="inter-quest quest-one">
+                            <h5>На сегодняшний день вопрос субсидии волнует многих</h5>
+
+                            <p>Цель наших опросов- предоставлять качественную, важную информацию бесплатно в удобном для
+                                вас месте и формате. </p>
+
+                            <p>Вам не надо искать нас – ИА «MISTO» встречает читателя каждое утро по пути на работу в
+                                метро, на транспортных развязках,  в кафе и бизнес-центрах. Важная информация бесплатно
+                                в удобном для вас месте. формате. </p>
+                        </div>
+
+                        <div class="inter-quest quest-four">
+                            <h5>Получаете/получали ли Вы субсидию?</h5>
+                            <ul>
+                                <li><input type="radio" id="opti1" name="selects">
+                                    <label for="opti1"><span>1.</span><span>Ранее получал, сейчас нет</span></label>
+                                    <div class="check"></div>
+                                </li>
+                                <li><input type="radio" id="opti2" name="selects">
+                                    <label for="opti2">
+
+                                        <span>2.</span><span>Никогда не получал</span></label>
+                                    <div class="check"></div>
+                                </li>
+
+                                <li><input type="radio" id="opti3" name="selects">
+                                    <label for="opti3">
+                                        <span>3.</span><span>Получаю сейчас</span></label>
+                                    <div class="check"></div>
+                                </li>
+
+                                <li><input type="radio" id="opti4" name="selects">
+                                    <label for="opti4">
+                                        <span>4.</span><span>Ранее получал, сейчас нет</span></label>
+                                    <div class="check"></div>
+                                </li>
+
+                                <li><input type="radio" id="opti5" name="selects">
+                                    <label for="opti5">
+
+
+                                        <span>5.</span><span>Планирую получить в этом году первый раз</span></label>
+                                    <div class="check"></div>
+                                </li>
+
+                            </ul>
+
+                            <div class="main-buty"><a href="/">Проголосовать<span class="linn"></span></a></div>
+
+                        </div>
+                        <div class="inter-quest quest-five">
+                            <h5>Узнайте результаты после того, как оставите свой голос</h5>
+                        </div>
+                    </div>
+
+
+                </form>
 
 
             </div>
