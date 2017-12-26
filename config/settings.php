@@ -7,7 +7,7 @@ return [
         'main' => ['width' => 1100, 'height' => 270],
     ],
     'articles_img' => [
-        'main' => ['width' => 712, 'height' => 361],
+        'main' => ['width' => 1170, 'height' => 657],
         'middle' => ['width' => 333, 'height' => 229],
         'small' => ['width' => 110, 'height' => 73],
     ],

@@ -8,6 +8,11 @@ use Gate;
 
 class ArticleSeoController extends AdminController
 {
+    /**
+     * @param Request $request
+     * @param $article
+     * @return $this|\Illuminate\Http\RedirectResponse|mixed
+     */
     public function updateSeo(Request $request, $article)
     {
         if (Gate::denies('UPDATE_ARTICLES')) {

@@ -17,7 +17,7 @@ class CreateArticlesTable extends Migration
             $table->increments('id');
             $table->string('title')->index();
             $table->string('alias')->unique();
-            $table->boolean('approved')->index()->default(false)->index();
+            $table->boolean('approved')->index()->default(false);
             $table->mediumText('content')->nullable()->default(null);
 
             $table->unsignedInteger('view')->default(1)->index();

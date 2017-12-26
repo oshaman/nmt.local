@@ -45,6 +45,7 @@ abstract class Repository
             return $this->check($builder->paginate($pagination));
         }
 
+//        return $builder->get();
         return $this->check($builder->get());
     }
 
@@ -61,20 +62,16 @@ abstract class Repository
 
         $result->transform(function ($item) {
 
-            /*if ($item->created_at) {
-                $midnight = strtotime('today midnight');
+            if ($item->created_at) {
                 $created = strtotime($item->created_at);
 
-                if ($created > $midnight) {
-                    $item->created = date('H:i', $created);
-                } else {
-                    $item->created = date('d.m.Y', $created);
-                }
-            }*/
-
-            if (is_string($item->seo) && is_object(json_decode($item->seo)) && (json_last_error() == JSON_ERROR_NONE)) {
-                $item->seo = json_decode($item->seo);
+                $item->date = date('d.m.Y', $created);
+                $item->time = date('H:i', $created);
             }
+
+            /*            if (is_string($item->seo) && is_object(json_decode($item->seo)) && (json_last_error() == JSON_ERROR_NONE)) {
+                            $item->seo = json_decode($item->seo);
+                        }*/
 
             return $item;
 
@@ -166,33 +163,19 @@ abstract class Repository
     }
 
     /**
-     * @param $seo
-     * @return mixed
-     */
-    public function convertSeo($seo)
-    {
-        if (is_string($seo) && is_object(json_decode($seo)) && (json_last_error() == JSON_ERROR_NONE)) {
-            $seo = json_decode($seo);
-        }
-        return $seo;
-    }
-
-    /**
      * @param $date
      * @return false|string
      */
-    public function convertDate($date)
+    public function convertDate($article)
     {
-        $midnight = strtotime('today midnight');
-        $created = strtotime($date);
+        $article->date = date('d.m.Y', strtotime($article->created_at));
+        $article->time = date('H:i', strtotime($article->created_at));
 
-        if ($created > $midnight) {
-            $date = date('H:i', $created);
-        } else {
-            $date = date('d-m-Y H:i', $created);
-        }
-        return $date;
+        return $article;
+    }
+
+    public function getNewest()
+    {
+        return $this->model->latest()->first();
     }
 }
-
-?>

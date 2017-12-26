@@ -10,7 +10,7 @@
 <table class="table">
     <thead>
     <th>ID</th>
-    <th>Им\'я</th>
+    <th>Им'я</th>
     <th>Скринька</th>
     <th>Роль</th>
     <th>Редагувати</th>

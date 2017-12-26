@@ -7,6 +7,11 @@ use Cache;
 
 class ArticleSeoRepository extends Repository
 {
+    /**
+     * @param $request
+     * @param $article
+     * @return array
+     */
     public function updateSeo($request, $article)
     {
         $validator = Validator::make($request->all(), [

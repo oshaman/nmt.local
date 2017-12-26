@@ -26,8 +26,12 @@ class RouteServiceProvider extends ServiceProvider
         parent::boot();
 
         Route::model('cat', \Fresh\Nashemisto\Category::class);
+        Route::model('channel', \Fresh\Nashemisto\Channel::class);
         Route::model('tag', \Fresh\Nashemisto\Tag::class);
         Route::model('article', \Fresh\Nashemisto\Article::class);
+        Route::model('poll', \Fresh\Nashemisto\Poll::class);
+        Route::model('video', \Fresh\Nashemisto\Video::class);
+        Route::model('seo', \Fresh\Nashemisto\Seo::class);
     }
 
     /**

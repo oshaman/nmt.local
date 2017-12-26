@@ -51,6 +51,12 @@ class CategoriesRepository extends Repository {
             $cat->name = $request->name;
         }
 
+        if ($request->filled('confirmed')) {
+            $cat->approved = 1;
+        } else {
+            $cat->approved = 0;
+        }
+
         if (empty($request->alias)) {
             $alias = $this->transliterate($request->name);
             if ($alias != $cat->alias) {

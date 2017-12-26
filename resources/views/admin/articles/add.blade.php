@@ -3,12 +3,18 @@
 {!! Form::open(['url'=>route('create_article'), 'method'=>'POST', 'class'=>'form-horizontal', 'files'=>true]) !!}
 <div class="">
     {{ Form::label('title', 'Заголовок статті') }}
+    <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="right"
+            title="Обов'язкове до заповнення поле(максимум 255 символів)">?
+    </button>
     <div>
         {!! Form::text('title', old('title') ? : '' , ['placeholder'=>'Встановлення новорічної ялинки...', 'id'=>'title', 'class'=>'form-control ru-title']) !!}
     </div>
 </div>
 <div class="">
     {{ Form::label('alias', 'ЧПУ статті') }}
+    <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="right"
+            title="Обов'язкове до заповнення поле(латинські літери, цифри - максимум 255 символів)">?
+    </button>
     <div>
         {!! Form::text('alias', old('alias') ? : '',
          ['placeholder'=>'vstanovlennya-novorichnoyi-yalinki', 'id'=>'alias', 'class'=>'form-control eng-alias']) !!}
@@ -16,6 +22,9 @@
 </div>
 <div class="">
     {{ Form::label('category_id', 'Категорія') }}
+    <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="right"
+            title="Обов'язкове до заповнення поле">?
+    </button>
     <div>
         {!! Form::select('category_id', $cats ?? [],
             old('category_id') ? : '' , [ 'class'=>'form-control', 'placeholder'=>'Категорія'])
@@ -33,6 +42,10 @@
         </div>
     </div>
     {{ Form::label('img', 'Основне зображення') }}
+    <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="right"
+            title="Обов'язкове до заповнення поле(файл не більше 5 Мбайт у форматі jpeg, jpg, png; бажаний ширина 1170px)">
+        ?
+    </button>
     <div>
         {!! Form::file('img', ['accept'=>'image/*', 'id'=>'img', 'class'=>'form-control']) !!}
     </div>

@@ -20,6 +20,7 @@
     <table class="table">
         <thead>
         <tr>
+            <th>В меню</th>
             <th>Им'я</th>
             <th>ЧПУ</th>
             <th>Редагувати</th>
@@ -28,6 +29,7 @@
         <tbody>
         @foreach($categories as $category)
             <tr>
+                <td>{!! $category->approved ? '<a><span class="glyphicon glyphicon-plus"></span></a>' : '' !!}</td>
                 <td>{{ $category->name }}</td>
                 <td>{{ $category->alias }}</td>
                 <td>

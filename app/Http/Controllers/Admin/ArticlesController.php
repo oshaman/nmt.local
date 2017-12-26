@@ -14,12 +14,20 @@ class ArticlesController extends AdminController
 {
     protected  $a_rep;
 
+    /**
+     * ArticlesController constructor.
+     * @param ArticlesRepository $repository
+     */
     public function __construct(ArticlesRepository $repository)
     {
         $this->template = 'admin.admin';
         $this->a_rep = $repository;
     }
 
+    /**
+     * @param ArticleRequest $request
+     * @return mixed
+     */
     public function index(ArticleRequest $request)
     {
         if (Gate::denies('UPDATE_ARTICLES')) {
@@ -31,12 +39,12 @@ class ArticlesController extends AdminController
             $data['value'] = $data['value'] ?? null;
             switch ($data['param']) {
                 case 1:
-                    $articles[] = $this->a_rep->one($data['value']);
+                    $articles = $this->a_rep->get(['title', 'id', 'alias', 'created_at'],
+                        false, true, [['title', 'like', '%' . $data['value'] . '%']]);
+                    if ($articles) $articles->appends(['param' => $data['param']])->links();
                     break;
                 case 2:
-                    $articles = $this->a_rep->get(['title', 'id', 'alias', 'created_at'],
-                                 false, true, [['title', 'like', $data['value'].'%']]);
-                    if ($articles) $articles->appends(['param' => $data['param']])->links();
+                    $articles[] = $this->a_rep->one($data['value']);
                     break;
                 case 3:
                     $articles = $this->a_rep->get(['title', 'id', 'alias', 'created_at'],

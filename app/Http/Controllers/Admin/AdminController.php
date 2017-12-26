@@ -61,6 +61,18 @@ class AdminController extends Controller
                 $menu->add('Теги',array('route' => 'admin_tags'));
             }
 
+            if (Gate::allows('UPDATE_POLLS')) {
+                $menu->add('Опитування', array('route' => 'admin_polls'));
+            }
+
+            if (Gate::allows('UPDATE_CHANNEL')) {
+                $menu->add('Відео', array('route' => 'admin_videos'));
+            }
+
+            if (Gate::allows('UPDATE_SEO')) {
+                $menu->add('SEO', array('route' => 'seo_admin'));
+            }
+
             /*
 
             if (Gate::allows('MAIN_ADMIN')) {

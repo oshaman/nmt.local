@@ -4,6 +4,9 @@
     'method'=>'POST', 'class'=>'form-horizontal', 'files'=>true]) !!}
 <div class="">
     {{ Form::label('title', 'Заголовок статті') }}
+    <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="right"
+            title="Обов'язкове до заповнення поле(максимум 255 символів)">?
+    </button>
     <div>
         {!! Form::text('title', old('title') ? : ($article->title ?? ''),
                     ['placeholder'=>'Встановлення новорічної ялинки...', 'id'=>'title', 'class'=>'form-control ru-title']) !!}
@@ -11,6 +14,9 @@
 </div>
 <div class="">
     {{ Form::label('alias', 'ЧПУ статті') }}
+    <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="right"
+            title="Обов'язкове до заповнення поле(латинські літери, цифри - максимум 255 символів)">?
+    </button>
     <div>
         {!! Form::text('alias', old('alias') ? : ($article->alias ?? ''),
                     ['placeholder'=>'vstanovlennya-novorichnoyi-yalinki', 'id'=>'alias', 'class'=>'form-control eng-alias']) !!}
@@ -18,6 +24,9 @@
 </div>
 <div class="">
     {{ Form::label('category_id', 'Категорія') }}
+    <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="right"
+            title="Обов'язкове до заповнення поле">?
+    </button>
     <div>
         {!! Form::select('category_id', $cats ?? [],
             old('category_id') ? : ($article->category_id ?? '') , [ 'class'=>'form-control', 'placeholder'=>'Категорія'])
@@ -32,7 +41,18 @@
                         'a picture', array('class' => 'img-thumbnail')) }}
         </div>
     @endif
+    <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="right"
+            title="За потреби змінити зображення оберіть новий файл(не більше 5 Мбайт у форматі jpeg, jpg, png; бажаний ширина 1170px)">
+        ?
+    </button>
+    <div>
+        {!! Form::file('img', ['accept'=>'image/*', 'id'=>'img', 'class'=>'form-control']) !!}
+    </div>
+    <hr>
     {{ Form::label('img', 'Параметри зображення') }}
+    <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="right"
+            title="Не обов'язкові поля: Alt та Title">?
+    </button>
     <div class="">
         <div class="col-lg-6">
             {!! Form::text('imgalt', old('imgalt') ? : ($article->image->alt ?? ''),
@@ -43,10 +63,8 @@
                 ['placeholder'=>'Title', 'id'=>'imgtitle', 'class'=>'form-control']) !!}
         </div>
     </div>
-    <div>
-        {!! Form::file('img', ['accept'=>'image/*', 'id'=>'img', 'class'=>'form-control']) !!}
-    </div>
 </div>
+<hr>
 <div class="">
     {{ Form::label('tags', 'Тэги') }}
     @if(!empty($tags))
@@ -71,11 +89,19 @@
         </div>
     @endif
 </div>
+<hr>
 <div class="row">
     <div class="input-prepend col-lg-6"><span class="add-on"><i class="icon-time"></i></span>
         <h4>{!! Form::label('outputtime', 'Дата публікації') !!}</h4>
         <input type="text" name="outputtime" id="outputtime"
                value="{{ old('outputtime') ? : (date('Y-m-d H:i', strtotime($article->created_at)) ?? date('Y-m-d H:i')) }}">
+    </div>
+    <div class="col-lg-6">
+        <h4>{!! Form::label('view', 'Кількість переглядів') !!}</h4>
+        <div class="input-prepend col-lg-6">
+            <input type="text" name="view" id="view"
+                   value="{{ old('view') ? : $article->view }}">
+        </div>
     </div>
 </div>
 <div class="">

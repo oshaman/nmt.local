@@ -13,10 +13,13 @@ class CategoriesSeeder extends Seeder
     {
         DB::table('categories')->insert(
             [
-                ['name' => 'Діета та харчування', 'alias'=>'dieta-ta-harchuvannya'],
-                ['name' => 'Спорт', 'alias'=>'sport'],
-                ['name' => 'Корисні поради', 'alias'=>'korysni-porady'],
-                ['name' => 'Цікаві факти', 'alias'=>'cikavi-fakty'],
+                ['name' => 'Обговорення (ток шоу)', 'alias' => 'obgovorennya-tok-shou'],
+                ['name' => 'Короткі новини дня', 'alias' => 'korotki-novini-dnya'],
+                ['name' => 'Інтерв\'ю дня', 'alias' => 'intervyu-dnya'],
+                ['name' => 'Огляд преси', 'alias' => 'oglyad-presi'],
+                ['name' => 'Веб камера нашого міста', 'alias' => 'veb-kamera-nashogo-mista'],
+                ['name' => 'Кримінал', 'alias' => 'kriminal'],
+                ['name' => 'Культура і спорт', 'alias' => 'kultura-i-sport'],
             ]
         );
     }

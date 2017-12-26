@@ -13,6 +13,10 @@ use DB;
 
 class ArticlesRepository extends Repository
 {
+    /**
+     * ArticlesRepository constructor.
+     * @param Article $rep
+     */
     public function __construct(Article $rep)
     {
         $this->model = $rep;
@@ -60,7 +64,7 @@ class ArticlesRepository extends Repository
         }
 
         //        Content
-        $article['content'] = $data['content'] ?? null;
+        $article['content'] = preg_replace('/{{.*}}/', '', $data['content'] ?? null);
 //        END Content
         $new = $this->model->firstOrCreate($article);
 
@@ -143,9 +147,9 @@ class ArticlesRepository extends Repository
             $new['created_at'] = date('Y-m-d H:i:s', strtotime($data['outputtime']));
         }
 
-        /*if (!empty($data['view'])) {
+        if (!empty($data['view'])) {
             $new['view'] = (int)$data['view'];
-        }*/
+        }
 
         if (!empty($data['confirmed'])) {
             $new['approved'] = 1;
@@ -153,7 +157,7 @@ class ArticlesRepository extends Repository
             $new['approved'] = 0;
         }
 
-        $new['content'] = $data['content'];
+        $new['content'] = preg_replace('/{{.*}}/', '', $data['content'] ?? null);
 
         $updated = $article->fill($new)->save();
 
@@ -175,7 +179,7 @@ class ArticlesRepository extends Repository
                     $error[] = ['img' => 'Помилка збереження зображення'];
                 }
                 //DELETE OLD IMAGE
-                $this->deleteOldImage($old_img);
+                $this->deleteOldImage('articles', $old_img);
             } else {
                 try {
                     $article->image()->update(['alt' => $new['imgalt'], 'title' => $new['imgtitle']]);
@@ -192,7 +196,7 @@ class ArticlesRepository extends Repository
                 $error[] = ['tag' => 'Помилка збереження тегів'];
             }
 
-            $this->clearArticlesCache($article->id);
+            $this->clearArticlesCache($article->alias);
 
             return ['status' => 'Статтю оновлено', $error];
         }
@@ -217,7 +221,7 @@ class ArticlesRepository extends Repository
         if ($article->delete()) {
 
             if (!empty($old_img)) {
-                $this->deleteOldImage($old_img);
+                $this->deleteOldImage('articles', $old_img);
             }
             $this->clearArticlesCache();
 
@@ -230,16 +234,16 @@ class ArticlesRepository extends Repository
      * @param $path
      * @return true
      */
-    public function deleteOldImage($path)
+    public function deleteOldImage($source, $path)
     {
-        if (File::exists(public_path('/asset/images/articles/main/') . $path)) {
-            File::delete(public_path('/asset/images/articles/main/') . $path);
+        if (File::exists(public_path('/asset/images/' . $source . '/main/') . $path)) {
+            File::delete(public_path('/asset/images/' . $source . '/main/') . $path);
         }
-        if (File::exists(public_path('/asset/images/articles/middle/') . $path)) {
-            File::delete(public_path('/asset/images/articles/middle/') . $path);
+        if (File::exists(public_path('/asset/images/' . $source . '/middle/') . $path)) {
+            File::delete(public_path('/asset/images/' . $source . '/middle/') . $path);
         }
-        if (File::exists(public_path('/asset/images/articles/small/') . $path)) {
-            File::delete(public_path('/asset/images/articles/small/') . $path);
+        if (File::exists(public_path('/asset/images/' . $source . '/small/') . $path)) {
+            File::delete(public_path('/asset/images/' . $source . '/small/') . $path);
         }
         return true;
     }
@@ -259,6 +263,10 @@ class ArticlesRepository extends Repository
 
             $img = Image::make($image);
 
+            /*$img->fit(Config::get('settings.articles_img')['main']['width'], Config::get('settings.articles_img')['main']['height'], function ($constraint) {
+                $constraint->upsize();
+                $constraint->aspectRatio();
+            })->save(public_path() . '/asset/images/articles/main/' . $path, 100);*/
             $img->resize(Config::get('settings.articles_img')['main']['width'], null, function ($constraint) {
                 $constraint->aspectRatio();
             })->save(public_path() . '/asset/images/articles/main/' . $path, 100);
@@ -276,24 +284,43 @@ class ArticlesRepository extends Repository
      * @param $tag
      * @return articles collection
      */
-    /*public function getByTag($tag, $own)
+    public function getByTag($tag)
     {
         $articles = $this->model->whereHas('tags', function ($q) use ($tag) {
             $q->where('tag_id', $tag)->select('title', 'alias');
         });
 
-        $articles->with(['image', 'category'])->where('own', $own);
+        $articles->with(['image', 'category']);
 
         return $this->check($articles->paginate(Config::get('settings.paginate_tags')));
 
-    }*/
+    }
+
+    public function contentHandle($articles)
+    {
+        if (null == $articles || $articles->isEmpty()) {
+            return FALSE;
+        }
+
+        $articles->transform(function ($item) {
+
+            if ($item->content) {
+                $item->content = str_limit(strip_tags($item->content), 800);
+            }
+
+            return $item;
+
+        });
+
+        return $articles;
+    }
 
     /**
      * Clear
      */
-    protected function clearArticlesCache($id = false)
+    protected function clearArticlesCache($alias = false)
     {
-        Cache::forget('patientSidebar');
+        Cache::forget('article_' . $alias);
         /*
         !empty($id) ? Cache::store('file')->forget('patients_article-' . $id) : null;
         !empty($cat) ? Cache::forget('docs_cats' . $cat) : null;*/

@@ -12,6 +12,7 @@ class MainController extends Controller
     protected $css = null;
     protected $jss = null;
     protected $aside = null;
+    protected $poll = null;
 
     protected $seo = null;
 
@@ -38,13 +39,17 @@ class MainController extends Controller
             $this->vars = array_add($this->vars, 'content', $this->content);
         }
 
+        if ($this->poll) {
+            $this->vars = array_add($this->vars, 'poll', $this->poll);
+        }
+
         if (empty($this->seo)) {
             $this->seo = new \stdClass();
             $this->seo->seo_keywords = env('APP_NAME');
             $this->seo->seo_description = env('APP_NAME');
             $this->seo->og_title = env('APP_NAME');
             $this->seo->og_description = env('APP_NAME');
-            $this->seo->seo_title = env('APP_NAME');
+            $this->seo->seo_title = '';
         }
         $this->vars = array_add($this->vars, 'seo', $this->seo);
 

@@ -9,8 +9,8 @@
         {{ Form::label('param', 'Критерій пошуку') }}
         {!! Form::select('param',
                     [
-                        1=>'ЧПУ статті',
-                        2=>'Заголовок',
+                        1=>'Заголовок',
+                        2=>'ЧПУ статті',
                         3 =>'На паузі',
                     ], old('val') ? : 1, ['class'=>'form-control'])
             !!}
@@ -42,20 +42,20 @@
             <tbody>
             @foreach ($articles as $article)
                 <tr>
-                    <td>{{ $article->alias }}</td>
-                    <td>{{ $article->title }}</td>
-                    <td>{{ $article->created_at }}</td>
-                    <td>
+                    <td class="col-md-4">{{ $article->alias }}</td>
+                    <td class="col-md-3">{{ $article->title }}</td>
+                    <td class="col-md-2">{{ $article->created_at }}</td>
+                    <td class="col-md-1">
                         {!! Form::open(['url' => route('admin_article_seo',['article'=> $article->id]),'class'=>'form-horizontal','method'=>'GET']) !!}
                         {!! Form::button('SEO', ['class' => 'btn btn-warning','type'=>'submit']) !!}
                         {!! Form::close() !!}
                     </td>
-                    <td>
+                    <td class="col-md-1">
                         {!! Form::open(['url' => route('edit_article',['article'=> $article->id]),'class'=>'form-horizontal','method'=>'GET']) !!}
                         {!! Form::button('Редагувати', ['class' => 'btn btn-warning','type'=>'submit']) !!}
                         {!! Form::close() !!}
                     </td>
-                    <td>
+                    <td class="col-md-1">
                         {!! Form::open(['url' => route('delete_article',['article'=> $article->id]),'class'=>'form-horizontal','method'=>'GET']) !!}
                         {!! Form::button('Видалити', ['class' => 'btn btn-danger','type'=>'submit']) !!}
                         {!! Form::close() !!}

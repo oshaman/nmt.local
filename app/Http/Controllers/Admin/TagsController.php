@@ -45,7 +45,7 @@ class TagsController extends AdminController
         }
 
         $tags = $this->tag_rep->get(['name', 'id', 'alias'], false, 2);
-        $this->content = view('admin.tags.content')->with('tags', $tags);
+        $this->content = view('admin.tags.content')->with('tags', $tags)->render();
 
         return $this->renderOutput();
     }
@@ -77,6 +77,10 @@ class TagsController extends AdminController
         return $this->renderOutput();
     }
 
+    /**
+     * @param $tag
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy($tag)
     {
         if (Gate::denies('UPDATE_TAGS')) {

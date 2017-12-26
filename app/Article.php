@@ -25,6 +25,9 @@ class Article extends Model
         return $this->hasOne('Fresh\Nashemisto\Image');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function seo()
     {
         return $this->hasOne('Fresh\Nashemisto\ArticleSeo');

@@ -37,11 +37,27 @@ class AuthServiceProvider extends ServiceProvider
             return (('admin' === $user->role->name) || ('editor' === $user->role->name));
         });
 
+        Gate::define('UPDATE_CHANNEL', function ($user) {
+            return (('admin' === $user->role->name) || ('editor' === $user->role->name));
+        });
+
         Gate::define('UPDATE_TAGS', function ($user) {
             return (('admin' === $user->role->name) || ('editor' === $user->role->name));
         });
 
+        Gate::define('UPDATE_POLLS', function ($user) {
+            return (('admin' === $user->role->name) || ('editor' === $user->role->name));
+        });
+
         Gate::define('CONFIRMATION_DATA', function ($user) {
+            return (('admin' === $user->role->name) || ('editor' === $user->role->name));
+        });
+
+        Gate::define('UPDATE_SEO', function ($user) {
+            return (('admin' === $user->role->name) || ('editor' === $user->role->name));
+        });
+
+        Gate::define('UPDATE_STATIC', function ($user) {
             return (('admin' === $user->role->name) || ('editor' === $user->role->name));
         });
 

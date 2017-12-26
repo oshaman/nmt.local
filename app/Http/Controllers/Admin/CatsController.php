@@ -46,7 +46,7 @@ class CatsController extends AdminController
 
         }
 
-        $cats = $this->cat_rep->get(['name', 'id', 'alias'], false, true);
+        $cats = $this->cat_rep->get(['name', 'id', 'alias', 'approved'], false, true);
         $this->content = view('admin.articles.cats.content')->with('categories', $cats);
 
         return $this->renderOutput();

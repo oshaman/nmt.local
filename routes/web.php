@@ -11,9 +11,19 @@
 |
 */
 
-Route::get('/', 'ArticleController@main')->name('main');
+Route::get('/', 'IndexController@show')->name('main');
+
+Route::post('/poll', 'PollController@addToPolls')->name('polls');
+Route::post('/get-articles', 'IndexController@getArticles');
+
+Route::get('article/{article_alias}', 'ArticleController@show')->name('article')->where('article_alias', '[\w-]+');
+
+Route::get('categories/{cat_alias?}', 'ArticleController@cats')->name('category')->where('cat_alias', '[\w-]+');
+Route::get('tags/{tag_alias}', 'ArticleController@tags')->name('tag')->where('tag_alias', '[\w-]+');
 
 Route::view('/welcome', 'index');
+Route::view('/article1', 'article');
+Route::view('/articles', 'articles');
 
 //================================================= ADMIN ============================================================
 /**
@@ -67,6 +77,52 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
             ->where('tag', '[0-9]+');
         Route::get('delete/{tag}', ['uses' => 'Admin\TagsController@destroy', 'as' => 'delete_tag'])->where('tag', '[0-9]+');
     });
+    /**
+     *   Admin videos
+     *
+     */
+    Route::group(['prefix' => 'videos'], function () {
+        //  show videos list
+        Route::get('/', ['uses' => 'Admin\VideosController@index', 'as' => 'admin_videos']);
+        Route::match(['get', 'post'], 'create', ['uses' => 'Admin\VideosController@create', 'as' => 'create_video']);
+        Route::match(['get', 'post'], 'edit/{video}', ['uses' => 'Admin\VideosController@edit', 'as' => 'edit_video'])
+            ->where('video', '[0-9]+');
+        Route::get('del/{video}', ['uses' => 'Admin\VideosController@del', 'as' => 'delete_video'])
+            ->where('video', '[0-9]+');
+        /*
+                //SEO
+                Route::match(['post', 'get'], 'seo/{video}', 'Admin\videoseoController@updateSeo')
+                    ->name('admin_video_seo')->where('video', '[0-9]+');*/
+
+    });
+    /**
+     *   Admin CHANNELS
+     */
+    Route::group(['prefix' => 'channels'], function () {
+        Route::match(['get', 'post'], '/', ['uses' => 'Admin\ChannelsController@index', 'as' => 'admin_channels']);
+        Route::match(['get', 'post'], 'edit/{channel}', ['uses' => 'Admin\ChannelsController@edit', 'as' => 'edit_channel'])
+            ->where('channel', '[0-9]+');
+    });
+    /**
+     *   Admin POLLS
+     */
+    Route::group(['prefix' => 'polls'], function () {
+        Route::match(['get', 'post'], '/', ['uses' => 'Admin\PollsController@index', 'as' => 'admin_polls']);
+
+        Route::match(['get', 'post'], 'create', ['uses' => 'Admin\PollsController@create', 'as' => 'create_poll']);
+        Route::match(['get', 'post'], 'edit/{poll}', ['uses' => 'Admin\PollsController@edit', 'as' => 'edit_poll'])
+            ->where('poll', '[0-9]+');
+        /* Route::get('delete/{poll}', ['uses' => 'Admin\PollsController@destroy', 'as' => 'delete_poll'])
+             ->where('poll', '[0-9]+');*/
+    });
+    /**
+     * Admin SEO
+     */
+    Route::group(['prefix' => 'seo'], function () {
+        Route::get('/', 'Admin\SeoController@index')->name('seo_admin');
+        Route::match(['post', 'get'], 'edit/{seo}', 'Admin\SeoController@edit')->name('seo_update')->where('seo', '[0-9]+');
+    });
+
 });
 //================================================= ADMIN ============================================================
 //Auth

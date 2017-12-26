@@ -52,7 +52,8 @@ class CatRequest extends FormRequest
     {
         if ($this->isMethod('post')) {
             $rules = [
-                'name' => ['required', 'between:5, 32', 'regex:#^[а-яА-ЯІіЇіЄє\s\'-]+$#u'],
+                'name' => ['required', 'between:5, 32', 'regex:#^[а-яА-ЯІіЇіЄє\s\'-\(\)]+$#u'],
+                'confirmed' => 'boolean|nullable',
             ];
             return $rules;
         }
