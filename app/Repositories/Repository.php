@@ -53,14 +53,14 @@ abstract class Repository
      * @param $result
      * @return bool
      */
-    protected function check($result)
+    protected function check($result, $crop = false)
     {
 
         if ($result->isEmpty()) {
             return FALSE;
         }
 
-        $result->transform(function ($item) {
+        $result->transform(function ($item) use ($crop) {
 
             if ($item->created_at) {
                 $created = strtotime($item->created_at);
@@ -69,9 +69,11 @@ abstract class Repository
                 $item->time = date('H:i', $created);
             }
 
-            /*            if (is_string($item->seo) && is_object(json_decode($item->seo)) && (json_last_error() == JSON_ERROR_NONE)) {
-                            $item->seo = json_decode($item->seo);
-                        }*/
+            if ($crop) {
+                if ($item->content) {
+                    $item->content = str_limit(strip_tags($item->content), 800);
+                }
+            }
 
             return $item;
 
@@ -174,8 +176,38 @@ abstract class Repository
         return $article;
     }
 
+    /**
+     * @return mixed
+     */
     public function getNewest()
     {
         return $this->model->latest()->first();
+    }
+
+    public function getMore($select = '*', $take = false, $where = false, $order = false, $with = false, $skip = false)
+    {
+        $builder = $this->model->select($select);
+
+        if ($with) {
+            $builder = $this->model->with($with);
+        }
+
+        if ($skip) {
+            $builder->skip($skip);
+        }
+
+        if ($take) {
+            $builder->take($take);
+        }
+
+        if ($where) {
+            $builder->where($where);
+        }
+
+        if ($order) {
+            $builder->orderBy($order[0], $order[1]);
+        }
+
+        return $this->check($builder->get(), true);
     }
 }

@@ -121,7 +121,9 @@ class ArticleController extends MainController
 
             $this->title = $cat->name;
         }
-
+        $this->jss = '
+            <script src="' . asset('js/load_more.js') . '"></script>
+            ';
         return $this->renderOutput();
     }
 

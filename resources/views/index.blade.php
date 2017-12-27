@@ -169,14 +169,16 @@
                     <div class="news-item"><a href="/">Архів<span class="linn"></span></a></div>
                     <div class="clear"></div>
                 </div>
-
+                <div class="group-news">
+                    <div class="news-item"><a href="/">Архів<span class="linn"></span></a></div>
+                </div>
 
                 <div class="main-news">
 
 
                     <div class="mainy">
                         <div class="hovvy"></div>
-                        <div class="osnov main-hover">
+                        <div class="osnov main-hover"><a href="/">
                             <div class="imgg-news"><img src="./img/krim.png" alt="">
                                 <div class="yelow-line">КРИМИНАЛ</div>
                                 <div class="coments-news">
@@ -194,7 +196,7 @@
                             </div>
                             <div class="content-news">
 
-                                <h3>Недоработали: киевлянам вернут деньги за часть коммунальных услуг</h3>
+                                <h3><span>Недоработали: киевлянам вернут деньги за часть коммунальных услуг</span></h3>
                                 <div class="block-text neww">
                                     <p>Киевлянам сделают перерасчет за не предоставленные коммунальные услуги. Как пишет
                                         "Вечерний Киев", речь идет про услу- ги по содержанию. Киевлянам сделают пере-
@@ -219,6 +221,7 @@
                                 </div>
                                 <div class="right-coments"><img src="./img/wath.png" alt=""><span>1775</span></div>
                             </div>
+                            </a>
                         </div>
 
 
@@ -227,7 +230,7 @@
 
                     <div class="mainy">
                         <div class="hovvy"></div>
-                        <div class="osnov main-hover">
+                        <div class="osnov main-hover"><a href="/">
                             <div class="imgg-news"><img src="./img/boxx.png" alt="">
                                 <div class="yelow-line">СПОРТ</div>
                                 <div class="coments-news">
@@ -245,7 +248,7 @@
                             </div>
                             <div class="content-news">
 
-                                <h3>Недоработали: киевлянам вернут деньги за часть коммунальных услуг</h3>
+                                <h3><span>Недоработали: киевлянам вернут деньги за часть коммунальных услуг</span></h3>
                                 <div class="block-text neww">
                                     <p>Киевлянам сделают перерасчет за не предоставленные коммунальные услуги. Как пишет
                                         "Вечерний Киев", речь идет про услу- ги по содержанию. Киевлянам сделают пере-
@@ -270,6 +273,7 @@
                                 </div>
                                 <div class="right-coments"><img src="./img/wath.png" alt=""><span>1775</span></div>
                             </div>
+                            </a>
                         </div>
 
 
@@ -278,7 +282,7 @@
 
                     <div class="mainy">
                         <div class="hovvy"></div>
-                        <div class="osnov main-hover">
+                        <div class="osnov main-hover"><a href="">
                             <div class="imgg-news"><img src="./img/vili.png" alt="">
                                 <div class="yelow-line">политика</div>
                                 <div class="coments-news">
@@ -296,7 +300,7 @@
                             </div>
                             <div class="content-news">
 
-                                <h3>Ляшко обещает навести порядок в стране</h3>
+                                <h3><span>Ляшко обещает навести порядок в стране</span></h3>
                                 <div class="block-text neww">
                                     <p>Киевлянам сделают перерасчет за не предоставленные коммунальные услуги. Как пишет
                                         "Вечерний Киев", речь идет про услу- ги по содержанию. Киевлянам сделают пере-
@@ -321,10 +325,192 @@
                                 </div>
                                 <div class="right-coments"><img src="./img/wath.png" alt=""><span>1775</span></div>
                             </div>
+                            </a>
                         </div>
 
 
                     </div>
+
+
+                    <div class="mainy adaptiv-mainy">
+                        <div class="hovvy"></div>
+                        <div class="osnov main-hover"><a href="">
+                                <div class="imgg-news"><img src="./img/vili.png" alt="">
+                                    <div class="yelow-line">политика</div>
+                                    <div class="coments-news">
+                                        <div class="left-coments">
+
+                                            <img src="./img/time-efir5.png" alt="">
+                                            <div class="date-neww">19.11.2017</div>
+                                            <div class="times-newws">20:30</div>
+                                        </div>
+                                        <div class="right-coments"><img src="./img/wath5.png" alt=""><span>1775</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="fonn-hovy"></div>
+
+                                </div>
+                                <div class="content-news">
+
+                                    <h3><span>Ляшко обещает навести порядок в стране</span></h3>
+                                    <div class="block-text neww">
+                                        <p>Киевлянам сделают перерасчет за не предоставленные коммунальные услуги. Как
+                                            пишет
+                                            "Вечерний Киев", речь идет про услу- ги по содержанию. Киевлянам сделают
+                                            пере-
+                                            расчет за не предоставленные коммуналь- ные услуги. "Вечерний Киев".
+                                            Киевлянам
+                                            сде- лают перерасчет за предоставленные комму- нальные услуги. Киевлянам
+                                            сделают
+                                            перера- счет за не предоставленные коммунальные услуг слуги. перера за
+                                            предоставленные ко- ммунальные. Киевлянам сделают перерасчет за
+                                            предоставленные
+                                            коммунальные услуги. Киевля- нам сделают перерасчет за не предо- ставленные
+                                            коммунальные услуги. Киевлянам сделают перерасчет за не предоставленные
+                                            коммунальные услуг слуги за предоставле- нные коммунальные. Киевлянам
+                                            сделают
+                                            перерасчет за предоставленные коммуналь- ные услуги. Киевлянам сделают
+                                            перерасчет за не предо- ставленные коммунальные услуги ... </p>
+                                        <div class="main-buty"><a href="/">читать дальше<span class="linn"></span></a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="coments-news">
+                                    <div class="left-coments">
+                                        <img src="./img/time-efir.png" alt="">
+                                        <div class="date-neww">19.11.2017</div>
+                                        <div class="times-newws">20:30</div>
+                                    </div>
+                                    <div class="right-coments"><img src="./img/wath.png" alt=""><span>1775</span></div>
+                                </div>
+                            </a>
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="mainy adaptiv-mainy">
+                        <div class="hovvy"></div>
+                        <div class="osnov main-hover"><a href="">
+                                <div class="imgg-news"><img src="./img/vili.png" alt="">
+                                    <div class="yelow-line">политика</div>
+                                    <div class="coments-news">
+                                        <div class="left-coments">
+
+                                            <img src="./img/time-efir5.png" alt="">
+                                            <div class="date-neww">19.11.2017</div>
+                                            <div class="times-newws">20:30</div>
+                                        </div>
+                                        <div class="right-coments"><img src="./img/wath5.png" alt=""><span>1775</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="fonn-hovy"></div>
+
+                                </div>
+                                <div class="content-news">
+
+                                    <h3><span>Ляшко обещает навести порядок в стране</span></h3>
+                                    <div class="block-text neww">
+                                        <p>Киевлянам сделают перерасчет за не предоставленные коммунальные услуги. Как
+                                            пишет
+                                            "Вечерний Киев", речь идет про услу- ги по содержанию. Киевлянам сделают
+                                            пере-
+                                            расчет за не предоставленные коммуналь- ные услуги. "Вечерний Киев".
+                                            Киевлянам
+                                            сде- лают перерасчет за предоставленные комму- нальные услуги. Киевлянам
+                                            сделают
+                                            перера- счет за не предоставленные коммунальные услуг слуги. перера за
+                                            предоставленные ко- ммунальные. Киевлянам сделают перерасчет за
+                                            предоставленные
+                                            коммунальные услуги. Киевля- нам сделают перерасчет за не предо- ставленные
+                                            коммунальные услуги. Киевлянам сделают перерасчет за не предоставленные
+                                            коммунальные услуг слуги за предоставле- нные коммунальные. Киевлянам
+                                            сделают
+                                            перерасчет за предоставленные коммуналь- ные услуги. Киевлянам сделают
+                                            перерасчет за не предо- ставленные коммунальные услуги ... </p>
+                                        <div class="main-buty"><a href="/">читать дальше<span class="linn"></span></a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="coments-news">
+                                    <div class="left-coments">
+                                        <img src="./img/time-efir.png" alt="">
+                                        <div class="date-neww">19.11.2017</div>
+                                        <div class="times-newws">20:30</div>
+                                    </div>
+                                    <div class="right-coments"><img src="./img/wath.png" alt=""><span>1775</span></div>
+                                </div>
+                            </a>
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="mainy adaptiv-mainy">
+                        <div class="hovvy"></div>
+                        <div class="osnov main-hover"><a href="">
+                                <div class="imgg-news"><img src="./img/vili.png" alt="">
+                                    <div class="yelow-line">политика</div>
+                                    <div class="coments-news">
+                                        <div class="left-coments">
+
+                                            <img src="./img/time-efir5.png" alt="">
+                                            <div class="date-neww">19.11.2017</div>
+                                            <div class="times-newws">20:30</div>
+                                        </div>
+                                        <div class="right-coments"><img src="./img/wath5.png" alt=""><span>1775</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="fonn-hovy"></div>
+
+                                </div>
+                                <div class="content-news">
+
+                                    <h3><span>Ляшко обещает навести порядок в стране</span></h3>
+                                    <div class="block-text neww">
+                                        <p>Киевлянам сделают перерасчет за не предоставленные коммунальные услуги. Как
+                                            пишет
+                                            "Вечерний Киев", речь идет про услу- ги по содержанию. Киевлянам сделают
+                                            пере-
+                                            расчет за не предоставленные коммуналь- ные услуги. "Вечерний Киев".
+                                            Киевлянам
+                                            сде- лают перерасчет за предоставленные комму- нальные услуги. Киевлянам
+                                            сделают
+                                            перера- счет за не предоставленные коммунальные услуг слуги. перера за
+                                            предоставленные ко- ммунальные. Киевлянам сделают перерасчет за
+                                            предоставленные
+                                            коммунальные услуги. Киевля- нам сделают перерасчет за не предо- ставленные
+                                            коммунальные услуги. Киевлянам сделают перерасчет за не предоставленные
+                                            коммунальные услуг слуги за предоставле- нные коммунальные. Киевлянам
+                                            сделают
+                                            перерасчет за предоставленные коммуналь- ные услуги. Киевлянам сделают
+                                            перерасчет за не предо- ставленные коммунальные услуги ... </p>
+                                        <div class="main-buty"><a href="/">читать дальше<span class="linn"></span></a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="coments-news">
+                                    <div class="left-coments">
+                                        <img src="./img/time-efir.png" alt="">
+                                        <div class="date-neww">19.11.2017</div>
+                                        <div class="times-newws">20:30</div>
+                                    </div>
+                                    <div class="right-coments"><img src="./img/wath.png" alt=""><span>1775</span></div>
+                                </div>
+                            </a>
+                        </div>
+
+
+                    </div>
+
 
                     <div class="clear"></div>
                     <div class="other-news">
@@ -391,7 +577,7 @@
                                     <div class="left-coments">
                                         <img src="./img/time-efir.png" alt="">
                                         <div class="date-neww">19.11.2017</div>
-                                    </div>
+                                </div>
                                 </div>
                             </a>
                         </div>
@@ -408,7 +594,7 @@
                                     <div class="left-coments">
                                         <img src="./img/time-efir.png" alt="">
                                         <div class="date-neww">19.11.2017</div>
-                                    </div>
+                                </div>
                                 </div>
                             </a>
                         </div>
@@ -425,7 +611,7 @@
                                     <div class="left-coments">
                                         <img src="./img/time-efir.png" alt="">
                                         <div class="date-neww">19.11.2017</div>
-                                    </div>
+                                </div>
                                 </div>
                             </a>
                         </div>
@@ -490,6 +676,9 @@
             </div>
 
 
+            <div class="animate"></div>
+
+
         </div>
     </div>
 
@@ -524,7 +713,8 @@
                 <h5>Получаете/получали ли Вы субсидию?</h5>
                 <ul>
                     <li><input type="radio" id="opti1" name="selects">
-                        <label for="opti1"><span>1.</span><span>Ранее получал, сейчас нет</span></label>
+                        <label for="opti1"><span>1.</span><span>Ранее получал, сейчас нет<span
+                                        class="linn"></span></span></label>
                         <div class="check"></div>
                     </li>
                     <li><input type="radio" id="opti2" name="selects">

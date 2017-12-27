@@ -32,8 +32,8 @@
             <li><a href="{{ route('category') }}">Новини<span class="linn"></span></a></li>
             <li><a href="">Опитування<span class="linn"></span></a></li>
             <li><a href="">Наша громада<span class="linn"></span></a></li>
-            <li><a href="">Про проект<span class="linn"></span></a></li>
-            <li><a href="">Контакти<span class="linn"></span></a></li>
+            <li><a href="{{ route('about') }}">Про проект<span class="linn"></span></a></li>
+            <li><a href="#!">Контакти<span class="linn"></span></a></li>
         </ul>
 
     </div>

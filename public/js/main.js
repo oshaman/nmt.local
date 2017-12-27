@@ -53,7 +53,7 @@ jQuery(document).ready(function () {
             vert.mCustomScrollbar("destroy");
             scrollInit(true);
             $('.players-block').removeClass('dest');
-        }
+    }
     }
 
     getScroll();
@@ -63,7 +63,7 @@ jQuery(document).ready(function () {
     }
 
 
-    $('.upss-aroww').click(function(event) {
+    $('.upss-aroww').click(function (event) {
 event.preventDefault(event);
 console.log('top');
         $('.vert').mCustomScrollbar("scrollTo", "+=150", {scrollInertia: 600, scrollEasing: "linear"});
@@ -80,9 +80,19 @@ event.preventDefault(event);
     $('.main-hover').hover(
         function () {
             $(this).parent().addClass('playy');
+            setTimeout(function () {
+                $('.playy').addClass('hamm');
+            }, 499);
+            $('.animate').addClass('libo');
         },
         function () {
+            $(this).parent().addClass('crash');
             $(this).parent().removeClass('playy');
+            $('.animate').removeClass('libo');
+            $('.mainy').removeClass('hamm');
+            setTimeout(function () {
+                $('.mainy').removeClass('crash');
+            }, 799);
         });
 
 
@@ -113,7 +123,7 @@ event.preventDefault(event);
             if (currentScroll >= fixmeTop - 399) {
                 $('.linky').addClass('runns');
             }
-            else {
+            else {    
                 $('.linky').removeClass('runns');
             }
         });
@@ -125,11 +135,11 @@ event.preventDefault(event);
 
             var city = $('.city-news').offset().top;
             var test = city - last - 399 - 114;
-            console.log(test);
+            console.log(test);    
             if (currentScroll >= test) {
                 $('.linky').addClass('best');
             }
-            else {
+            else {    
                 $('.linky').removeClass('best');
             }
 
@@ -156,6 +166,21 @@ event.preventDefault(event);
 
 
 //// 3317
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //jQuery(document).ready(function(){

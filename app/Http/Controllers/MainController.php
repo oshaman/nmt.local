@@ -57,10 +57,10 @@ class MainController extends Controller
             $this->vars = array_add($this->vars, 'aside', $this->aside);
         }
 
-        /*if ($this->lastModified) {
+        if ($this->lastModified) {
             $content = view($this->template)->with($this->vars);
             return response($content)->header('Last-Modified', $this->lastModified);
-        }*/
+        }
         return view($this->template)->with($this->vars);
     }
 

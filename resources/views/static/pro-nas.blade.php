@@ -9,39 +9,17 @@
                     <meta itemprop="position" content="1"/>
                 </div>
                 <div itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="button">
-                    <a href="{{ route('category', $article->category->alias) }}"
-                       itemprop="item">{{ $article->category->name }}</a>
-                    <meta itemprop="position" content="2"/>
-                </div>
-                <div itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="button">
-                    <span itemprop="name" class="label1">{{ $article->title ?? '' }}</span>
+                    <span itemprop="name" class="label1">Про проект</span>
                     <meta itemprop="position" content="3"/>
                 </div>
             </div>
             {{--breadcrumbs--}}
             <div class="part">
-                <h4>{{ $article->title }}</h4>
-
-                <div class="coments-news">
-                    <div class="left-coments">
-                        <img src="{{ asset('/') }}img/time-efir.png" alt="">
-                        <div class="date-neww">{{ $article->date }}</div>
-                        <div class="times-newws">{{ $article->time }}</div>
-                    </div>
-                    <div class="right-coments"><img src="{{ asset('/') }}img/wath.png"
-                                                    alt=""><span>{{ $article->view }}</span></div>
-                </div>
-                <div class="part-img">
-
-                    <img src="{{ asset('asset') }}/images/articles/main/{{ $article->image->path }}"
-                         alt="{{ $article->image->alt }}" title="{{ $article->image->title }}">
-                    <div class="yelow-line">{{ $article->category->name }}</div>
-                </div>
-                <p class="ital">Киев, ул. Большая Васильковская</p>
+                <h4>Про проект</h4>
 
                 <div class="conty">
 
-                    {!! $article->content !!}
+                    {!! $article->text !!}
 
                     <div class="linky">
                         <div class="link"><a href="/"><img src="{{ asset('/') }}img/face-black.png" alt=""></a></div>
@@ -52,29 +30,15 @@
                     </div>
 
                     <div class="lucky"></div>
-
-
-                    <div class="tags">
-                        <div class="main-tag">Теги:</div>
-                        @if(!empty($article->tags))
-                            @foreach($article->tags as $tag)
-                                <div class="tag-item">
-                                    <a href="{{ route('tag', $tag->alias) }}">{{ $tag->name }}</a>
-                                </div>
-                            @endforeach
-                        @endif
-                    </div>
-
-
                 </div>
             </div>
 
             <div class="city-news">
-                <h3 class="city-caption"><span>Новини Нашого Міста</span></h3>
+                <h3 class="city-caption"><span>Останні Новини Нашого Міста</span></h3>
 
-                {{--Категории--}}
+                {{--Категории
                 @include('layouts.categories', ['categories'=>$categories, 'cat'=>$article->category->name])
-                {{--Категории--}}
+                Категории--}}
 
                 <div class="main-news">
 
@@ -134,7 +98,6 @@
                             </div>
                         @endforeach
                     @endif
-
                     <div class="clear"></div>
 
 

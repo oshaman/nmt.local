@@ -63,5 +63,9 @@ class SeoRepository extends Repository
     public function clearCache()
     {
         Cache::forget('seo_main');
+        Cache::forget('pro-nas');
+//        Cache::forget('seo_main');
+//        Cache::forget('seo_main');
+//        Cache::forget('seo_main');
     }
 }

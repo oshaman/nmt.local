@@ -2,38 +2,47 @@
 
 namespace Fresh\Nashemisto\Http\Controllers\Admin;
 
+use Fresh\Nashemisto\Repositories\StaticPageRepositiory;
 use Illuminate\Http\Request;
-use Fresh\Nashemisto\Http\Controllers\Controller;
+use Gate;
 
-class StaticsController extends Controller
+class StaticsController extends AdminController
 {
-    public function index(Static_pageRepository $repository)
+    protected $repository;
+
+    public function __construct(StaticPageRepositiory $repository)
+    {
+        $this->repository = $repository;
+        $this->template = 'admin.admin';
+    }
+
+    public function index()
     {
         if (Gate::denies('UPDATE_STATIC')) {
             abort(404);
         }
 
-        $pages = $repository->get(['id', 'title', 'text', 'own']);
-        $this->content = view('admin.static.show')->with(['pages' => $pages])->render();
+        $pages = $this->repository->get(['id', 'title', 'text', 'own']);
+        $this->content = view('admin.statics.show')->with(['pages' => $pages])->render();
         return $this->renderOutput();
     }
 
-    public function edit(Static_pageRepository $repository, Request $request, $static_page = false)
+    public function edit(Request $request, $static_page = false)
     {
         if (Gate::denies('UPDATE_STATIC')) {
             abort(404);
         }
         if ($request->isMethod('post')) {
-            $result = $repository->updateStatic_page($request, $static_page);
+            $result = $this->repository->updateStaticPage($request, $static_page);
 
             if (is_array($result) && !empty($result['error'])) {
                 return back()->withErrors($result['error']);
             }
             return redirect()->route('admin_static')->with($result);
         }
-        $this->template = 'admin.article.admin';
-        $static_page->seo = $repository->convertSeo($static_page->seo);
-        $this->content = view('admin.static.edit')->with(['page' => $static_page])->render();
+        $this->tiny = true;
+        $this->areaW = 770;
+        $this->content = view('admin.statics.edit')->with(['page' => $static_page])->render();
         return $this->renderOutput();
     }
 }

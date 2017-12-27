@@ -19,8 +19,8 @@
                 <div class="news-item"><a href="/">ОПИТУВАННЯ</a></div>
                 <div class="news-item"><a href="/">НАША ГРОМАДА</a></div>
 
-                <div class="news-item"><a href="/">ПРО ПРОЕКТ</a></div>
-                <div class="news-item"><a href="/">КОНТАКТИ</a></div>
+                <div class="news-item"><a href="{{ route('about') }}">ПРО ПРОЕКТ</a></div>
+                <div class="news-item"><a href="#!">КОНТАКТИ</a></div>
                 <div class="clear"></div>
             </div>
             <div class="foter-text">

@@ -161,7 +161,7 @@
                             @endforeach
                     </div>
                     <div class="main-buty">
-                        <a href="{{ route('category', $articles[0]->category->alias) }}">всі новини<span
+                        <a href="{{ route('category') }}">всі новини<span
                                     class="linn"></span></a>
                     </div>
                     @endif

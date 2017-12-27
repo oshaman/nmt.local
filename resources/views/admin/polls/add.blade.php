@@ -2,6 +2,9 @@
 {!! Form::open(['url'=>route('create_poll'), 'method'=>'POST', 'class'=>'form-horizontal']) !!}
 <div class="">
     {{ Form::label('question', 'Запитання') }}
+    <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="right"
+            title="Обов'язкове до заповнення поле(максимум 255 символів)">?
+    </button>
     <div>
         {!! Form::text('question', old('question') ? : '',
             ['placeholder'=>'Запитання...', 'id'=>'question', 'class'=>'form-control ru-title']) !!}
@@ -9,6 +12,9 @@
 </div>
 <div class="">
     {{ Form::label('alias', 'ЧПУ опитування') }}
+    <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="right"
+            title="Обов'язкове до заповнення поле(латинські літери, цифри - максимум 255 символів)">?
+    </button>
     <div>
         {!! Form::text('alias', old('alias') ? : '',
          ['placeholder'=>'zapytannya', 'id'=>'alias', 'class'=>'form-control eng-alias']) !!}
@@ -16,6 +22,9 @@
 </div>
 <div class="">
     {{ Form::label('title', 'Заголовок опитування') }}
+    <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="right"
+            title="Обов'язкове до заповнення поле(максимум 255 символів)">?
+    </button>
     <div>
         {!! Form::text('title', old('title') ? : '',
             ['placeholder'=>'Встановлення новорічної ялинки...', 'id'=>'title', 'class'=>'form-control']) !!}
@@ -23,6 +32,9 @@
 </div>
 <hr>
 <div class="alert alert-info">
+    <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="right"
+            title="Обов'язкові до заповнення поля(максимум 255 символів)">?
+    </button>
     <div class="row">
         <div class="col-md-6">
             {{ Form::label('answer1', 'Відповідь №1') }}
@@ -82,6 +94,9 @@
 <hr>
 <div class="row">
     {{ Form::label('description', 'Опис') }}
+    <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="right"
+            title="Обов'язкове до заповнення поле">?
+    </button>
     <textarea name="description" class="form-control editor">{!! old('description') ? : '' !!}</textarea>
 </div>
 <div class="row">

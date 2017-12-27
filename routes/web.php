@@ -14,13 +14,19 @@
 Route::get('/', 'IndexController@show')->name('main');
 
 Route::post('/poll', 'PollController@addToPolls')->name('polls');
+//  ajax
 Route::post('/get-articles', 'IndexController@getArticles');
-
+Route::post('/get-more', 'AjController@getMore');
+//  ajax
+//  Articles
 Route::get('article/{article_alias}', 'ArticleController@show')->name('article')->where('article_alias', '[\w-]+');
-
 Route::get('categories/{cat_alias?}', 'ArticleController@cats')->name('category')->where('cat_alias', '[\w-]+');
 Route::get('tags/{tag_alias}', 'ArticleController@tags')->name('tag')->where('tag_alias', '[\w-]+');
+//  About
+Route::get('/about', 'StaticPagesController@about')->name('about');
 
+
+//============================
 Route::view('/welcome', 'index');
 Route::view('/article1', 'article');
 Route::view('/articles', 'articles');
@@ -121,6 +127,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::group(['prefix' => 'seo'], function () {
         Route::get('/', 'Admin\SeoController@index')->name('seo_admin');
         Route::match(['post', 'get'], 'edit/{seo}', 'Admin\SeoController@edit')->name('seo_update')->where('seo', '[0-9]+');
+    });
+    /**
+     * Admin STATIC
+     */
+    Route::group(['prefix' => 'static'], function () {
+        Route::get('/', 'Admin\StaticsController@index')->name('admin_static');
+        Route::match(['post', 'get'], 'edit/{static}', 'Admin\StaticsController@edit')->name('static_update')->where('static', '[0-9]+');
     });
 
 });

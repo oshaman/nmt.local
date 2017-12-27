@@ -73,6 +73,10 @@ class AdminController extends Controller
                 $menu->add('SEO', array('route' => 'seo_admin'));
             }
 
+            if (Gate::allows('UPDATE_STATIC')) {
+                $menu->add('Статичні сторінки', array('route' => 'admin_static'));
+            }
+
             /*
 
             if (Gate::allows('MAIN_ADMIN')) {

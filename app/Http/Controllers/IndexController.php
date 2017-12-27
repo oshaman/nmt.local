@@ -44,7 +44,7 @@ class IndexController extends MainController
     public function show()
     {
 //        session()->flush();
-        $this->title = '- Головна';
+        $this->title = 'Головна';
         $poll = $this->poll_rep->getNewest();
         $this->jss = '
             <script src="' . asset('js/video.js') . '"></script>
