@@ -196,7 +196,7 @@ class ArticlesRepository extends Repository
                 $error[] = ['tag' => 'Помилка збереження тегів'];
             }
 
-            $this->clearArticlesCache($article->alias);
+            $this->clearArticlesCache($article->alias, $article->category_id . $article->id);
 
             return ['status' => 'Статтю оновлено', $error];
         }
@@ -292,10 +292,14 @@ class ArticlesRepository extends Repository
 
         $articles->with(['image', 'category']);
 
-        return $this->check($articles->paginate(Config::get('settings.paginate_tags')));
+        return $this->check($articles->paginate(Config::get('settings.paginate_tags')), true);
 
     }
 
+    /**
+     * @param $articles
+     * @return bool
+     */
     public function contentHandle($articles)
     {
         if (null == $articles || $articles->isEmpty()) {
@@ -318,12 +322,13 @@ class ArticlesRepository extends Repository
     /**
      * Clear
      */
-    protected function clearArticlesCache($alias = false)
+    protected function clearArticlesCache($alias = false, $cat = false)
     {
         Cache::forget('article_' . $alias);
+        !empty($cat) ? Cache::forget('articles_' . $cat) : null;;
         /*
         !empty($id) ? Cache::store('file')->forget('patients_article-' . $id) : null;
-        !empty($cat) ? Cache::forget('docs_cats' . $cat) : null;*/
+        */
 
     }
 

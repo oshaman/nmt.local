@@ -14,8 +14,6 @@ function loadAjax() {
 
         if (page >= cnt_page) return false;
         if ((("undefined" !== typeof source) && $.isNumeric(source)) && (("undefined" == typeof source_id) || $.isNumeric(source_id))) {
-            console.log('+');
-
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -24,18 +22,15 @@ function loadAjax() {
                 type: 'POST',
                 data: {'source': source, 'source_id': source_id, 'page': page},
                 success: function (resp) {
-                    resp ? $(resp).insertBefore('.more-before') : '';
+                    divs = $(resp).siblings('.mainy');
+                    pag = $(resp).siblings('.articles-pagination').html();
+                    divs ? divs.insertBefore('.more-before') : '';
+
+                    $('.articles-pagination').html(pag);
                     page++;
-                    if ($('.active-pagin-number').last().next().hasClass('pagin-number')) {
-                        $('.active-pagin-number').last().next().addClass('active-pagin-number');
-                    } else {
-                        $('.active-pagin-number').last().clone().html(page).insertAfter($('.active-pagin-number').last());
-                        if (page >= 4) {
-                            $('.articles-pagination a').eq(2).html('&nbsp;&nbsp;&nbsp;.&nbsp;.&nbsp;.&nbsp;&nbsp;&nbsp;');
-                        }
-                        if (page >= 5) {
-                            $('.articles-pagination a').eq(page - 2).remove();
-                        }
+
+                    if (page >= cnt_page) {
+                        _this.remove();
                     }
                 }
             })

@@ -24,8 +24,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->call('\Fresh\Nashemisto\Repositories\SitemapRepository@index')->dailyAt('14:51');
     }
 
     /**

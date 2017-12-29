@@ -18,7 +18,7 @@ abstract class Repository
      * @param bool $with
      * @return bool
      */
-    public function get($select = '*', $take = false, $pagination = false, $where = false, $order = false, $with = false)
+    public function get($select = '*', $take = false, $pagination = false, $where = false, $order = false, $with = false, $crop = false)
     {
         $builder = $this->model->select($select);
 
@@ -42,11 +42,11 @@ abstract class Repository
             if (true === $pagination) {
                 $pagination = 14;
             }
-            return $this->check($builder->paginate($pagination));
+            return $this->check($builder->paginate($pagination), $crop);
         }
 
 //        return $builder->get();
-        return $this->check($builder->get());
+        return $this->check($builder->get(), $crop);
     }
 
     /**
@@ -71,7 +71,7 @@ abstract class Repository
 
             if ($crop) {
                 if ($item->content) {
-                    $item->content = str_limit(strip_tags($item->content), 800);
+                    $item->content = str_limit(strip_tags($item->content), 600);
                 }
             }
 
@@ -182,32 +182,5 @@ abstract class Repository
     public function getNewest()
     {
         return $this->model->latest()->first();
-    }
-
-    public function getMore($select = '*', $take = false, $where = false, $order = false, $with = false, $skip = false)
-    {
-        $builder = $this->model->select($select);
-
-        if ($with) {
-            $builder = $this->model->with($with);
-        }
-
-        if ($skip) {
-            $builder->skip($skip);
-        }
-
-        if ($take) {
-            $builder->take($take);
-        }
-
-        if ($where) {
-            $builder->where($where);
-        }
-
-        if ($order) {
-            $builder->orderBy($order[0], $order[1]);
-        }
-
-        return $this->check($builder->get(), true);
     }
 }

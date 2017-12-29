@@ -14,6 +14,12 @@ class StaticPagesController extends MainController
     protected $a_rep;
     protected $seo_rep;
 
+    /**
+     * StaticPagesController constructor.
+     * @param ArticlesRepository $a_rep
+     * @param StaticPageRepositiory $repository
+     * @param SeoRepository $seo_rep
+     */
     public function __construct(
         ArticlesRepository $a_rep,
         StaticPageRepositiory $repository,
@@ -23,35 +29,76 @@ class StaticPagesController extends MainController
         $this->repository = $repository;
         $this->seo_rep = $seo_rep;
         $this->a_rep = $a_rep;
+        Cache::flush();
     }
 
+    /**
+     * @param Request $request
+     * @return view
+     */
     public function contacts(Request $request)
     {
         $name = 'contacts';
         return $this->cacheHandler($request, $name);
     }
 
+    /**
+     * @param Request $request
+     * @return view
+     */
     public function about(Request $request)
     {
         $name = 'pro-nas';
         return $this->cacheHandler($request, $name);
     }
 
-    public function advertising(Request $request)
+    /**
+     * @param Request $request
+     * @return view
+     */
+    public function reklama(Request $request)
     {
-        $name = 'advertising';
+        $name = 'reklama';
         return $this->cacheHandler($request, $name);
     }
 
-    public function conditions(Request $request)
+    /**
+     * @param Request $request
+     * @return view
+     */
+    public function redakciya(Request $request)
     {
-        $name = 'conditions';
+        $name = 'redakciya';
         return $this->cacheHandler($request, $name);
     }
 
-    public function partnership(Request $request)
+    /**
+     * @param Request $request
+     * @return view
+     */
+    public function ugoda(Request $request)
     {
-        $name = 'partnership';
+        $name = 'ugoda';
+        return $this->cacheHandler($request, $name);
+    }
+
+    /**
+     * @param Request $request
+     * @return view
+     */
+    public function kontakty(Request $request)
+    {
+        $name = 'kontakty';
+        return $this->cacheHandler($request, $name);
+    }
+
+    /**
+     * @param Request $request
+     * @return view
+     */
+    public function pravyla(Request $request)
+    {
+        $name = 'pravyla';
         return $this->cacheHandler($request, $name);
     }
 
@@ -79,16 +126,11 @@ class StaticPagesController extends MainController
         }
 //            Last Modify
         $this->seo = $page->seo;
-//        dd($this->seo);
-//        if (is_object($this->seo)) {
-//            $this->seo->og_image = asset('/estet/img') . '/' . $name . '.png';
-//        }
 
         $this->title = trans('admin.' . $name);
         $articles = Cache::remember('articles_last', 24 * 60, function () {
             $where = [['approved', 1]];
-            $articles = $this->a_rep->get('*', 3, false, $where, ['created_at', 'desc'], ['category', 'image']);
-            $articles = $this->a_rep->contentHandle($articles);
+            $articles = $this->a_rep->get('*', 3, false, $where, ['created_at', 'desc'], ['category', 'image'], true);
             return $articles;
         });
 

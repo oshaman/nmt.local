@@ -4,6 +4,7 @@ namespace Fresh\Nashemisto\Http\Controllers;
 
 use Cache;
 use DB;
+use Fresh\Nashemisto\Repositories\SeoRepository;
 use Illuminate\Http\Request;
 use Fresh\Nashemisto\PollStatistic;
 use Fresh\Nashemisto\Repositories\ArticlesRepository;
@@ -17,6 +18,7 @@ class IndexController extends MainController
     protected $a_rep;
     protected $c_rep;
     protected $ch_rep;
+    protected $seo_rep;
 
     /**
      * IndexController constructor.
@@ -29,12 +31,14 @@ class IndexController extends MainController
         PollsRepository $poll,
         ArticlesRepository $arep,
         CategoriesRepository $cats,
-        ChannelsRepository $channelsRepository
+        ChannelsRepository $channelsRepository,
+        SeoRepository $seorep
     )
     {
         $this->poll_rep = $poll;
         $this->a_rep = $arep;
         $this->c_rep = $cats;
+        $this->seo_rep = $seorep;
         $this->ch_rep = $channelsRepository;
     }
 
@@ -62,11 +66,13 @@ class IndexController extends MainController
             return $this->ch_rep->get('*', 7, false, ['approved' => 1], false, ['videos']);
         });
 
+        $this->seo = Cache::remember('seo_main', 24 * 60, function () {
+            return $this->seo_rep->getSeo('/');
+        });
 
         $where = [['approved', true], ['created_at', '<=', DB::raw('NOW()')]];
-        $articles = $this->a_rep->get('*', 12, false, $where, ['created_at', 'desc'], ['image', 'category']);
+        $articles = $this->a_rep->get('*', 12, false, $where, ['created_at', 'desc'], ['image', 'category'], true);
 
-        $articles = $this->a_rep->contentHandle($articles);
         $cats = $this->c_rep->get(['name', 'alias', 'id'], 5, false, ['approved' => 1]);
         //dd($articles);
         $this->poll = view('static.poll')->with(['poll' => $poll, 'statistic' => $statistic])->render();
@@ -94,8 +100,8 @@ class IndexController extends MainController
             }
 
 
-            $articles = $this->a_rep->get('*', 12, false, $where, ['created_at', 'desc'], ['image', 'category']);
-            $articles = $this->a_rep->contentHandle($articles);
+            $articles = $this->a_rep->get('*', 12, false, $where,
+                ['created_at', 'desc'], ['image', 'category'], true);
 
             return view('static.get_articles')
                 ->with(['articles' => $articles, 'cat' => $cat])

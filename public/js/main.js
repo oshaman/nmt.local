@@ -45,7 +45,7 @@ jQuery(document).ready(function () {
 
     function getScroll() {
         w_w = window.innerWidth
-        if (w_w < 1299) {
+        if (w_w < 1024) {
             vert.mCustomScrollbar("destroy");
             scrollInit(false);
             $('.players-block').addClass('dest');
@@ -92,7 +92,7 @@ event.preventDefault(event);
             $('.mainy').removeClass('hamm');
             setTimeout(function () {
                 $('.mainy').removeClass('crash');
-            }, 799);
+            }, 699);
         });
 
 
@@ -146,6 +146,23 @@ event.preventDefault(event);
             console.log(currentScroll);
         });
     }
+
+
+    $(window).scroll(function () {
+        var currentScroll = $(window).scrollTop();
+        var line4 = $('.headers').height();
+        console.log(line4);
+        var alls = window.innerHeight;
+        if (currentScroll >= line4) {
+            $('.headers').addClass('goon');
+        }
+        else {
+            $('.headers').removeClass('goon');
+        }
+    });
+    
+    
+    
 });
 
 
@@ -183,22 +200,6 @@ event.preventDefault(event);
 
 
 
-//jQuery(document).ready(function(){
-//
-//
-//    if($('.linky').length){
-//    var fixmeTop = $('.linky').offset().top;
-//        $(window).scroll(function() {
-//            var currentScroll = $(window).scrollTop();
-//            if (currentScroll >= fixmeTop - 399) {
-//                $('.linky').addClass('runns');
-//
-//            } else {    
-//                $('.linky').removeClass('runns');
-//            }
-//        });
-//    }
-//});
 
 
 

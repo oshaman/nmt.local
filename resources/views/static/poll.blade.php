@@ -18,34 +18,34 @@
                         <li>
                             <input type="radio" id="poll1" name="selects" value="poll1" class="radio-poll">
                             <label for="poll1">
-                                <span>1.</span><span>{{ $poll->answer1 }}</span>
+                                <span>1.</span><span>{{ $poll->answer1 }}<span class="linn"></span></span>
                             </label>
                             <div class="check"></div>
                         </li>
                         <li><input type="radio" id="poll2" name="selects" value="poll2" class="radio-poll">
                             <label for="poll2">
-                                <span>2.</span><span>{{ $poll->answer2 }}</span>
+                                <span>2.</span><span>{{ $poll->answer2 }}<span class="linn"></span></span>
                             </label>
                             <div class="check"></div>
                         </li>
 
                         <li><input type="radio" id="poll3" name="selects" value="poll3" class="radio-poll">
                             <label for="poll3">
-                                <span>3.</span><span>{{ $poll->answer3 }}</span>
+                                <span>3.</span><span>{{ $poll->answer3 }}<span class="linn"></span></span>
                             </label>
                             <div class="check"></div>
                         </li>
 
                         <li><input type="radio" id="poll4" name="selects" value="poll4" class="radio-poll">
                             <label for="poll4">
-                                <span>4.</span><span>{{ $poll->answer4 }}</span>
+                                <span>4.</span><span>{{ $poll->answer4 }}<span class="linn"></span></span>
                             </label>
                             <div class="check"></div>
                         </li>
 
                         <li><input type="radio" id="poll5" name="selects" value="poll5" class="radio-poll">
                             <label for="poll5">
-                                <span>5.</span><span>{{ $poll->answer5 }}</span>
+                                <span>5.</span><span>{{ $poll->answer5 }}<span class="linn"></span></span>
                             </label>
                             <div class="check"></div>
                         </li>

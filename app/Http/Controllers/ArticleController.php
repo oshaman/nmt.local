@@ -7,6 +7,7 @@ use Fresh\Nashemisto\Repositories\CategoriesRepository;
 use Fresh\Nashemisto\Repositories\TagsRepository;
 use Illuminate\Http\Request;
 use Cache;
+use DB;
 
 class ArticleController extends MainController
 {
@@ -24,7 +25,6 @@ class ArticleController extends MainController
 
     public function show(Request $request, $article)
     {
-        Cache::flush();
         $article = Cache::remember('article_' . $article, 24 * 60, function () use ($article) {
             $article = $this->a_rep->one($article);
             if (null == $article) return null;
@@ -39,7 +39,7 @@ class ArticleController extends MainController
         if (null == $article) {
             abort(404);
         }
-        /*
+
         //            Last Modify
         $LastModified_unix = strtotime($article->updated_at); // время последнего изменения страницы
         $this->lastModified = gmdate("D, d M Y H:i:s \G\M\T", $LastModified_unix);
@@ -51,17 +51,16 @@ class ArticleController extends MainController
             return response('304 Not Modified', 304);
         }
 //            Last Modify
-        */
+
         $article->timestamps = false;
         $article->increment('view');
         $article->timestamps = true;
 
         $this->title = $article->title;
 
-        $articles = Cache::remember('articles_' . $article->category_id, 24 * 60, function () use ($article) {
+        $articles = Cache::remember('articles_' . $article->category_id . $article->id, 24 * 60, function () use ($article) {
             $where = [['category_id', $article->category_id], ['approved', 1], ['id', '<>', $article->id]];
-            $articles = $this->a_rep->get('*', 3, false, $where, false, ['category', 'image']);
-            $articles = $this->a_rep->contentHandle($articles);
+            $articles = $this->a_rep->get('*', 3, false, $where, false, ['category', 'image'], true);
             return $articles;
         });
 //        dd($articles);
@@ -76,9 +75,8 @@ class ArticleController extends MainController
 
     public function cats(Request $request, $cat_alias = false)
     {
-        Cache::flush();
 //  Last Modified
-        /*$lastM = DB::select('SELECT MAX(`updated_at`) as last FROM `articles` WHERE `approved`=1');
+        $lastM = DB::select('SELECT MAX(`updated_at`) as last FROM `articles` WHERE `approved`=1');
 
         $LastModified_unix = strtotime($lastM[0]->last); // время последнего изменения страницы
         $this->lastModified = gmdate("D, d M Y H:i:s \G\M\T", $LastModified_unix);
@@ -88,15 +86,13 @@ class ArticleController extends MainController
         }
         if ($IfModifiedSince && $IfModifiedSince >= $LastModified_unix) {
             return response('304 Not Modified', 304);
-        }*/
+        }
 //  Last Modified
-
         if (false == $cat_alias) {
             $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
             $this->content = Cache::remember('article-cat-all' . $currentPage, 60, function () {
-                $articles = $this->a_rep->get('*', false, 9,
-                    ['approved' => 1], ['created_at', 'desc'], ['image', 'tags']);
-                $articles = $this->a_rep->contentHandle($articles);
+                $articles = $this->a_rep->get('*', false, 12,
+                    ['approved' => 1], ['created_at', 'desc'], ['image', 'tags'], true);
                 $cats = $this->c_rep->get(['name', 'alias'], 5, false, ['approved' => 1]);
                 return view('articles.category')->with(['articles' => $articles, 'categories' => $cats])
                     ->render();
@@ -111,9 +107,8 @@ class ArticleController extends MainController
             $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 
             $this->content = Cache::remember('article-cat-' . $cat->id . $currentPage, 60, function () use ($cat) {
-                $articles = $this->a_rep->get('*', false, 9,
-                    ['category_id' => $cat->id, 'approved' => 1], ['created_at', 'desc'], ['image', 'tags']);
-                $articles = $this->a_rep->contentHandle($articles);
+                $articles = $this->a_rep->get('*', false, 12,
+                    ['category_id' => $cat->id, 'approved' => 1], ['created_at', 'desc'], ['image', 'tags'], true);
                 $cats = $this->c_rep->get(['name', 'alias'], 5, false, ['approved' => 1]);
                 return view('articles.category')->with(['articles' => $articles, 'cat' => $cat, 'categories' => $cats])
                     ->render();
@@ -129,11 +124,10 @@ class ArticleController extends MainController
 
     public function tags(Request $request, $tag_alias)
     {
-
 //        CATEGORIES ??????
         Cache::flush();
 //  Last Modified
-        /*$lastM = DB::select('SELECT MAX(`updated_at`) as last FROM `articles` WHERE `approved`=1');
+        $lastM = DB::select('SELECT MAX(`updated_at`) as last FROM `articles` WHERE `approved`=1');
 
         $LastModified_unix = strtotime($lastM[0]->last); // время последнего изменения страницы
         $this->lastModified = gmdate("D, d M Y H:i:s \G\M\T", $LastModified_unix);
@@ -143,7 +137,7 @@ class ArticleController extends MainController
         }
         if ($IfModifiedSince && $IfModifiedSince >= $LastModified_unix) {
             return response('304 Not Modified', 304);
-        }*/
+        }
 //  Last Modified
 
         $tag = $this->t_rep->one($tag_alias);
@@ -154,13 +148,15 @@ class ArticleController extends MainController
 
         $this->content = Cache::remember('article-tag-' . $tag->id . $currentPage, 60, function () use ($tag) {
             $articles = $this->a_rep->getByTag($tag->id);
-            $articles = $this->a_rep->contentHandle($articles);
             $cats = $this->c_rep->get(['name', 'alias'], 5, false, ['approved' => 1]);
             return view('articles.tag')->with(['articles' => $articles, 'tag' => $tag, 'categories' => $cats])
                 ->render();
         });
 
         $this->title = $tag->name;
+        $this->jss = '
+            <script src="' . asset('js/load_more.js') . '"></script>
+            ';
 
         return $this->renderOutput();
     }

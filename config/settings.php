@@ -8,10 +8,10 @@ return [
     ],
     'articles_img' => [
         'main' => ['width' => 1170, 'height' => 657],
-        'middle' => ['width' => 333, 'height' => 229],
+        'middle' => ['width' => 370, 'height' => 240],
         'small' => ['width' => 110, 'height' => 73],
     ],
 
-    'paginate_tags' => 25,
+    'paginate_tags' => 12,
     'slider' => ['width' => 1170, 'height' => 496],
 ];

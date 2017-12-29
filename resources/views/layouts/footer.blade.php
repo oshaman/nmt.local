@@ -4,10 +4,26 @@
         <div class="foter-left">
             <div class="foter-logo"><img src="{{ asset('/') }}img/logo-foter.png" alt=""></div>
             <ul>
-                <li><a href="/">Угода про конфіденційність</a></li>
-                <li><a href="/">Правила користування сайтом</a></li>
-                <li><a href="/">Реклама</a></li>
-                <li><a href="/">Редакція</a></li>
+                @if('ugoda' !== Route::currentRouteName())
+                    <li><a href="{{ route('ugoda') }}">Угода про конфіденційність</a></li>
+                @else
+                    <li><a href="" onclick="return false" rel="nofollow">Угода про конфіденційність</a></li>
+                @endif
+                @if('pravyla' !== Route::currentRouteName())
+                    <li><a href="{{ route('pravyla') }}">Правила користування сайтом</a></li>
+                @else
+                    <li><a href="" onclick="return false" rel="nofollow">Правила користування сайтом</a></li>
+                @endif
+                @if('reklama' !== Route::currentRouteName())
+                    <li><a href="{{ route('reklama') }}">Реклама</a></li>
+                @else
+                    <li><a href="" onclick="return false" rel="nofollow">Реклама</a></li>
+                @endif
+                @if('redakciya' !== Route::currentRouteName())
+                    <li><a href="{{ route('redakciya') }}">Редакція</a></li>
+                @else
+                    <li><a href="" onclick="return false" rel="nofollow">Редакція</a></li>
+                @endif
             </ul>
 
 
@@ -15,12 +31,30 @@
         <div class="foter-right">
             <div class="foter-news">
                 <div class="news-item"><a href="/">НАШЕ ТБ</a></div>
-                <div class="news-item"><a href="/">НОВИНИ</a></div>
+                <div class="news-item">
+                    @if('category' === Route::currentRouteName() && empty(Request::segment(2)))
+                        <a href="" onclick="return false" rel="nofollow">НОВИНИ</a>
+                    @else
+                        <a href="{{ route('category') }}">НОВИНИ</a>
+                    @endif
+                </div>
                 <div class="news-item"><a href="/">ОПИТУВАННЯ</a></div>
                 <div class="news-item"><a href="/">НАША ГРОМАДА</a></div>
 
-                <div class="news-item"><a href="{{ route('about') }}">ПРО ПРОЕКТ</a></div>
-                <div class="news-item"><a href="#!">КОНТАКТИ</a></div>
+                <div class="news-item">
+                    @if('pro-nas' !== Route::currentRouteName())
+                        <a href="{{ route('pro-nas') }}">ПРО ПРОЕКТ</a>
+                    @else
+                        <a href="" onclick="return false" rel="nofollow">ПРО ПРОЕКТ</a>
+                    @endif
+                </div>
+                <div class="news-item">
+                    @if('kontakty' !== Route::currentRouteName())
+                        <a href="{{ route('kontakty') }}">КОНТАКТИ</a>
+                    @else
+                        <a href="" onclick="return false" rel="nofollow">КОНТАКТИ</a>
+                    @endif
+                </div>
                 <div class="clear"></div>
             </div>
             <div class="foter-text">
@@ -54,6 +88,5 @@
                 </div>
             </div>
         </div>
-
     </div>
 </footer>

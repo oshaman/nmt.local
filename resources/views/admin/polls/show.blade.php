@@ -2,7 +2,7 @@
 
 <div class="">
     {!! Form::open(['url' => route('admin_polls'), 'class'=>'form-horizontal','method'=>'GET' ]) !!}
-    <h3>Пошук статті:</h3>
+    <h3>Пошук опитування:</h3>
     <div class="">
         {{ Form::label('value', 'Параметр пошуку') }}
         {!! Form::text('value', old('value') ? : '' , ['placeholder'=>'id, link...', 'id'=>'value', 'class'=>'form-control']) !!}

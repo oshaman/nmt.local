@@ -9,13 +9,13 @@
                     <meta itemprop="position" content="1"/>
                 </div>
                 <div itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="button">
-                    <span itemprop="name" class="label1">Про проект</span>
+                    <span itemprop="name" class="label1">Редакція</span>
                     <meta itemprop="position" content="2"/>
                 </div>
             </div>
             {{--breadcrumbs--}}
             <div class="part">
-                <h4>Про проект</h4>
+                <h4>Редакція</h4>
 
                 <div class="conty">
 

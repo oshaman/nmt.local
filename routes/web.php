@@ -23,7 +23,17 @@ Route::get('article/{article_alias}', 'ArticleController@show')->name('article')
 Route::get('categories/{cat_alias?}', 'ArticleController@cats')->name('category')->where('cat_alias', '[\w-]+');
 Route::get('tags/{tag_alias}', 'ArticleController@tags')->name('tag')->where('tag_alias', '[\w-]+');
 //  About
-Route::get('/about', 'StaticPagesController@about')->name('about');
+Route::get('/pro-nas', 'StaticPagesController@about')->name('pro-nas');
+//  Ugoda
+Route::get('/ugoda', 'StaticPagesController@ugoda')->name('ugoda');
+//  Conntacts
+Route::get('/kontakty', 'StaticPagesController@kontakty')->name('kontakty');
+//  Rules
+Route::get('/pravyla', 'StaticPagesController@pravyla')->name('pravyla');
+//  Adv
+Route::get('/reklama', 'StaticPagesController@reklama')->name('reklama');
+//  Redaction
+Route::get('/redakciya', 'StaticPagesController@redakciya')->name('redakciya');
 
 
 //============================

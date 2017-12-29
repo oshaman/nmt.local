@@ -720,19 +720,22 @@
                     <li><input type="radio" id="opti2" name="selects">
                         <label for="opti2">
 
-                            <span>2.</span><span>Никогда не получал</span></label>
+                            <span>2.</span><span>Никогда не получал<span
+                                        class="linn"></span></span></label>
                         <div class="check"></div>
                     </li>
 
                     <li><input type="radio" id="opti3" name="selects">
                         <label for="opti3">
-                            <span>3.</span><span>Получаю сейчас</span></label>
+                            <span>3.</span><span>Получаю сейчас<span
+                                        class="linn"></span></span></label>
                         <div class="check"></div>
                     </li>
 
                     <li><input type="radio" id="opti4" name="selects">
                         <label for="opti4">
-                            <span>4.</span><span>Ранее получал, сейчас нет</span></label>
+                            <span>4.</span><span>Ранее получал, сейчас нет<span
+                                        class="linn"></span></span></label>
                         <div class="check"></div>
                     </li>
 
@@ -740,7 +743,8 @@
                         <label for="opti5">
 
 
-                            <span>5.</span><span>Планирую получить в этом году первый раз</span></label>
+                            <span>5.</span><span>Планирую получить в этом году первый раз<span
+                                        class="linn"></span></span></label>
                         <div class="check"></div>
                     </li>
 
@@ -778,13 +782,13 @@
         </div>
         <div class="foter-right">
             <div class="foter-news">
-                <div class="news-item"><a href="/">Категория 1</a></div>
-                <div class="news-item"><a href="/">Категория 2</a></div>
-                <div class="news-item"><a href="/">Категория 3</a></div>
-                <div class="news-item"><a href="/">Категория 4</a></div>
+                <div class="news-item"><a href="/">Наше ТВ</a></div>
 
-                <div class="news-item"><a href="/">Категория 5</a></div>
-                <div class="news-item"><a href="/">Категория 6</a></div>
+                <div class="news-item"><a href="/">Новини</a></div>
+                <div class="news-item"><a href="/">Опитування</a></div>
+                <div class="news-item"><a href="/">Наша громада</a></div>
+                <div class="news-item"><a href="/">Про проект</a></div>
+                <div class="news-item"><a href="/">Контакти</a></div>
                 <div class="clear"></div>
             </div>
             <div class="foter-text"><p>Наша цель - предоставлять качественную информацию бесплатно в удобном для вас

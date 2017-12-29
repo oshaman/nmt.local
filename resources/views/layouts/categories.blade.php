@@ -2,7 +2,11 @@
     @if(!empty($categories))
         <div class="news-item switch-cat @if('main' == Route::currentRouteName() || empty($cat)) active @endif"
              data-id="1">
-            <a href="{{ route('category') }}">Всі новини<span class="linn"></span></a>
+            @if('category' === Route::currentRouteName() && empty(Request::segment(2)))
+                <a href="" onclick="return false" rel="nofollow">Всі новини<span class="linn"></span></a>
+            @else
+                <a href="{{ route('category') }}">Всі новини<span class="linn"></span></a>
+            @endif
         </div>
         @foreach($categories as $category)
             @if(!empty($cat))

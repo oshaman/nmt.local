@@ -77,13 +77,18 @@
                     @endforeach
                 @endif
 
-                <div class="clear"></div>
+                <div class="clear more-before"></div>
 
-
-                <div class="main-buty"><a href="/">Завантажити ще<span class="linn"></span></a></div>
-
-                {{--Pagination--}}
                 @if(is_object($articles) && !empty($articles->lastPage()) && $articles->lastPage() > 1)
+
+                    @if($articles->lastPage() != $articles->currentPage())
+                        <div class="main-buty load-more" data-source="2"
+                             @if(!empty($tag->id)) data-id="{{ $tag->id}} @endif">
+                            <a href="" onclick="return false">Завантажити ще<span class="linn"></span></a>
+                        </div>
+                        <input type="hidden" name="stats">
+                    @endif
+                    {{--Pagination--}}
                     <div class="articles-pagination">
                         @if($articles->lastPage() > 1)
                             @if($articles->currentPage() !== 1)
