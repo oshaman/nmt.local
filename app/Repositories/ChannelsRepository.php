@@ -7,8 +7,10 @@ use Cache;
 
 class ChannelsRepository extends Repository
 {
-
-
+    /**
+     * ChannelsRepository constructor.
+     * @param Channel $channel
+     */
     public function __construct(Channel $channel)
     {
         $this->model = $channel;

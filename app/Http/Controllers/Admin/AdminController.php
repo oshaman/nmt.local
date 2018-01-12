@@ -14,7 +14,7 @@ class AdminController extends Controller
     protected $title;
     protected $vars;
     protected $jss = null;
-    protected $css = null;
+    protected $css = false;
     protected $tiny = false;
     protected $areaH = false;
     protected $areaW = false;
@@ -23,6 +23,7 @@ class AdminController extends Controller
      */
     public function renderOutput()
     {
+        $this->css .= '<link rel="stylesheet" href="' . asset('css') . '/admin.css">';
         $this->vars = array_add($this->vars, 'title', $this->title);
         $this->vars = array_add($this->vars, 'jss', $this->jss);
         $this->vars = array_add($this->vars, 'tiny', $this->tiny);
@@ -57,7 +58,7 @@ class AdminController extends Controller
                 $menu->add('Редагування статей',array('route' => 'admin_articles'));
             }
 
-            if (Gate::allows('UPDATE_ARTICLES')) {
+            if (Gate::allows('UPDATE_TAGS')) {
                 $menu->add('Теги',array('route' => 'admin_tags'));
             }
 

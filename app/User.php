@@ -32,10 +32,28 @@ class User extends Authenticatable
         return $this->belongsTo('Fresh\Nashemisto\Role');
     }
 
-    public function canDo()
+    public function canDo($action = null)
     {
-        if (($this->role->name == 'admin') || ($this->role->name == 'editor')) {
-            return true;
+        switch ($action) {
+            case 'UPDATE_CATS':
+                if (($this->role->name == 'admin') || ($this->role->name == 'editor')) {
+                    return true;
+                }
+                break;
+            case 'UPDATE_CHANNEL':
+                if (($this->role->name == 'admin') || ($this->role->name == 'editor')) {
+                    return true;
+                }
+                break;
+            case 'UPDATE_PRIORITY':
+                if (($this->role->name == 'admin') || ($this->role->name == 'editor')) {
+                    return true;
+                }
+                break;
+            default:
+                if (($this->role->name == 'admin') || ($this->role->name == 'editor') || ('journalist' === $this->role->name)) {
+                    return true;
+                }
         }
 
         return false;

@@ -3,7 +3,7 @@ var checkPoll = true;
 
 function pollAjax() {
     if (!checkPoll) {
-        return
+        return false;
     }
     _this = $(this);
     if (_this.siblings('input[name="stats"]').val().length == 0) {
@@ -20,9 +20,24 @@ function pollAjax() {
                 type: 'POST',
                 data: {'selects': selects, 'poll-id': poll},
                 success: function (resp) {
-                    checkPoll = false
-                    _this.closest('.quest-four').siblings('.quest-five')
-                        .html(resp);
+                    checkPoll = false;
+                    //_this.addClass('supp');
+
+                    if ($(resp).find('.' + selects).length) {
+                        div_resp = $(resp);
+                        div_resp.find('.' + selects).addClass('choosed');
+                    }
+
+                    setTimeout(function () {
+                        _this.closest('.quest-four').siblings('.quest-five')
+                            .html(div_resp);
+                        _this.closest('.form-inter').addClass('voiss');
+                    }, 899);
+
+                    setTimeout(function () {
+                        _this.closest('.form-inter').addClass('lasty');
+                    }, 1799);
+                    _this.closest('.form-inter').addClass('voit');
                 }
             })
 

@@ -33,6 +33,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::model('video', \Fresh\Nashemisto\Video::class);
         Route::model('seo', \Fresh\Nashemisto\Seo::class);
         Route::model('static', \Fresh\Nashemisto\StaticPage::class);
+        Route::model('priority', \Fresh\Nashemisto\Priority::class);
     }
 
     /**

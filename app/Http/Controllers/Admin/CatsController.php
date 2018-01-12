@@ -28,7 +28,7 @@ class CatsController extends AdminController
      */
     public function index(CatRequest $request)
     {
-        if (Gate::denies('UPDATE_ARTICLES')) {
+        if (Gate::denies('UPDATE_CATS')) {
             abort(404);
         }
 
@@ -60,7 +60,7 @@ class CatsController extends AdminController
      */
     public function edit(CatRequest $request, $cat)
     {
-        if (Gate::denies('UPDATE_ARTICLES')) {
+        if (Gate::denies('UPDATE_CATS')) {
             abort(404);
         }
 

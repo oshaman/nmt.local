@@ -15,6 +15,12 @@ class ArticleController extends MainController
     protected $c_rep;
     protected $t_rep;
 
+    /**
+     * ArticleController constructor.
+     * @param ArticlesRepository $arep
+     * @param CategoriesRepository $crep
+     * @param TagsRepository $trep
+     */
     public function __construct(ArticlesRepository $arep, CategoriesRepository $crep, TagsRepository $trep)
     {
         $this->a_rep = $arep;
@@ -22,7 +28,11 @@ class ArticleController extends MainController
         $this->t_rep = $trep;
     }
 
-
+    /**
+     * @param Request $request
+     * @param $article
+     * @return mixed
+     */
     public function show(Request $request, $article)
     {
         $article = Cache::remember('article_' . $article, 24 * 60, function () use ($article) {
@@ -31,6 +41,15 @@ class ArticleController extends MainController
             $article->load('category');
             $article->load('tags');
             $article->load('image');
+            $article->load('seo');
+
+            if (empty($article->seo)) {
+                $article->seo = new \stdClass();
+            }
+            if (empty($article->seo->og_image)) {
+                $article->seo->og_image = asset('asset/images/articles/main') . '/' . $article->image->path;
+            }
+
             $article = $this->a_rep->convertDate($article);
 
             return $article;
@@ -57,6 +76,7 @@ class ArticleController extends MainController
         $article->timestamps = true;
 
         $this->title = $article->title;
+        $this->seo = $article->seo;
 
         $articles = Cache::remember('articles_' . $article->category_id . $article->id, 24 * 60, function () use ($article) {
             $where = [['category_id', $article->category_id], ['approved', 1], ['id', '<>', $article->id]];
@@ -73,8 +93,14 @@ class ArticleController extends MainController
         return $this->renderOutput();
     }
 
+    /**
+     * @param Request $request
+     * @param bool $cat_alias
+     * @return $this|\Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     */
     public function cats(Request $request, $cat_alias = false)
     {
+        Cache::flush();
 //  Last Modified
         $lastM = DB::select('SELECT MAX(`updated_at`) as last FROM `articles` WHERE `approved`=1');
 
@@ -118,14 +144,18 @@ class ArticleController extends MainController
         }
         $this->jss = '
             <script src="' . asset('js/load_more.js') . '"></script>
+            <script src="' . asset('js/categories.js') . '"></script>
             ';
         return $this->renderOutput();
     }
 
+    /**
+     * @param Request $request
+     * @param $tag_alias
+     * @return $this|\Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     */
     public function tags(Request $request, $tag_alias)
     {
-//        CATEGORIES ??????
-        Cache::flush();
 //  Last Modified
         $lastM = DB::select('SELECT MAX(`updated_at`) as last FROM `articles` WHERE `approved`=1');
 

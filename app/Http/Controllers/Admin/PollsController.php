@@ -54,7 +54,7 @@ class PollsController extends AdminController
             }
         } else {
             $polls = $this->poll_rep->get(['alias', 'question', 'created_at', 'id'],
-                false, 2, ['approved' => 1], ['created_at', 'desc']);
+                false, 25, ['approved' => 1], ['created_at', 'desc']);
         }
 
         $this->content = view('admin.polls.show')->with(['polls' => $polls])->render();

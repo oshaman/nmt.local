@@ -7,15 +7,54 @@
                 <div class="straight-right">
                     @if(!empty($channels))
                         @foreach($channels as $channel)
+                            @continue($loop->index>6)
                             <div class="news-item video-cat @if($loop->first) active @endif"
                                  data-id="{{ $channel->id }}">
                                 <a href="#!">{{ $channel->title }}<span class="linn"></span></a>
                             </div>
                         @endforeach
+
+
+                        <div class="news-item hovv-news"><a href="javascript:void(0);">Інші категорії<span
+                                        class="linn"></span></a>
+                            @if(count($channels)>7)
+                                <div class="vijen">
+                                    <div class="vijen-insid">
+                                        @foreach($channels as $channel)
+                                            @continue($loop->index<7)
+                                            <div class="news-item video-cat"
+                                                 data-id="{{ $channel->id }}">
+                                                <a href="#!">{{ $channel->title }}<span class="linn"></span></a>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            @endif
+                        </div>
+
                     @endif
-                    <div class="news-item"><a href="#!">Інші категорії<span class="linn"></span></a></div>
+                </div>
+                <div class="strai-main">рубріки відео</div>
+
+                <div class="efir-block">
+                    <div class="efir-onee">
+                        <div class="onne-block">
+                            <div class="closy"><img src="{{ asset('/') }}img/krest.png" alt=""></div>
+                            <div class="item-efir"><span>прями ефір</span></div>
+                            <div class="item-efir"><span>обговорення (ток шоу)</span></div>
+                            <div class="item-efir"><span>інтервью дня</span></div>
+
+                            <div class="item-efir"><span>огляд преси</span></div>
+                            <div class="item-efir active"><span>веб-камера нашого міста</span></div>
+
+                            <div class="item-efir"><span>кримінал</span></div>
+                            <div class="item-efir"><span>культура і спорт</span></div>
+                            <div class="item-efir"><span>інші категорії</span></div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
             <div class="players-block">
                 <div class="players-left">
 
@@ -26,7 +65,9 @@
                                      allowfullscreen="allowfullscreen"></iframe>
                          </p>--}}
                         <p class="main-video">
-                            <iframe src="//www.youtube.com/embed/yA30K3z5PSw?&autoplay=1" width="560" height="314"
+                            <!--iframe src="//www.youtube.com/embed/yA30K3z5PSw?&autoplay=1" width="560" height="314"
+                                    allowfullscreen="allowfullscreen"></iframe-->
+                            <iframe src="//www.youtube.com/embed/yA30K3z5PSw" width="560" height="314"
                                     allowfullscreen="allowfullscreen"></iframe>
                         </p>
 
@@ -39,6 +80,9 @@
                     </div>
                 </div>
                 <div class="players-right">
+                    <div class="short-name">
+                        <div class="shorr">Обговорення (ток шоу)</div>
+                    </div>
 
 
                     {{--<div class="newss active">
@@ -55,10 +99,13 @@
                                  @endif data-ch="{{ $channel->id }}">
                                 @if(!empty($channel->videos) && $channel->videos->isNotEmpty())
                                     @foreach($channel->videos as $video)
-                                        <div class="newss" data-id="{{ $video->id }}" data-token="{{ $video->token }}">
+                                        <div class="newss" data-id="{{ $channel->id }}"
+                                             data-token="{{ $video->token }}">
                                             <div class="names-neww">{{ $video->title }}</div>
                                             <div class="time-neww">
-                                                <img src="{{ asset('/') }}img/time-efir.png" alt="">
+                                                <img class="badd" src="{{ asset('/') }}img/time-efir.png" alt="">
+
+                                                <img class="loadd" src="{{ asset('/') }}img/play-efir.png" alt="">
                                                 <span>трансляція - {{ $video->created_at }}</span>
                                             </div>
                                         </div>
@@ -82,6 +129,16 @@
                 @include('layouts.categories', ['categories'=>$categories])
                 {{--Категории--}}
                 {{--Статьи--}}
+
+
+                <div class="hovy-city">
+
+
+                    <div class="city-mainy styl-city">всі новини</div>
+                    <div class="city-mainy glavn-hover">рубріки новин</div>
+                </div>
+
+
                 <div class="main-news cat-removeble">
                     @if(!empty($articles))
                         @foreach($articles as $article)

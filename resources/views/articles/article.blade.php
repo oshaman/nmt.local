@@ -37,18 +37,15 @@
                          alt="{{ $article->image->alt }}" title="{{ $article->image->title }}">
                     <div class="yelow-line">{{ $article->category->name }}</div>
                 </div>
-                <p class="ital">Киев, ул. Большая Васильковская</p>
+                <p class="ital">{{ $article->image->alt ?? '' }}</p>
 
                 <div class="conty">
 
                     {!! $article->content !!}
 
-                    <div class="linky">
-                        <div class="link"><a href="/"><img src="{{ asset('/') }}img/face-black.png" alt=""></a></div>
-                        <div class="link"><a href="/"><img src="{{ asset('/') }}img/insta-black.png" alt=""></a></div>
+                    @include('layouts.socials')
 
-
-                        <div class="widd"></div>
+                    <div class="widd"></div>
                     </div>
 
                     <div class="lucky"></div>

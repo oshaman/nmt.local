@@ -3,7 +3,7 @@
 {!! Form::open(['url'=>route('static_update', $page->id), 'method'=>'post', 'class'=>'form-horizontal']) !!}
 <div class="">
     {{ Form::label('text', 'Заголовок') }}
-    <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="right"
+    <button type="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="right"
             title="Обов'язкове до заповнення поле(максимум 255 символів)">?
     </button>
     <div>
@@ -12,7 +12,7 @@
 </div>
 <hr>
 {{ Form::label('text', 'Контент') }}
-<button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="right"
+<button type="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="right"
         title="Рекомендована ширина зображень - не більше 770px">?
 </button>
 <div>

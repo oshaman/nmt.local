@@ -22,6 +22,35 @@ class ArticlesRepository extends Repository
         $this->model = $rep;
     }
 
+    public function getTops($with, $where, $where_in = false, $where_not = false, $order = false, $take = false)
+    {
+
+        $builder = $this->model->with($with);
+
+        if ($where) {
+            $builder->where($where);
+        }
+
+        if ($where_in) {
+            $builder->whereIn('id', $where_in);
+        }
+
+        if ($where_not) {
+//            $where_not = array_diff($where_not, ['']);
+            $builder->whereNotIn('id', $where_not);
+        }
+
+        if ($order) {
+            $builder->orderBy($order[0], $order[1]);
+        }
+
+        if ($take) {
+            $builder->take($take);
+        }
+
+        return $this->check($builder->get(), true);
+    }
+
     /**
      * @param $request
      * @return Result array
@@ -35,10 +64,10 @@ class ArticlesRepository extends Repository
         $data = $request->except('_token');
 
         $article['title'] = $data['title'];
+        $article['preview'] = str_limit(strip_tags($data['preview']), 600);
 
         $article['alias'] = $data['alias'];
         $article['category_id'] = $data['category_id'];
-
 
         if (!empty($data['confirmed'])) {
             if (Gate::allows('CONFIRMATION_DATA')) {
@@ -65,6 +94,9 @@ class ArticlesRepository extends Repository
 
         //        Content
         $article['content'] = preg_replace('/{{.*}}/', '', $data['content'] ?? null);
+
+        $article['hasvideo'] = $this->hasVideo($article['content']);
+
 //        END Content
         $new = $this->model->firstOrCreate($article);
 
@@ -117,6 +149,11 @@ class ArticlesRepository extends Repository
         if ($data['title'] !== $article->title) {
             $new['title'] = $data['title'];
         }
+
+        if ($data['preview'] !== $article->preview) {
+            $new['preview'] = str_limit(strip_tags($data['preview']), 600);
+        }
+
         if ($data['alias'] !== $article->alias) {
             $new['alias'] = $data['alias'];
         } else {
@@ -147,7 +184,7 @@ class ArticlesRepository extends Repository
             $new['created_at'] = date('Y-m-d H:i:s', strtotime($data['outputtime']));
         }
 
-        if (!empty($data['view'])) {
+        if (!empty($data['view']) && Gate::allows('UPDATE_VIEW')) {
             $new['view'] = (int)$data['view'];
         }
 
@@ -158,6 +195,7 @@ class ArticlesRepository extends Repository
         }
 
         $new['content'] = preg_replace('/{{.*}}/', '', $data['content'] ?? null);
+        $article['hasvideo'] = $this->hasVideo($new['content']);
 
         $updated = $article->fill($new)->save();
 
@@ -325,6 +363,7 @@ class ArticlesRepository extends Repository
     protected function clearArticlesCache($alias = false, $cat = false)
     {
         Cache::forget('article_' . $alias);
+        Cache::forget('404');
         !empty($cat) ? Cache::forget('articles_' . $cat) : null;;
         /*
         !empty($id) ? Cache::store('file')->forget('patients_article-' . $id) : null;
@@ -332,4 +371,14 @@ class ArticlesRepository extends Repository
 
     }
 
+    public function hasVideo($content)
+    {
+        $re = '/<iframe src="\/\/www\.youtube\.com/';
+        preg_match_all($re, $content, $matches, PREG_SET_ORDER, 0);
+        if (count($matches) > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

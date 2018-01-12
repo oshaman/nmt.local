@@ -19,7 +19,7 @@ class CreateRolesTable extends Migration
             $table->string('name')->index();
             $table->timestamps();
         });
-        $roles = ['admin', 'editor', 'guest'];
+        $roles = ['admin', 'editor', 'guest', 'journalist'];
         foreach ($roles as $role) {
             Role::create(['name' => $role]);
         }

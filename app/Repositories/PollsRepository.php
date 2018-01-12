@@ -76,10 +76,17 @@ class PollsRepository extends Repository
             $poll['created_at'] = date('Y-m-d H:i:s', strtotime($data['outputtime']));
         }
 
-
-//        dd($poll);
         $res = $poll->save();
         return $res;
+    }
+
+    protected function clearPollsCache()
+    {
+//        Cache::forget('main');
+        /*
+        !empty($id) ? Cache::store('file')->forget('patients_article-' . $id) : null;
+        */
+
     }
 
     /**
@@ -114,24 +121,36 @@ class PollsRepository extends Repository
         switch ($data['selects']) {
             case 'poll1':
                 $res->increment('n1');
+                $answer = 'poll1';
                 break;
             case 'poll2':
                 $res->increment('n2');
+                $answer = 'poll2';
                 break;
             case 'poll3':
                 $res->increment('n3');
+                $answer = 'poll3';
                 break;
             case 'poll4':
                 $res->increment('n4');
+                $answer = 'poll4';
                 break;
             case 'poll5':
                 $res->increment('n5');
+                $answer = 'poll5';
                 break;
             default:
                 $res->increment('n1');
+                $answer = 'poll1';
         }
 
-        return ['poll' => $poll, 'stats' => $res];
+        $stats['n1'] = $res->n1 ?? 0;
+        $stats['n2'] = $res->n2 ?? 0;
+        $stats['n3'] = $res->n3 ?? 0;
+        $stats['n4'] = $res->n4 ?? 0;
+        $stats['n5'] = $res->n5 ?? 0;
+
+        return ['poll' => $poll, 'stats' => $stats, 'answer' => $answer];
 
     }
 }

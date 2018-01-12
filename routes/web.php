@@ -16,6 +16,8 @@ Route::get('/', 'IndexController@show')->name('main');
 Route::post('/poll', 'PollController@addToPolls')->name('polls');
 //  ajax
 Route::post('/get-articles', 'IndexController@getArticles');
+Route::post('/get-articles-by-date', 'IndexController@getArticlesByDate');
+
 Route::post('/get-more', 'AjController@getMore');
 //  ajax
 //  Articles
@@ -34,7 +36,8 @@ Route::get('/pravyla', 'StaticPagesController@pravyla')->name('pravyla');
 Route::get('/reklama', 'StaticPagesController@reklama')->name('reklama');
 //  Redaction
 Route::get('/redakciya', 'StaticPagesController@redakciya')->name('redakciya');
-
+//  Polls
+Route::get('/polls/{poll?}', 'PollController@index')->name('poll')->where('poll', '[0-9]+');
 
 //============================
 Route::view('/welcome', 'index');
@@ -144,6 +147,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::group(['prefix' => 'static'], function () {
         Route::get('/', 'Admin\StaticsController@index')->name('admin_static');
         Route::match(['post', 'get'], 'edit/{static}', 'Admin\StaticsController@edit')->name('static_update')->where('static', '[0-9]+');
+    });
+    /**
+     * Admin PRIORITY
+     */
+    Route::group(['prefix' => 'priority'], function () {
+        Route::match(['post', 'get'], '/', 'Admin\PriorityController@index')->name('admin_priority');
+        Route::post('edit/{priority}', 'Admin\PriorityController@edit')->name('update_priority')->where('priority', '[0-9]+');
     });
 
 });

@@ -11,6 +11,7 @@
                 </div>
 
                 <div class="inter-quest quest-four">
+                    <div class="aftys"></div>
                     <h5>{{ $poll->question }}</h5>
                     <input type="hidden" name="stats">
                     <input type="hidden" name="poll-id" value="{{ $poll->id }}" data-poll="{{ $poll->id }}">
@@ -61,16 +62,60 @@
                         <h5>Довідайтеся про результат після того, як залишите свій голос</h5>
                         <img src="./img/why.png" alt="" style="margin: 79px auto;display: block;">
                     @else
-                        <h5>Ви вже проголосували, дякуємо за Ваш голос</h5>
-                        <div>1. {{ $poll->answer1 .' - '. $statistic->n1 ?? '0' }}</div>
-                        <div>2. {{ $poll->answer2 .' - '. $statistic->n2 ?? '0' }}</div>
-                        <div>3. {{ $poll->answer3 .' - '. $statistic->n3 ?? '0' }}</div>
-                        <div>4. {{ $poll->answer4 .' - '. $statistic->n4 ?? '0' }}</div>
-                        <div>5. {{ $poll->answer5 .' - '. $statistic->n5 ?? '0' }}</div>
+
+
+
+
+
+
+                        <div class="vote soon">
+
+                            <h5>В опитуванні прийняли участь @if(count($statistic)<1)
+                                    0 @else {{ array_sum($statistic) }} @endif осіб</h5>
+                            <div class="unswers poll1 @if('poll1' == session('poll_id_' . $poll->id)) choosed @endif">
+                                <div class="vote-verh">{{ $poll->answer1 .' - '. $statistic['n1'] ?? '0' }}</div>
+                                <div class="vote-down"
+                                     data-width="{{ round($statistic['n1']*100/array_sum($statistic)) }}">
+                                    <div class="line-down"></div>
+                                </div>
+                            </div>
+                            <div class="unswers poll2 @if('poll2' == session('poll_id_' . $poll->id)) choosed @endif">
+                                <div class="vote-verh">{{ $poll->answer2 .' - '. $statistic['n2'] ?? '0' }}</div>
+                                <div class="vote-down"
+                                     data-width="{{ round($statistic['n2']*100/array_sum($statistic)) }}">
+                                    <div class="line-down"></div>
+                                </div>
+                            </div>
+                            <div class="unswers poll3 @if('poll3' == session('poll_id_' . $poll->id)) choosed @endif">
+                                <div class="vote-verh">{{ $poll->answer3 .' - '. $statistic['n3'] ?? '0' }}</div>
+                                <div class="vote-down"
+                                     data-width="{{ round($statistic['n3']*100/array_sum($statistic)) }}">
+                                    <div class="line-down"></div>
+                                </div>
+                            </div>
+                            <div class="unswers poll4 @if('poll4' == session('poll_id_' . $poll->id)) choosed @endif">
+
+                                <div class="vote-verh">{{ $poll->answer4 .' - '. $statistic['n4'] ?? '0' }}</div>
+                                <div class="vote-down"
+                                     data-width="{{ round($statistic['n4']*100/array_sum($statistic)) }}">
+                                    <div class="line-down"></div>
+                                </div>
+                            </div>
+                            <div class="unswers poll5 @if('poll5' == session('poll_id_' . $poll->id)) choosed @endif">
+                                <div class="vote-verh">{{ $poll->answer5 .' - '. $statistic['n5'] ?? '0' }}</div>
+                                <div class="vote-down"
+                                     data-width="{{ round($statistic['n5']*100/array_sum($statistic)) }}">
+                                    <div class="line-down"></div>
+                                </div>
+                            </div>
+
+                        </div>
                     @endif
                 </div>
             </div>
-            <div class="main-buty buty-opros"><a href="/">Інші опитування<span class="linn"></span></a></div>
+            <div class="main-buty buty-opros">
+                <a href="{{ route('poll') }}">Інші опитування<span class="linn"></span></a>
+            </div>
         </form>
     @endif
 </div>

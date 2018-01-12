@@ -10,6 +10,6 @@ class Channel extends Model
 
     public function videos()
     {
-        return $this->hasMany('Fresh\Nashemisto\Video');
+        return $this->hasMany('Fresh\Nashemisto\Video')->orderBy('created_at', 'desc');
     }
 }

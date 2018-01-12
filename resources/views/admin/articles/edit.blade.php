@@ -1,38 +1,65 @@
 @include('admin.articles.nav')
-<h2>Редагування статті</h2>
+<h2 class="h2">Редагування статті</h2>
 {!! Form::open(['url'=>route('edit_article', ['article' => $article->id]),
-    'method'=>'POST', 'class'=>'form-horizontal', 'files'=>true]) !!}
+    'method'=>'POST', 'class'=>'form-horizontal col-xs-12', 'files'=>true]) !!}
 <div class="">
-    {{ Form::label('title', 'Заголовок статті') }}
-    <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="right"
-            title="Обов'язкове до заповнення поле(максимум 255 символів)">?
-    </button>
-    <div>
+    <div class="form-group">
+        {{ Form::label('title', 'Заголовок статті') }}
+        <button type="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="right"
+                title="Обов'язкове до заповнення поле(максимум 255 символів)">?
+        </button>
+    </div>
+
+    <div class="form-group">
         {!! Form::text('title', old('title') ? : ($article->title ?? ''),
                     ['placeholder'=>'Встановлення новорічної ялинки...', 'id'=>'title', 'class'=>'form-control ru-title']) !!}
     </div>
 </div>
+
 <div class="">
-    {{ Form::label('alias', 'ЧПУ статті') }}
-    <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="right"
-            title="Обов'язкове до заповнення поле(латинські літери, цифри - максимум 255 символів)">?
-    </button>
-    <div>
+    <div class="form-group">
+        {{ Form::label('alias', 'ЧПУ статті') }}
+        <button type="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="right"
+                title="Обов'язкове до заповнення поле(латинські літери, цифри - максимум 255 символів)">?
+        </button>
+    </div>
+
+    <div class="form-group">
         {!! Form::text('alias', old('alias') ? : ($article->alias ?? ''),
                     ['placeholder'=>'vstanovlennya-novorichnoyi-yalinki', 'id'=>'alias', 'class'=>'form-control eng-alias']) !!}
     </div>
 </div>
+
 <div class="">
-    {{ Form::label('category_id', 'Категорія') }}
-    <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="right"
-            title="Обов'язкове до заповнення поле">?
-    </button>
-    <div>
+    <div class="form-group">
+        {{ Form::label('category_id', 'Категорія') }}
+        <button type="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="right"
+                title="Обов'язкове до заповнення поле">?
+        </button>
+    </div>
+
+    <div class="form-group">
         {!! Form::select('category_id', $cats ?? [],
-            old('category_id') ? : ($article->category_id ?? '') , [ 'class'=>'form-control', 'placeholder'=>'Категорія'])
+            old('category_id') ? : ($article->category_id ?? ''), [ 'class'=>'form-control', 'placeholder'=>'Категорія'])
         !!}
     </div>
 </div>
+
+<div class="">
+    <div class="form-group">
+        {{ Form::label('preview', 'Анонс') }}
+        <button type="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="right"
+                title="Обов'язкове до заповнення поле(рекомендована кількість символів - 600)">?
+        </button>
+    </div>
+
+    <div class="form-group">
+            <textarea name="preview" class="form-control myPreview">
+                {!! old('preview') ? : ($article->preview ?? '') !!}
+            </textarea>
+    </div>
+</div>
+
 <div class="">
     {{ Form::label('img', 'Основне зображення') }}
     @if(!empty($article->image))
@@ -41,7 +68,7 @@
                         'a picture', array('class' => 'img-thumbnail')) }}
         </div>
     @endif
-    <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="right"
+    <button type="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="right"
             title="За потреби змінити зображення оберіть новий файл(не більше 5 Мбайт у форматі jpeg, jpg, png; бажаний ширина 1170px)">
         ?
     </button>
@@ -50,7 +77,7 @@
     </div>
     <hr>
     {{ Form::label('img', 'Параметри зображення') }}
-    <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="right"
+    <button type="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="right"
             title="Не обов'язкові поля: Alt та Title">?
     </button>
     <div class="">
@@ -97,11 +124,13 @@
                value="{{ old('outputtime') ? : (date('Y-m-d H:i', strtotime($article->created_at)) ?? date('Y-m-d H:i')) }}">
     </div>
     <div class="col-lg-6">
-        <h4>{!! Form::label('view', 'Кількість переглядів') !!}</h4>
-        <div class="input-prepend col-lg-6">
-            <input type="text" name="view" id="view"
-                   value="{{ old('view') ? : $article->view }}">
-        </div>
+        @if(Auth::user()->canDo('UPDATE_CATS'))
+            <h4>{!! Form::label('view', 'Кількість переглядів') !!}</h4>
+            <div class="input-prepend col-lg-6">
+                <input type="text" name="view" id="view"
+                       value="{{ old('view') ? : $article->view }}">
+            </div>
+        @endif
     </div>
 </div>
 <div class="">

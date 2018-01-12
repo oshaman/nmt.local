@@ -4,7 +4,7 @@
     'method'=>'POST', 'class'=>'form-horizontal']) !!}
 <div class="">
     {{ Form::label('title', 'Заголовок відео') }}
-    <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="right"
+    <button type="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="right"
             title="Максимум 255 символів">?
     </button>
     <div>
@@ -14,7 +14,7 @@
 </div>
 <div class="">
     {{ Form::label('token', 'Токен відео') }}
-    <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="right"
+    <button type="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="right"
             title="Наприклад - 1Sx8xqg1D4Q">?
     </button>
     <div>
@@ -24,7 +24,7 @@
 </div>
 <div class="">
     {{ Form::label('channel', 'Канал') }}
-    <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="right"
+    <button type="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="right"
             title="Обов'язковий параметр">?
     </button>
     <div>

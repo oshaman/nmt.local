@@ -26,7 +26,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('VIEW_ADMIN', function ($user) {
-            return $user->canDo();
+            return (('admin' === $user->role->name) || ('editor' === $user->role->name) || ('journalist' === $user->role->name));
         });
 
         Gate::define('USERS_ADMIN', function ($user) {
@@ -34,14 +34,22 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('UPDATE_ARTICLES', function ($user) {
-            return (('admin' === $user->role->name) || ('editor' === $user->role->name));
+            return (('admin' === $user->role->name) || ('editor' === $user->role->name) || ('journalist' === $user->role->name));
         });
 
         Gate::define('UPDATE_CHANNEL', function ($user) {
             return (('admin' === $user->role->name) || ('editor' === $user->role->name));
         });
 
+        Gate::define('UPDATE_VIEW', function ($user) {
+            return (('admin' === $user->role->name) || ('editor' === $user->role->name));
+        });
+
         Gate::define('UPDATE_TAGS', function ($user) {
+            return (('admin' === $user->role->name) || ('editor' === $user->role->name));
+        });
+
+        Gate::define('UPDATE_CATS', function ($user) {
             return (('admin' === $user->role->name) || ('editor' === $user->role->name));
         });
 
@@ -61,26 +69,8 @@ class AuthServiceProvider extends ServiceProvider
             return (('admin' === $user->role->name) || ('editor' === $user->role->name));
         });
 
-        /*
-
-
-
-
-
-        Gate::define('UPDATE_MEDICINES_CATS', function ($user) {
+        Gate::define('UPDATE_PRIORITY', function ($user) {
             return (('admin' === $user->role->name) || ('editor' === $user->role->name));
         });
-
-        Gate::define('MAIN_ADMIN', function ($user) {
-            return (('admin' === $user->role->name) || ('editor' === $user->role->name));
-        });
-
-        Gate::define('STATIC_ADMIN', function ($user) {
-            return (('admin' === $user->role->name) || ('editor' === $user->role->name));
-        });
-
-        Gate::define('SEO_ADMIN', function ($user) {
-            return (('admin' === $user->role->name) || ('editor' === $user->role->name));
-        });*/
     }
 }

@@ -4,6 +4,8 @@ namespace Fresh\Nashemisto\Http\Controllers;
 
 use Cache;
 use DB;
+use Validator;
+use Fresh\Nashemisto\Repositories\PriorityRepository;
 use Fresh\Nashemisto\Repositories\SeoRepository;
 use Illuminate\Http\Request;
 use Fresh\Nashemisto\PollStatistic;
@@ -19,6 +21,7 @@ class IndexController extends MainController
     protected $c_rep;
     protected $ch_rep;
     protected $seo_rep;
+    protected $p_rep;
 
     /**
      * IndexController constructor.
@@ -32,7 +35,8 @@ class IndexController extends MainController
         ArticlesRepository $arep,
         CategoriesRepository $cats,
         ChannelsRepository $channelsRepository,
-        SeoRepository $seorep
+        SeoRepository $seorep,
+        PriorityRepository $priority
     )
     {
         $this->poll_rep = $poll;
@@ -40,6 +44,7 @@ class IndexController extends MainController
         $this->c_rep = $cats;
         $this->seo_rep = $seorep;
         $this->ch_rep = $channelsRepository;
+        $this->p_rep = $priority;
     }
 
     /***
@@ -47,6 +52,7 @@ class IndexController extends MainController
      */
     public function show()
     {
+//        Cache::flush();
 //        session()->flush();
         $this->title = 'Головна';
         $poll = $this->poll_rep->getNewest();
@@ -59,19 +65,33 @@ class IndexController extends MainController
             $this->jss .= '<script src="' . asset('js/poll.js') . '"></script>';
             $statistic = null;
         } else {
-            $statistic = PollStatistic::where(['poll_id' => $poll->id])->first();
+            $statistic = PollStatistic::select('n1', 'n2', 'n3', 'n4', 'n5')->where(['poll_id' => $poll->id])->first();
+            $statistic = $statistic->toArray();
         }
 
         $channels = Cache::remember('main-channels', 60, function () {
-            return $this->ch_rep->get('*', 7, false, ['approved' => 1], false, ['videos']);
+            return $this->ch_rep->get('*', false, false, ['approved' => 1], false, ['videos']);
         });
 
         $this->seo = Cache::remember('seo_main', 24 * 60, function () {
             return $this->seo_rep->getSeo('/');
         });
 
+        $top_id = $this->p_rep->getTop(10000);
+        $tops = $this->a_rep->getTops(['image', 'category'], [['approved', true], ['created_at', '<=', DB::raw('NOW()')]],
+            $top_id, false, ['created_at', 'desc']);
+        if ($tops) {
+            $take = 12 - count($tops);
+        } else {
+            $take = 12;
+        }
         $where = [['approved', true], ['created_at', '<=', DB::raw('NOW()')]];
-        $articles = $this->a_rep->get('*', 12, false, $where, ['created_at', 'desc'], ['image', 'category'], true);
+        $articles = $this->a_rep
+            ->getTops(['image', 'category'], $where, false, $top_id, ['created_at', 'desc'], $take);
+
+        if (!empty($tops)) {
+            $articles = $tops->concat($articles);
+        }
 
         $cats = $this->c_rep->get(['name', 'alias', 'id'], 5, false, ['approved' => 1]);
         //dd($articles);
@@ -100,13 +120,71 @@ class IndexController extends MainController
             }
 
 
-            $articles = $this->a_rep->get('*', 12, false, $where,
-                ['created_at', 'desc'], ['image', 'category'], true);
+            $top_id = $this->p_rep->getTop($cat->id ?? 10000);
+            if ($top_id) {
+                $tops = $this->a_rep->getTops(['image', 'category'], $where,
+                    $top_id, false, ['created_at', 'desc']);
+            } else {
+                $tops = null;
+            }
+
+            if ($tops) {
+                $take = 12 - count($tops);
+            } else {
+                $take = 12;
+            }
+
+            $articles = $this->a_rep
+                ->getTops(['image', 'category'], $where, false, $top_id, ['created_at', 'desc'], $take);
+
+            if (!empty($tops)) {
+                $articles = $tops->concat($articles);
+            }
 
             return view('static.get_articles')
                 ->with(['articles' => $articles, 'cat' => $cat])
                 ->render();
         }
         return false;
+    }
+
+    /**
+     * @param Request $request
+     * @return string
+     */
+    public function getArticlesByDate(Request $request)
+    {
+        if ($request->isMethod('post')) {
+
+            $validator = Validator::make($request->all(), [
+                'day' => 'integer|required|between:1,31',
+                'month' => 'integer|required|between:0,11',
+                'year' => 'integer|required|between:2017,2050',
+            ]);
+
+            if ($validator->fails()) {
+                return '';
+            }
+
+            $data = $request->except('_token');
+
+            $day = $data['day'] ?? 1;
+            $month = 1 + ($data['month'] ?? 0);
+            $year = $data['year'] ?? 2017;
+
+            $where = [
+                ['approved', true],
+                ['created_at', '<=', date('Y-m-d H:i:s', mktime(23, 59, 59, $month, $day, $year))],
+                ['created_at', '>=', date('Y-m-d H:i:s', mktime(0, 0, 0, $month, $day, $year))]
+            ];
+
+            $articles = $this->a_rep
+                ->getTops(['image', 'category'], $where, false, false, ['created_at', 'desc'], 12);
+
+            return view('static.get_articles')
+                ->with(['articles' => $articles])
+                ->render();
+        }
+        return '';
     }
 }

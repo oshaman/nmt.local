@@ -5,7 +5,10 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('/') }}/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="{{ asset('/') }}/css/date.css">
     <link rel="stylesheet" href="{{ asset('/') }}/css/main.css">
+    <link rel="stylesheet" href="{{ asset('/') }}/css/main_sasha.css">
+    <link href="{{ asset('favicon.ico') }}" rel="shortcut icon">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
     @if(!empty($seo->seo_keywords))
@@ -33,7 +36,7 @@
     </title>
 
 </head>
-<body>
+<body @if('article' == Route::currentRouteName()) class="one_article" @endif>
 
 @yield('header')
 
@@ -45,6 +48,7 @@
 
 <script src="{{ asset('/') }}/js/jquery-3.2.1.min.js"></script>
 <script src="{{ asset('/') }}/js/jquery.mCustomScrollbar.min.js"></script>
+<script src="{{ asset('/') }}/js/datepicker.js"></script>
 <script src="{{ asset('/') }}/js/main.js"></script>
 @yield('jss')
 </body>

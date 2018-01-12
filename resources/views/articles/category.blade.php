@@ -12,7 +12,7 @@
             @endif
             {{--Категории--}}
 
-            <div class="main-news">
+            <div class="main-news cat-removeble">
                 @if(!empty($articles))
                     @foreach($articles as $article)
                         <div class="mainy">

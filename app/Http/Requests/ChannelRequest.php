@@ -11,7 +11,7 @@ class ChannelRequest extends FormRequest
      */
     public function authorize()
     {
-        return \Auth::user()->canDo();
+        return \Auth::user()->canDo('UPDATE_CHANNEL');
     }
 
     /**
@@ -54,7 +54,7 @@ class ChannelRequest extends FormRequest
     {
         if ($this->isMethod('post')) {
             $rules = [
-                'title' => ['required', 'between:5, 32', 'regex:#^[а-яА-ЯІіЇіЄє\s\'-\(\)]+$#u'],
+                'title' => ['required', 'between:5, 32', 'regex:#^[а-яА-ЯІіЇїЄє\s\'-\(\)]+$#u'],
                 'confirmed' => 'boolean|nullable',
             ];
             return $rules;

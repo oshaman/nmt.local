@@ -1,0 +1,342 @@
+/*-----------------main styles------------------------------*/
+.tag-item a {
+    text-decoration: none;
+}
+
+.comen {
+    max-width: 100%;
+}
+
+.foter-text p {
+    color: white;
+}
+
+.conty {
+    max-width: 100%;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .main-arti .linky {
+        left: 0;
+    }
+
+    .city-name span:after {
+        right: 17%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .main-news .mainy {
+        height: auto;
+    }
+
+    .main-news .main-hover {
+        position: static;
+    }
+
+    .main-news {
+        margin-bottom: 5vw;
+    }
+
+    .hovvy {
+        top: -99999px;
+    }
+}
+
+@media (max-width: 767px) {
+    .bread-crumbs {
+        flex-wrap: wrap;
+    }
+
+    .one_article .bread-crumbs div:last-child {
+        display: none;
+    }
+
+    .one_article .bread-crumbs div:nth-last-child(2) a:after {
+        content: "...";
+    }
+
+    .main-news {
+        margin-bottom: 10vw;
+    }
+
+    .main-news > .main-buty {
+        margin-top: 0;
+    }
+
+    .main-news .mainy {
+        margin-bottom: 5vw !important;
+    }
+
+    .fresh-logo {
+        font-size: 16px;
+    }
+
+    .fresh-logo span {
+        width: 18px;
+    }
+
+    .creative {
+        font-size: 4px;
+    }
+
+    .created {
+        font-size: 7px;
+        letter-spacing: 1.2px;
+    }
+}
+
+@media (max-width: 500px) {
+    .main-news .mainy {
+        margin-bottom: 7vw !important;
+    }
+
+    .main-news .mainy:last-child {
+        margin-bottom: 0 !important;
+    }
+
+    .main-news .imgg-news {
+        height: auto;
+    }
+}
+
+/*-----------------main styles------------------------------*/
+
+/*-----------------oops-page-content styles-----------------*/
+.oops-page-content {
+    margin-bottom: -2.604vw;
+    text-align: center;
+}
+
+.oops-page-content strong {
+    display: block;
+    font-family: 'SFUIDisplay-Bold';
+    color: #362f78;
+}
+
+.oops-page-content .simple-text {
+    font-size: 16px;
+}
+
+.oops-page-content .text-404 {
+    margin-bottom: -120px;
+    font-size: 201px;
+    opacity: 0.95;
+    letter-spacing: 17px;
+}
+
+.oops-page-content .img-404,
+.part-img img,
+.conty img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 767px) {
+    .oops-page-content {
+        margin-bottom: 6vw;
+    }
+
+    .oops-page-content .simple-text {
+        font-size: 3vw;
+    }
+
+    .oops-page-content .text-404 {
+        margin-bottom: -15.645vw;
+        font-size: 36.205vw;
+        letter-spacing: 2.216vw;
+    }
+
+    .conty {
+        max-width: 100%;
+    }
+
+    .city-caption {
+        font-size: inherit;
+    }
+
+    .city-caption:after {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .city-caption span {
+        display: inline-block;
+        font-size: 5vw;
+        height: 8vw;
+        line-height: 8vw;
+        padding-left: 7vw;
+        padding-right: 7vw;
+    }
+
+    .city-caption span:before {
+        right: 11px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .city-caption span:after {
+        left: 11px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+@media (max-width: 1024px) and (min-width: 768px) {
+    .oops-page-content .simple-text {
+        font-size: 2vw;
+    }
+
+    .oops-page-content .text-404 {
+        margin-bottom: -15.645vw;
+        font-size: 26.205vw;
+        letter-spacing: 2.216vw;
+    }
+}
+
+/*-----------------oops-page-content styles-----------------*/
+
+/*-----------------one_article styles-----------------*/
+.one_article .conty iframe {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+}
+
+@media (max-width: 1024px) and (min-width: 768px) {
+    .one_article .part .conty p:first-child {
+        margin-top: 0;
+    }
+
+    .one_article .ital {
+        margin: 3vw 0;
+        font-size: 4vw;
+        line-height: 4vw;
+    }
+}
+
+@media (max-width: 767px) {
+    .one_article .coments-news {
+        justify-content: space-between;
+    }
+
+    .one_article .part {
+        margin-top: 4vw;
+    }
+
+    .one_article .part h4 {
+        font-size: 5vw;
+        line-height: 8vw;
+    }
+
+    .one_article .conty {
+        padding-top: 0;
+    }
+
+    .one_article .conty p:first-child {
+        margin-top: 0;
+    }
+
+    .one_article .conty p {
+        font-size: 5vw;
+        line-height: 6vw;
+        margin: 7vw 0;
+        max-width: 100%;
+        text-align: justify;
+    }
+
+    .one_article .ital {
+        margin: 5vw 0 4.5vw;
+        font-size: 6vw;
+        line-height: 7vw;
+    }
+
+    .one_article .linky {
+        position: static;
+        margin-bottom: 7vw;
+        text-align: right;
+    }
+
+    .one_article .linky .link {
+        display: inline-block;
+        margin: 0;
+    }
+
+    .one_article .widd {
+        position: static;
+    }
+
+    .one_article .tags {
+        margin-top: 0;
+        flex-wrap: wrap;
+    }
+
+    .one_article .city-news .city-caption {
+        margin-top: 7vw;
+        margin-bottom: 7vw;
+    }
+
+    .one_article .main-news {
+        padding-top: 0;
+    }
+}
+
+@media (min-width: 500px) and (max-width: 767px) {
+    .one_article .imgg-news img {
+        height: auto;
+    }
+}
+
+/*-----------------one_article styles-----------------*/
+
+/*-----------------contacts-page styles-----------------------*/
+.contacts-page .conty {
+    width: auto;
+}
+
+.contacts-page .part .conty p {
+    text-align: left;
+}
+
+@media (max-width: 767px) {
+    .contacts-page .part .conty p {
+        font-size: 5vw;
+        margin-top: 0;
+    }
+}
+
+/*-----------------contacts-page styles-----------------------*/
+
+/*-----------------about-us styles----------------------------*/
+.about-us .part .conty p {
+    max-width: 100%;
+}
+
+@media (max-width: 767px) {
+    .about-us .part .conty p {
+        font-size: 5vw;
+        margin-top: 0;
+        text-align: justify;
+    }
+}
+
+/*-----------------about-us styles----------------------------*/
+
+/*-----------------confidential-page styles-------------------*/
+.confidential-page .conty {
+    width: auto;
+}
+
+.confidential-page .conty ol {
+    padding-left: 15px;
+}
+
+.confidential-page .conty ol li {
+    margin-bottom: 10px;
+}
+
+/*-----------------confidential-page styles-------------------*/

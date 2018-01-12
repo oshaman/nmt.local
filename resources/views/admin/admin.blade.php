@@ -56,7 +56,9 @@
     @endisset
 @endsection
 @section('content')
-    {!! $content !!}
+    <div class="row edit-article">
+        {!! $content !!}
+    </div>
 @endsection
 
 @section('jss')

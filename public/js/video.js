@@ -5,12 +5,25 @@ function switchList() {
 
     _this = $(this);
 
-    old_id = _this.siblings('.active').attr('data-id');
-
-    $(".vert[data-ch='" + old_id + "']").hide();
-    _this.siblings('.active').removeClass("active");
-
+    if (_this.parents().hasClass('hovv-news')) {
+        if (_this.siblings('.active').attr('data-id')) {
+            old_id = _this.siblings('.active').attr('data-id');
+        } else {
+            old_id = _this.closest('.hovv-news').siblings('.active').attr('data-id');
+            _this.closest('.hovv-news').siblings().removeClass("active");
+        }
+        _this.closest('.hovv-news').addClass('active');
+    } else {
+        if (_this.siblings('.active').attr('data-id')) {
+            old_id = _this.siblings('.active').attr('data-id');
+        } else {
+            old_id = _this.siblings('.hovv-news').find('.video-cat.active').attr('data-id');
+            _this.siblings('.hovv-news').find('.video-cat').removeClass('active');
+        }
+    }
     _this.addClass('active');
+    _this.siblings('.active').removeClass("active");
+    $(".vert[data-ch='" + old_id + "']").hide();
     $(".vert[data-ch='" + _this.attr('data-id') + "']").show();
 }
 

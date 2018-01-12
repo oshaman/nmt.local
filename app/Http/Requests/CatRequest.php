@@ -8,7 +8,7 @@ class CatRequest extends FormRequest
 {
     public function authorize()
     {
-        return  \Auth::user()->canDo('UPDATE_ARTICLES');
+        return \Auth::user()->canDo('UPDATE_CATS');
     }
 
     /**

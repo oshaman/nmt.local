@@ -168,3 +168,10 @@ function removeImg(){
         }
     })
 }
+
+// preview limit
+$('.myPreview').keyup(function () {
+    var $this = $(this);
+    if ($this.val().length > 600)
+        $this.val($this.val().substr(0, 600));
+});

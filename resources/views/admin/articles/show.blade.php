@@ -30,6 +30,7 @@
     <table class="table">
         <thead>
         <tr>
+            <th>ID</th>
             <th>URL</th>
             <th>Заголовок</th>
             <th>Дата публикації</th>
@@ -42,6 +43,7 @@
             <tbody>
             @foreach ($articles as $article)
                 <tr>
+                    <td class="col-md-4">{{ $article->id }}</td>
                     <td class="col-md-4">{{ $article->alias }}</td>
                     <td class="col-md-3">{{ $article->title }}</td>
                     <td class="col-md-2">{{ $article->created_at }}</td>

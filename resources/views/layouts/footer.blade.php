@@ -30,29 +30,43 @@
         </div>
         <div class="foter-right">
             <div class="foter-news">
-                <div class="news-item"><a href="/">НАШЕ ТБ</a></div>
                 <div class="news-item">
-                    @if('category' === Route::currentRouteName() && empty(Request::segment(2)))
-                        <a href="" onclick="return false" rel="nofollow">НОВИНИ</a>
+                    @if('main' == Route::currentRouteName())
+                        <a href="" onclick="return false" rel="nofollow" class="active">
+                            Наше ТБ<span class="linn"></span>
+                        </a>
                     @else
-                        <a href="{{ route('category') }}">НОВИНИ</a>
+                        <a href="{{ route('main') }}">Наше ТБ<span class="linn"></span></a>
                     @endif
                 </div>
-                <div class="news-item"><a href="/">ОПИТУВАННЯ</a></div>
-                <div class="news-item"><a href="/">НАША ГРОМАДА</a></div>
+                <div class="news-item">
+                    @if('category' === Route::currentRouteName() && empty(Request::segment(2)))
+                        <a href="" onclick="return false" rel="nofollow">НОВИНИ<span class="linn"></span></a>
+                    @else
+                        <a href="{{ route('category') }}">НОВИНИ<span class="linn"></span></a>
+                    @endif
+                </div>
+                <div class="news-item">
+                    @if('poll' === Route::currentRouteName() && empty(Request::segment(2)))
+                        <a href="" onclick="return false" rel="nofollow">ОПИТУВАННЯ<span class="linn"></span></a>
+                    @else
+                        <a href="{{ route('poll') }}">ОПИТУВАННЯ<span class="linn"></span></a>
+                    @endif
+                </div>
+                <div class="news-item"><a href="/">НАША ГРОМАДА<span class="linn"></span></a></div>
 
                 <div class="news-item">
                     @if('pro-nas' !== Route::currentRouteName())
-                        <a href="{{ route('pro-nas') }}">ПРО ПРОЕКТ</a>
+                        <a href="{{ route('pro-nas') }}">ПРО ПРОЕКТ<span class="linn"></span></a>
                     @else
-                        <a href="" onclick="return false" rel="nofollow">ПРО ПРОЕКТ</a>
+                        <a href="" onclick="return false" rel="nofollow">ПРО ПРОЕКТ<span class="linn"></span></a>
                     @endif
                 </div>
                 <div class="news-item">
                     @if('kontakty' !== Route::currentRouteName())
-                        <a href="{{ route('kontakty') }}">КОНТАКТИ</a>
+                        <a href="{{ route('kontakty') }}">КОНТАКТИ<span class="linn"></span></a>
                     @else
-                        <a href="" onclick="return false" rel="nofollow">КОНТАКТИ</a>
+                        <a href="" onclick="return false" rel="nofollow">КОНТАКТИ<span class="linn"></span></a>
                     @endif
                 </div>
                 <div class="clear"></div>
@@ -71,8 +85,8 @@
         <div class="foter-bott">
             <div class="foot-item">
 
-                <a href="/"><img src="{{ asset('/') }}img/facce.png" alt=""></a>
-                <a href="/"><img src="{{ asset('/') }}img/instt.png" alt=""></a>
+                <a href="{{ env('FB_LINK') }}" target="_blank"><img src="{{ asset('/') }}img/facce.png" alt=""></a>
+                <a href="{{ env('IG_LINK') }}" target="_blank"><img src="{{ asset('/') }}img/instt.png" alt=""></a>
             </div>
 
             <div class="foot-item">МІСТО 2017. Все права захищені.</div>

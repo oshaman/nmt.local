@@ -57,6 +57,7 @@ class ArticleRequest extends FormRequest
             $rules = [
                 'alias' => 'required',
                 'title' => ['required', 'string', 'between:4,255'],
+                'preview' => ['required', 'string'],
                 'category_id' => ['digits_between:1,4', 'nullable', 'required'],
                 'tags' => 'array',
                 'img' => 'mimes:jpg,bmp,png,jpeg|max:5120',

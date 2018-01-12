@@ -6,6 +6,11 @@
             @else
                 <li><a href="{{ route('admin_channels') }}">Канали</a></li>
             @endif
+            @if('create_video' == Route::currentRouteName())
+                <li><a class="btn btn-default">Створити відео</a></li>
+            @else
+                <li><a href="{{ route('create_video') }}">Створити відео</a></li>
+            @endif
         </ul>
     </div>
 </nav>
