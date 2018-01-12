@@ -2,6 +2,7 @@
 
 namespace Fresh\Nashemisto\Http\Controllers;
 
+use Fresh\Nashemisto\PollStatistic;
 use Fresh\Nashemisto\Repositories\PollsRepository;
 use Fresh\Nashemisto\Repositories\SeoRepository;
 use Illuminate\Http\Request;
@@ -29,20 +30,37 @@ class PollController extends MainController
     public function index($poll = null)
     {
         if (!empty($poll)) {
-            $this->title = 'Опитування';
-            $this->seo = $this->seo_rep->getSeo('polls');
+//            dd($poll);
+            $this->title = $poll->question;
 
-            $polls = '';
-            $this->content = view('poll.poll')->with(['polls' => $polls])->render();
+            if (empty(session('poll_id_' . $poll->id))) {
+                $this->jss .= '<script src="' . asset('js/poll.js') . '"></script>';
+                $statistic = null;
+            } else {
+                $statistic = PollStatistic::select('n1', 'n2', 'n3', 'n4', 'n5')->where(['poll_id' => $poll->id])->first();
+                $statistic = $statistic->toArray();
+            }
+
+            $polls = $this->poll_rep->getPollsPreview($poll->id);
+
+            $this->content = view('poll.poll')
+                ->with(['polls' => $polls, 'poll' => $poll, 'statistic' => $statistic])
+                ->render();
             return $this->renderOutput();
         } else {
             $this->title = 'Опитування';
             $this->seo = $this->seo_rep->getSeo('polls');
+            $this->jss = '
+                <script src="' . asset('js/load_more.js') . '"></script>
+            ';
 
             $polls = $this->poll_rep->get(
-                ['question', 'alias'], false, 2,
+                ['question', 'alias', 'description', 'image', 'alt', 'imgtitle', 'created_at', 'id'], false, 12,
                 [['approved', true], ['created_at', '<=', DB::raw('NOW()')]], ['created_at', 'desc']
             );
+
+            $polls = $this->poll_rep->countVoites($polls);
+
             $this->content = view('poll.show')->with(['polls' => $polls])->render();
             return $this->renderOutput();
         }

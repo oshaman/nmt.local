@@ -1,9 +1,12 @@
 <h1>Редагування опитування</h1>
 
 <div class="">
-    {!! Form::open(['url' => route('edit_poll', $poll->id), 'class'=>'form-horizontal','method'=>'POST' ]) !!}
+    {!! Form::open(['url' => route('edit_poll', $poll->id), 'class'=>'form-horizontal','method'=>'POST', 'files'=>true ]) !!}
     <div class="">
         {{ Form::label('question', 'Запитання') }}
+        <button type="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="right"
+                title="Обов'язкове до заповнення поле(максимум 255 символів)">?
+        </button>
         <div>
             {!! Form::text('question', old('question') ? : ($poll->question ?? ''),
                 ['placeholder'=>'Запитання...', 'id'=>'question', 'class'=>'form-control ru-title']) !!}
@@ -11,6 +14,9 @@
     </div>
     <div class="">
         {{ Form::label('alias', 'ЧПУ опитування') }}
+        <button type="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="right"
+                title="Обов'язкове до заповнення поле(латинські літери, цифри - максимум 255 символів)">?
+        </button>
         <div>
             {!! Form::text('alias', old('alias') ? : ($poll->alias ?? ''),
              ['placeholder'=>'zapytannya', 'id'=>'alias', 'class'=>'form-control eng-alias']) !!}
@@ -18,6 +24,9 @@
     </div>
     <div class="">
         {{ Form::label('title', 'Заголовок опитування') }}
+        <button type="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="right"
+                title="Обов'язкове до заповнення поле(максимум 255 символів)">?
+        </button>
         <div>
             {!! Form::text('title', old('title') ? : ($poll->title ?? ''),
                 ['placeholder'=>'Встановлення новорічної ялинки...', 'id'=>'title', 'class'=>'form-control']) !!}
@@ -25,6 +34,9 @@
     </div>
     <hr>
     <div class="alert alert-info">
+        <button type="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="right"
+                title="Обов'язкові до заповнення поля(максимум 255 символів)">?
+        </button>
         <div class="row">
             <div class="col-md-6">
                 {{ Form::label('answer1', 'Відповідь №1') }}
@@ -85,9 +97,42 @@
     </div>
     <hr>
     <div class="row">
-        {{ Form::label('description', 'Опис') }}
-        <textarea name="description"
-                  class="form-control editor">{!! old('description') ? : ($poll->description ?? '') !!}</textarea>
+        <div class="col-lg-6">
+            {{ Form::label('description', 'Опис') }}
+            <textarea name="description"
+                      class="form-control editor">{!! old('description') ? : ($poll->description ?? '') !!}</textarea>
+        </div>
+        <div class="col-lg-6">
+            {{ Form::label('img', 'Основне зображення') }}
+            @if(!empty($poll->image))
+                <div>
+                    {{ Html::image(asset('/asset/images/polls').'/'.$poll->image,
+                                'a picture', array('class' => 'img-thumbnail')) }}
+                </div>
+            @endif
+            <button type="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="right"
+                    title="За потреби змінити зображення оберіть новий файл(не більше 5 Мбайт у форматі jpeg, jpg, png; бажаний ширина 1170px)">
+                ?
+            </button>
+            <div>
+                {!! Form::file('img', ['accept'=>'image/*', 'id'=>'img', 'class'=>'form-control']) !!}
+            </div>
+            <hr>
+            {{ Form::label('img', 'Параметри зображення') }}
+            <button type="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="right"
+                    title="Не обов'язкові поля: Alt та Title">?
+            </button>
+            <div class="">
+                <div class="col-lg-6">
+                    {!! Form::text('alt', old('alt') ? : ($poll->alt ?? ''),
+                        ['placeholder'=>'Alt', 'id'=>'alt', 'class'=>'form-control']) !!}
+                </div>
+                <div class="col-lg-6">
+                    {!! Form::text('imgtitle', old('imgtitle') ? : ($poll->imgtitle ?? ''),
+                        ['placeholder'=>'Title', 'id'=>'imgtitle', 'class'=>'form-control']) !!}
+                </div>
+            </div>
+        </div>
     </div>
     {!! Form::button('Зберегти', ['class' => 'btn btn-primary','type'=>'submit']) !!}
 </div>

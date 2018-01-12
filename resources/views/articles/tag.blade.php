@@ -54,9 +54,9 @@
 
                                             <p>{!!  $article->content !!}</p>
                                             <div class="main-buty">
-                                                <a href="{{ route('article', $article->alias) }}">
+                                                <span class="read-more">
                                                     читать дальше<span class="linn"></span>
-                                                </a>
+                                                </span>
                                             </div>
                                         </div>
                                     </div>

@@ -14,4 +14,5 @@ return [
 
     'paginate_tags' => 12,
     'slider' => ['width' => 1170, 'height' => 496],
+    'poll' => ['width' => 340, 'height' => 240],
 ];

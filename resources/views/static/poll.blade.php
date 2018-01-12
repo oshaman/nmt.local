@@ -57,19 +57,13 @@
                     </div>
 
                 </div>
+                {{--<---- Poll results ---->--}}
                 <div class="inter-quest quest-five">
                     @if(empty($statistic))
                         <h5>Довідайтеся про результат після того, як залишите свій голос</h5>
                         <img src="./img/why.png" alt="" style="margin: 79px auto;display: block;">
                     @else
-
-
-
-
-
-
                         <div class="vote soon">
-
                             <h5>В опитуванні прийняли участь @if(count($statistic)<1)
                                     0 @else {{ array_sum($statistic) }} @endif осіб</h5>
                             <div class="unswers poll1 @if('poll1' == session('poll_id_' . $poll->id)) choosed @endif">
@@ -112,6 +106,7 @@
                         </div>
                     @endif
                 </div>
+                {{--<---- Poll results ---->--}}
             </div>
             <div class="main-buty buty-opros">
                 <a href="{{ route('poll') }}">Інші опитування<span class="linn"></span></a>

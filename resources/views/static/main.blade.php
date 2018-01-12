@@ -172,10 +172,12 @@
                                             <h3><span>{{ str_limit($article->title, 64) }}</span></h3>
                                             <div class="block-text neww">
                                                 <p>{{ $article->content }}</p>
-                                                <div class="main-buty"><a
-                                                            href="{{ route('article', $article->alias) }}">детальніше<span
-                                                                class="linn"></span></a></div>
-
+                                                <div class="main-buty">
+                                                    <span class="read-more">
+                                                        детальніше
+                                                        <span class="linn"></span>
+                                                    </span>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="coments-news">

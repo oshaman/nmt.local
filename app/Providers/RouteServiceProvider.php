@@ -34,6 +34,10 @@ class RouteServiceProvider extends ServiceProvider
         Route::model('seo', \Fresh\Nashemisto\Seo::class);
         Route::model('static', \Fresh\Nashemisto\StaticPage::class);
         Route::model('priority', \Fresh\Nashemisto\Priority::class);
+
+        Route::bind('poll_alias', function ($value, \Illuminate\Routing\Route $route) {
+            return \Fresh\Nashemisto\Poll::where('alias', $value)->first();
+        });
     }
 
     /**

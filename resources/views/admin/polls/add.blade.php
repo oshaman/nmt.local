@@ -1,5 +1,5 @@
 <h2>Додати опитування</h2>
-{!! Form::open(['url'=>route('create_poll'), 'method'=>'POST', 'class'=>'form-horizontal']) !!}
+{!! Form::open(['url'=>route('create_poll'), 'method'=>'POST', 'class'=>'form-horizontal', 'files'=>true]) !!}
 <div class="">
     {{ Form::label('question', 'Запитання') }}
     <button type="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="right"
@@ -93,11 +93,35 @@
 </div>
 <hr>
 <div class="row">
-    {{ Form::label('description', 'Опис') }}
-    <button type="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="right"
-            title="Обов'язкове до заповнення поле">?
-    </button>
-    <textarea name="description" class="form-control editor">{!! old('description') ? : '' !!}</textarea>
+    <div class="col-lg-6">
+        {{ Form::label('description', 'Опис') }}
+        <button type="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="right"
+                title="Обов'язкове до заповнення поле">?
+        </button>
+        <textarea name="description" class="form-control editor">{!! old('description') ? : '' !!}</textarea>
+    </div>
+    <div class="col-lg-6">
+        <div class="">
+            {{ Form::label('img', 'Параметри зображення') }}
+            <div class="">
+                <div class="col-lg-6">
+                    {!! Form::text('alt', old('alt') ? : '' , ['placeholder'=>'Alt', 'id'=>'alt', 'class'=>'form-control']) !!}
+                </div>
+                <div class="col-lg-6">
+                    {!! Form::text('imgtitle', old('imgtitle') ? : '' ,
+                                ['placeholder'=>'Title', 'id'=>'imgtitle', 'class'=>'form-control']) !!}
+                </div>
+            </div>
+            {{ Form::label('img', 'Зображення') }}
+            <button type="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="right"
+                    title="Не обов'язкове до заповнення поле(файл не більше 5 Мбайт у форматі jpeg, jpg, png; бажаний ширина 340px)">
+                ?
+            </button>
+            <div>
+                {!! Form::file('img', ['accept'=>'image/*', 'id'=>'img', 'class'=>'form-control']) !!}
+            </div>
+        </div>
+    </div>
 </div>
 <div class="row">
     <hr>

@@ -46,9 +46,9 @@
 
                                             <p>{!!  $article->content !!}</p>
                                             <div class="main-buty">
-                                                <a href="{{ route('article', $article->alias) }}">
+                                                <span class="read-more">
                                                     читати далі<span class="linn"></span>
-                                                </a>
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
@@ -75,7 +75,7 @@
 
                     @if($articles->lastPage() != $articles->currentPage())
                         <div class="main-buty load-more" data-source="1"
-                             @if(!empty($cat->id)) data-id="{{ $cat->id}} @endif">
+                             @if(!empty($cat->id)) data-id="{{ $cat->id}}" @endif>
                             <a href="" onclick="return false">Завантажити ще<span class="linn"></span></a>
                         </div>
                         <input type="hidden" name="stats">

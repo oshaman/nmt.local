@@ -57,6 +57,11 @@ class PollRequest extends FormRequest
                 'answer4' => ['required', 'string', 'between:2,255'],
                 'answer5' => ['required', 'string', 'between:2,255'],
 
+                'img' => 'mimes:jpg,bmp,png,jpeg|max:5120',
+                'alt' => ['nullable', 'string', 'between:2,255'],
+                'imgtitle' => ['nullable', 'string', 'between:2,255'],
+
+
                 'confirmed' => 'boolean|nullable',
                 'outputtime' => 'date_format:"Y-m-d H:i"|nullable',
             ];

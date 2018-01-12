@@ -37,7 +37,7 @@ Route::get('/reklama', 'StaticPagesController@reklama')->name('reklama');
 //  Redaction
 Route::get('/redakciya', 'StaticPagesController@redakciya')->name('redakciya');
 //  Polls
-Route::get('/polls/{poll?}', 'PollController@index')->name('poll')->where('poll', '[0-9]+');
+Route::get('/polls/{poll_alias?}', 'PollController@index')->name('poll')->where('poll_alias', '[\w-]+');
 
 //============================
 Route::view('/welcome', 'index');
