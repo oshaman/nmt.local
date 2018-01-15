@@ -57,10 +57,18 @@ class UserRequest extends FormRequest
         $id = (isset($this->route()->parameter('user')->id)) ? $this->route()->parameter('user')->id . ',id' : '';
         if ($this->isMethod('post')) {
             return [
-                'role' => 'required|integer',
+                'roles' => 'required|array',
+                'roles.*' => 'integer',
                 'email' => 'required|email|max:255|unique:users,email,' . $id
             ];
         }
         return [];
+    }
+
+    public function messages()
+    {
+        return [
+            'roles.*.*' => 'Не допустимі символи в полі <strong>Роль</strong>',
+        ];
     }
 }

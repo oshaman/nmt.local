@@ -23,7 +23,7 @@
                 <td>{{ $user->id }}</td>
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->email }}</td>
-                <td>{{ $user->role->name }}</td>
+                <td>{{ $user->roles->implode('name', ', ') }}</td>
                 <td>
                     {!! Form::open(['url' => route('users_update',['users'=> $user->id]),'class'=>'form-horizontal','method'=>'GET']) !!}
                     {!! Form::button('Редагувати', ['class' => 'btn btn-warning','type'=>'submit']) !!}

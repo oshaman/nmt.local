@@ -23,8 +23,8 @@
             <table class="table">
                 @foreach($roles as $id=>$role)
                     <td>
-                        <input name="role" {{ $id == old('role') ? 'checked' : '' }} type="radio"
-                               value="{{ $id }}">{{ $role }}
+                        <input name="roles[]" {{ $id == old('role') ? 'checked' : '' }}
+                        type="checkbox" value="{{ $id }}">{{ trans('ru.' . $role) }}
                     </td>
                 @endforeach
             </table>

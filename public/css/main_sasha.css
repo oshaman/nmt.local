@@ -26,7 +26,7 @@
 }
 
 @media (max-width: 1024px) {
-    .main-news .mainy {
+    /*.main-news .mainy {
         height: auto;
     }
 
@@ -40,8 +40,8 @@
 
     .hovvy {
         top: -99999px;
+    }*/
     }
-}
 
 @media (max-width: 767px) {
     .bread-crumbs {
@@ -56,7 +56,7 @@
         content: "...";
     }
 
-    .main-news {
+    /*.main-news {
         margin-bottom: 10vw;
     }
 
@@ -66,8 +66,7 @@
 
     .main-news .mainy {
         margin-bottom: 5vw !important;
-    }
-
+    }*/
     .fresh-logo {
         font-size: 16px;
     }
@@ -87,7 +86,7 @@
 }
 
 @media (max-width: 500px) {
-    .main-news .mainy {
+    /*.main-news .mainy {
         margin-bottom: 7vw !important;
     }
 
@@ -97,9 +96,8 @@
 
     .main-news .imgg-news {
         height: auto;
+    }*/
     }
-}
-
 /*-----------------main styles------------------------------*/
 
 /*-----------------oops-page-content styles-----------------*/
@@ -196,7 +194,6 @@
         letter-spacing: 2.216vw;
     }
 }
-
 /*-----------------oops-page-content styles-----------------*/
 
 /*-----------------one_article styles-----------------*/
@@ -290,7 +287,6 @@
         height: auto;
     }
 }
-
 /*-----------------one_article styles-----------------*/
 
 /*-----------------contacts-page styles-----------------------*/
@@ -308,7 +304,6 @@
         margin-top: 0;
     }
 }
-
 /*-----------------contacts-page styles-----------------------*/
 
 /*-----------------about-us styles----------------------------*/
@@ -323,7 +318,6 @@
         text-align: justify;
     }
 }
-
 /*-----------------about-us styles----------------------------*/
 
 /*-----------------confidential-page styles-------------------*/
@@ -338,5 +332,33 @@
 .confidential-page .conty ol li {
     margin-bottom: 10px;
 }
-
 /*-----------------confidential-page styles-------------------*/
+
+/*-----------------all-polls-page styles-----------------------*/
+.all-polls-page .imgg-news {
+    height: 210px;
+}
+
+.all-polls-page .playy .content-news {
+    height: auto;
+}
+
+.all-polls-page .content-news p {
+    height: 75px;
+}
+
+.all-polls-page .hovvy {
+    height: 485px;
+}
+
+@media (max-width: 1023px) {
+    .all-polls-page .imgg-news {
+        height: auto;
+    }
+
+    .all-polls-page .imgg-news img {
+        height: 100%;
+    }
+}
+
+/*-----------------all-polls-page styles-----------------------*/

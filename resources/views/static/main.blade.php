@@ -136,6 +136,33 @@
 
                     <div class="city-mainy styl-city">всі новини</div>
                     <div class="city-mainy glavn-hover">рубріки новин</div>
+
+                    <div class="hody">
+                        <div class="sect-news">
+                            <div class="news-item
+             switch-cat          active " data-id="1">
+                                <a href="http://13.j2landing.com/categories">Всі новини<span class="linn"></span></a>
+                            </div>
+                            <div class="news-item  switch-cat " data-id="2">
+                                <a href="http://13.j2landing.com/categories/politika">Політика<span class="linn"></span></a>
+                            </div>
+                            <div class="news-item  switch-cat " data-id="3">
+                                <a href="http://13.j2landing.com/categories/kultura">Культура<span class="linn"></span></a>
+                            </div>
+                            <div class="news-item  switch-cat " data-id="4">
+                                <a href="http://13.j2landing.com/categories/misto">Місто<span class="linn"></span></a>
+                            </div>
+                            <div class="news-item  switch-cat " data-id="5">
+                                <a href="http://13.j2landing.com/categories/sport">Спорт<span class="linn"></span></a>
+                            </div>
+                            <div class="news-item  switch-cat " data-id="6">
+                                <a href="http://13.j2landing.com/categories/afisha">Афіша<span class="linn"></span></a>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+
+
                 </div>
 
 

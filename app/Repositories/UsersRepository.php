@@ -36,12 +36,10 @@ class UsersRepository extends Repository
             array_forget($data, 'password');
         }
 
-        $data['role_id'] = $data['role'];
-
-
         $user->fill($data)->update();
+        $user->roles()->sync($data['roles'] ?? []);
 
-        return ['status' => 'Данные пользователя обновлены'];
+        return ['status' => 'Дані користувача оновлені'];
     }
 
     /**
@@ -59,7 +57,7 @@ class UsersRepository extends Repository
         }
 
         if ($user->delete()) {
-            return ['status' => 'Пользователь удален'];
+            return ['status' => 'Користувача видалено'];
         }
     }
 
@@ -79,15 +77,16 @@ class UsersRepository extends Repository
         $user = $this->model->create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'role_id' => $data['role'],
             'password' => bcrypt($data['password']),
         ]);
 
         if (!$user) {
-            return ['status' => 'Ошибка добавления пользователя.'];
+            return ['status' => 'Помилка створення користувача.'];
         }
 
-        return ['status' => 'Пользователь добавлен.'];
+        $user->roles()->sync($data['roles'] ?? []);
+
+        return ['status' => 'Користувача додано.'];
 
     }
 

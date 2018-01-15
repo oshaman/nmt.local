@@ -79,7 +79,7 @@ class PollController extends MainController
             $result = $this->poll_rep->addToPolls($request);
 
             if (false !== $result['stats']) {
-                $request->session()->put('poll_id_' . $result['poll']['id'], $result['answer']);
+//                $request->session()->put('poll_id_' . $result['poll']['id'], $result['answer']);
             }
 
             return view('poll.result')

@@ -26,16 +26,17 @@
             </li>
 
             <li>
-                <h4>{!! Form::label('role', 'Роль') !!}</h4>
+                <h4>{!! Form::label('roles', 'Роль') !!}</h4>
                 <table class="table">
                     @foreach($roles as $id=>$role)
-                        @if($user->role_id == $id)
+                        @if($user->hasRole($role))
                             <td>
-                                <input checked name="role" type="radio" value="{{ $id }}">{{ $role }}
+                                <input checked name="roles[]" type="checkbox"
+                                       value="{{ $id }}">{{trans('ru.' . $role) }}
                             </td>
                         @else
                             <td>
-                                <input name="role" type="radio" value="{{ $id }}">{{ $role }}
+                                <input name="roles[]" type="checkbox" value="{{ $id }}">{{ trans('ru.' . $role) }}
                             </td>
                         @endif
                     @endforeach

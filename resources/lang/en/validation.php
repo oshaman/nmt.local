@@ -20,7 +20,7 @@ return [
     'alpha' => 'The :attribute may only contain letters.',
     'alpha_dash' => 'Поле :attribute має містити тільки літери, цифри, тире та підкреслення.',
     'alpha_num' => 'Поле :attribute має містити тільки літери та цифри.',
-    'array' => 'The :attribute must be an array.',
+    'array' => 'Поле :attribute має бути масивом.',
     'before' => 'The :attribute must be a date before :date.',
     'before_or_equal' => 'The :attribute must be a date before or equal to :date.',
     'between' => [

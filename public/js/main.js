@@ -77,36 +77,32 @@ event.preventDefault(event);
 });
 
 
-    $('.main-hover').hover(
-        function () {
-            $(this).parent().addClass('playy');
-            setTimeout(function () {
-                $('.playy').addClass('hamm');
-            }, 499);
-            $('.animate').addClass('libo');
-        },
-        function () {
-            $(this).parent().addClass('crash');
-            $(this).parent().removeClass('playy');
-            $('.animate').removeClass('libo');
-            $('.mainy').removeClass('hamm');
-            setTimeout(function () {
-                $('.mainy').removeClass('crash');
-            }, 699);
-        });
+    if ($(window).width() > 1024) {
+        $('.main-hover').hover(
+            function () {
+                $(this).parent().addClass('playy');
+                setTimeout(function () {
+                    $('.playy').addClass('hamm');
+                }, 499);
+                $('.animate').addClass('libo');
+            },
+            function () {
+                $(this).parent().addClass('crash');
+                $(this).parent().removeClass('playy');
+                $('.animate').removeClass('libo');
+                $('.mainy').removeClass('hamm');
+                setTimeout(function () {
+                    $('.mainy').removeClass('crash');
+                }, 699);
+            });
+    } else {
+    }
 
 
-    /*if($('.widd').length){
-    setInterval(function() {
-    if ($(document).scrollTop() + $(window).height() > $('.widd').offset().top && $(document).scrollTop() - $('.widd').offset().top < $('.widd').height()){
 
-        $('.linky').addClass('seen');$('.lucky').addClass('watch');
-    }if($('.watch').length){if ($(document).scrollTop() + $(window).height() > $('.watch').offset().top && $(document).scrollTop() - $('.watch').offset().top < $('.watch').height()) {
-        $('.linky').removeClass('seen');$('.lucky').removeClass('watch');
-    }}else {
 
-    }}, 50);
-    }*/
+
+
 
 
     if ($('.linky').length) {
@@ -153,10 +149,12 @@ event.preventDefault(event);
         var lime = $('.under-line').offset().top;
         if (currentScroll >= lime) {
             $('.headers').addClass('goon');
+            $('.headers').removeClass('domm');
         }
 
         else {
             $('.headers').removeClass('goon setup');
+            $('.headers').addClass('domm');
         }
     });
 
@@ -169,8 +167,8 @@ event.preventDefault(event);
             $('.headers').removeClass('hidd');
         }
         else {
-            $('.headers').removeClass('opas runny');
-            $('.headers').addClass('hidd');
+            $('.headers').removeClass('opas');
+//            $('.headers').addClass('hidd');
             setTimeout(function () {
                 $('.menu').removeClass('clikk');
             }, 299);
@@ -220,6 +218,10 @@ event.preventDefault(event);
         if (intro === '4') {
             $('.headers').addClass('runny');
             $('.menu').addClass('clikk');
+            $('body').addClass('overr');
+            $('html, body').bind('touchmove', function (e) {
+                e.preventDefault(e);
+            });
             setTimeout(function () {
                 $('.headers').addClass('setup');
                 intro = '5';
@@ -229,6 +231,8 @@ event.preventDefault(event);
         if (intro === '5') {
             $('.headers').removeClass('runny');
             $('.menu').removeClass('clikk');
+            $('body').removeClass('overr');
+            $('html, body').unbind('touchmove');
             setTimeout(function () {
                 $('.headers').removeClass('setup');
             }, 399);
@@ -323,7 +327,7 @@ event.preventDefault(event);
             var down2 = $('.poll2').find('.vote-down').attr("data-width");
             var down3 = $('.poll3').find('.vote-down').attr("data-width");
             var down4 = $('.poll4').find('.vote-down').attr("data-width");
-            var down5 = $('.poll3').find('.vote-down').attr("data-width");
+            var down5 = $('.poll5').find('.vote-down').attr("data-width");
 
             $('.poll1').find('.line-down').css({'width': +down1 + '%'});
             $('.poll2').find('.line-down').css({'width': +down2 + '%'});

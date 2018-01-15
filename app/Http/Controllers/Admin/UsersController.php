@@ -30,7 +30,7 @@ class UsersController extends AdminController
             abort(404);
         }
 
-        $users = $this->us_rep->get(['email', 'id'], false, 15, false, false, 'role');
+        $users = $this->us_rep->get(['email', 'id'], false, 15, false, false, 'roles');
         $this->content = view('admin.users.content')->with('users', $users)->render();
         return $this->renderOutput();
     }

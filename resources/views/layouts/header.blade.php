@@ -48,15 +48,15 @@
                         </div>
                         <div class="main-block">
                             <div class="link-block">
-                                <div class="links"><img src="{{ asset('/') }}img/searc.png" alt=""></div>
+                                <div class="links"></div>
                                 <div class="links">
                                     <a href="{{ env('FB_LINK') }}" target="_blank">
-                                        <img src="{{ asset('/') }}img/face.png" alt="">
+
                                     </a>
                                 </div>
                                 <div class="links">
                                     <a href="{{ env('IG_LINK') }}" target="_blank">
-                                        <img src="{{ asset('/') }}img/insta.png" alt="">
+
                                     </a>
                                 </div>
                             </div>
@@ -126,12 +126,12 @@
                                 <div class="link-block neww-link">
                                     <div class="links">
                                         <a href="{{ env('FB_LINK') }}" target="_blank">
-                                            <img src="http://13.j2landing.com/img/face.png" alt="">
+
                                         </a>
                                     </div>
                                     <div class="links">
                                         <a href="{{ env('IG_LINK') }}" target="_blank">
-                                            <img src="http://13.j2landing.com/img/insta.png" alt="">
+
                                         </a>
                                     </div>
                                 </div>

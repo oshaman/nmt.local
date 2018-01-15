@@ -26,51 +26,51 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('VIEW_ADMIN', function ($user) {
-            return (('admin' === $user->role->name) || ('editor' === $user->role->name) || ('journalist' === $user->role->name));
+            return ($user->hasRole('admin') || $user->hasRole('editor'));
         });
 
         Gate::define('USERS_ADMIN', function ($user) {
-            return ('admin' === $user->role->name);
+            return $user->hasRole('admin');
         });
 
         Gate::define('UPDATE_ARTICLES', function ($user) {
-            return (('admin' === $user->role->name) || ('editor' === $user->role->name) || ('journalist' === $user->role->name));
+            return ($user->hasRole('admin') || $user->hasRole('editor'));
         });
 
         Gate::define('UPDATE_CHANNEL', function ($user) {
-            return (('admin' === $user->role->name) || ('editor' === $user->role->name));
+            return ($user->hasRole('admin') || $user->hasRole('editor'));
         });
 
         Gate::define('UPDATE_VIEW', function ($user) {
-            return (('admin' === $user->role->name) || ('editor' === $user->role->name));
+            return ($user->hasRole('admin') || $user->hasRole('editor'));
         });
 
         Gate::define('UPDATE_TAGS', function ($user) {
-            return (('admin' === $user->role->name) || ('editor' === $user->role->name));
+            return ($user->hasRole('admin') || $user->hasRole('editor'));
         });
 
         Gate::define('UPDATE_CATS', function ($user) {
-            return (('admin' === $user->role->name) || ('editor' === $user->role->name));
+            return ($user->hasRole('admin') || $user->hasRole('editor'));
         });
 
         Gate::define('UPDATE_POLLS', function ($user) {
-            return (('admin' === $user->role->name) || ('editor' === $user->role->name));
+            return ($user->hasRole('admin') || $user->hasRole('editor'));
         });
 
         Gate::define('CONFIRMATION_DATA', function ($user) {
-            return (('admin' === $user->role->name) || ('editor' === $user->role->name));
+            return ($user->hasRole('admin') || $user->hasRole('editor'));
         });
 
         Gate::define('UPDATE_SEO', function ($user) {
-            return (('admin' === $user->role->name) || ('editor' === $user->role->name));
+            return ($user->hasRole('admin') || $user->hasRole('editor'));
         });
 
         Gate::define('UPDATE_STATIC', function ($user) {
-            return (('admin' === $user->role->name) || ('editor' === $user->role->name));
+            return ($user->hasRole('admin') || $user->hasRole('editor'));
         });
 
         Gate::define('UPDATE_PRIORITY', function ($user) {
-            return (('admin' === $user->role->name) || ('editor' === $user->role->name));
+            return ($user->hasRole('admin') || $user->hasRole('editor'));
         });
     }
 }
