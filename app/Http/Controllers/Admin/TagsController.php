@@ -28,7 +28,7 @@ class TagsController extends AdminController
      */
     public function index(TagsRequest $request)
     {
-        if (Gate::denies('UPDATE_TAGS')) {
+        if (Gate::denies('UPDATE_PRIORITY')) {
             abort(404);
         }
 
@@ -58,7 +58,7 @@ class TagsController extends AdminController
      */
    public function edit(TagsRequest $request, $tag)
     {
-        if (Gate::denies('UPDATE_TAGS')) {
+        if (Gate::denies('UPDATE_PRIORITY')) {
             abort(404);
         }
 
@@ -83,7 +83,7 @@ class TagsController extends AdminController
      */
     public function destroy($tag)
     {
-        if (Gate::denies('UPDATE_TAGS')) {
+        if (Gate::denies('UPDATE_PRIORITY')) {
             abort(404);
         }
 

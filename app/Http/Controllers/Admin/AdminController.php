@@ -66,7 +66,7 @@ class AdminController extends Controller
                 $menu->add('Опитування', array('route' => 'admin_polls'));
             }
 
-            if (Gate::allows('UPDATE_CHANNEL')) {
+            if (Gate::allows('UPDATE_VIDEO')) {
                 $menu->add('Відео', array('route' => 'admin_videos'));
             }
 

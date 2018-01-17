@@ -47,13 +47,38 @@ class User extends Authenticatable
                     return true;
                 }
                 break;
-            case 'UPDATE_CHANNEL':
+            case 'UPDATE_TAGS':
                 if ($this->hasRole('admin') || $this->hasRole('editor')) {
+                    return true;
+                }
+                break;
+            case 'UPDATE_CHANNEL':
+                if ($this->hasRole('admin') || $this->hasRole('video_editor')) {
+                    return true;
+                }
+                break;
+            case 'UPDATE_VIDEO':
+                if ($this->hasRole('video_journalist') || $this->hasRole('video_publicist')) {
                     return true;
                 }
                 break;
             case 'UPDATE_ARTICLES':
                 if ($this->hasRole('journalist') || $this->hasRole('publicist')) {
+                    return true;
+                }
+                break;
+            case 'UPDATE_POLLS':
+                if ($this->hasRole('journalist') || $this->hasRole('publicist')) {
+                    return true;
+                }
+                break;
+            case 'CONFIRMATION_DATA':
+                if ($this->hasRole('journalist') || $this->hasRole('admin') || $this->hasRole('editor')) {
+                    return true;
+                }
+                break;
+            case 'CONFIRMATION_VIDEO':
+                if ($this->hasRole('video_journalist') || $this->hasRole('admin') || $this->hasRole('video_editor')) {
                     return true;
                 }
                 break;

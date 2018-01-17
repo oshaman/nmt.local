@@ -62,11 +62,18 @@ class PollsRepository extends Repository
             }
         }
 
+        $poll['user_id'] = auth()->user()->id;
+
         $res = $this->model->fill($poll)->save();
 
         return $res;
     }
 
+    /**
+     * @param $request
+     * @param $poll
+     * @return mixed
+     */
     public function updatePoll($request, $poll)
     {
         $data = $request->except('_token');
@@ -114,6 +121,9 @@ class PollsRepository extends Repository
         return $res;
     }
 
+    /**
+     *
+     */
     protected function clearPollsCache()
     {
 //        Cache::forget('main');
@@ -134,7 +144,10 @@ class PollsRepository extends Repository
         }
 
     }*/
-
+    /**
+     * @param $request
+     * @return array
+     */
     public function addToPolls($request)
     {
         $data = $request->only('selects', 'poll-id');
@@ -222,6 +235,10 @@ class PollsRepository extends Repository
         return true;
     }
 
+    /**
+     * @param $id
+     * @return bool
+     */
     public function getPollsPreview($id)
     {
         $result = $this->get(
@@ -236,6 +253,10 @@ class PollsRepository extends Repository
 
     }
 
+    /**
+     * @param $result
+     * @return mixed
+     */
     public function countVoites($result)
     {
         if ($result) {

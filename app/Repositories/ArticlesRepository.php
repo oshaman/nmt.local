@@ -68,6 +68,7 @@ class ArticlesRepository extends Repository
 
         $article['alias'] = $data['alias'];
         $article['category_id'] = $data['category_id'];
+        $article['user_id'] = auth()->user()->id;
 
         if (!empty($data['confirmed'])) {
             if (Gate::allows('CONFIRMATION_DATA')) {
@@ -248,9 +249,6 @@ class ArticlesRepository extends Repository
      */
     public function deleteArticle($article)
     {
-        if (Gate::denies('CONFIRMATION_DATA')) {
-            abort(404);
-        }
         // $article->comments()->delete();
         if (!empty($article->image->path)) {
             $old_img = $article->image->path;

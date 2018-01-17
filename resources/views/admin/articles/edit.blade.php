@@ -124,7 +124,7 @@
                value="{{ old('outputtime') ? : (date('Y-m-d H:i', strtotime($article->created_at)) ?? date('Y-m-d H:i')) }}">
     </div>
     <div class="col-lg-6">
-        @if(Auth::user()->canDo('UPDATE_CATS'))
+        @if(Auth::user()->canDo('UPDATE_VIEW'))
             <h4>{!! Form::label('view', 'Кількість переглядів') !!}</h4>
             <div class="input-prepend col-lg-6">
                 <input type="text" name="view" id="view"
@@ -134,9 +134,12 @@
     </div>
 </div>
 <div class="">
-    <label>
-        <input type="checkbox" {{ (old('confirmed') || !empty($article->approved)) ? 'checked' : '' }} value="1"
-               name="confirmed">Опублікувати</label>
+    @if(Auth::user()->canDo('CONFIRMATION_DATA'))
+        <label>
+            <input type="checkbox" {{ (old('confirmed') || !empty($article->approved)) ? 'checked' : '' }} value="1"
+                   name="confirmed">Опублікувати
+        </label>
+    @endif
 </div>
 <hr>
 <div class="row">

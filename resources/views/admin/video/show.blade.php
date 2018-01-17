@@ -1,7 +1,7 @@
 @include('admin.video.nav')
 <!-- START CONTENT -->
 <div class="">
-    {!! Form::open(['url' => route('admin_articles'), 'class'=>'form-horizontal','method'=>'GET' ]) !!}
+    {!! Form::open(['url' => route('admin_videos'), 'class'=>'form-horizontal','method'=>'GET' ]) !!}
     <h3>Пошук статті:</h3>
     <div class="">
         {{ Form::label('value', 'Параметр пошуку') }}
@@ -43,14 +43,18 @@
                     <td class="col-md-3">{{ $video->title }}</td>
                     <td class="col-md-2">{{ $video->created_at }}</td>
                     <td class="col-md-1">
-                        {!! Form::open(['url' => route('edit_video',['video'=> $video->id]),'class'=>'form-horizontal','method'=>'GET']) !!}
-                        {!! Form::button('Редагувати', ['class' => 'btn btn-warning','type'=>'submit']) !!}
-                        {!! Form::close() !!}
+                        @can('update', $video)
+                            {!! Form::open(['url' => route('edit_video',['video'=> $video->id]),'class'=>'form-horizontal','method'=>'GET']) !!}
+                            {!! Form::button('Редагувати', ['class' => 'btn btn-warning','type'=>'submit']) !!}
+                            {!! Form::close() !!}
+                            @endif
                     </td>
                     <td class="col-md-1">
-                        {!! Form::open(['url' => route('delete_video',['video'=> $video->id]),'class'=>'form-horizontal','method'=>'GET']) !!}
-                        {!! Form::button('Видалити', ['class' => 'btn btn-danger','type'=>'submit']) !!}
-                        {!! Form::close() !!}
+                        @can('delete', $video)
+                            {!! Form::open(['url' => route('delete_video',['video'=> $video->id]),'class'=>'form-horizontal','method'=>'GET']) !!}
+                            {!! Form::button('Видалити', ['class' => 'btn btn-danger','type'=>'submit']) !!}
+                            {!! Form::close() !!}
+                        @endcan
                     </td>
                 </tr>
             @endforeach

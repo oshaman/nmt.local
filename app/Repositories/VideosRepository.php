@@ -31,10 +31,10 @@ class VideosRepository extends Repository
 
         $video['token'] = $data['token'];
         $video['channel_id'] = $data['channel'];
-
+        $video['user_id'] = auth()->user()->id;
 
         if (!empty($data['confirmed'])) {
-            if (Gate::allows('CONFIRMATION_DATA')) {
+            if (Gate::allows('CONFIRMATION_VIDEO')) {
                 $video['approved'] = 1;
             }
         }
@@ -66,7 +66,7 @@ class VideosRepository extends Repository
         $video['token'] = $data['token'];
         $video['channel_id'] = $data['channel'];
 
-        if (Gate::allows('CONFIRMATION_DATA')) {
+        if (Gate::allows('CONFIRMATION_VIDEO')) {
             if (!empty($data['confirmed'])) {
                 $video['approved'] = 1;
             } else {
@@ -91,10 +91,6 @@ class VideosRepository extends Repository
      */
     public function deleteVideo($video)
     {
-        if (Gate::denies('CONFIRMATION_DATA')) {
-            abort(404);
-        }
-
         if ($video->delete()) {
 
             $this->clearVideoCache();

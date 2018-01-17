@@ -13,7 +13,9 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'Fresh\Nashemisto\Model' => 'Fresh\Nashemisto\Policies\ModelPolicy',
+        'Fresh\Nashemisto\Article' => 'Fresh\Nashemisto\Policies\ArticlePolicy',
+        'Fresh\Nashemisto\Poll' => 'Fresh\Nashemisto\Policies\PollPolicy',
+        'Fresh\Nashemisto\Video' => 'Fresh\Nashemisto\Policies\VideoPolicy',
     ];
 
     /**
@@ -26,26 +28,22 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('VIEW_ADMIN', function ($user) {
-            return ($user->hasRole('admin') || $user->hasRole('editor'));
+            return ($user->hasRole('admin') || $user->hasRole('editor') || $user->hasRole('journalist') || $user->hasRole('publicist'));
         });
 
         Gate::define('USERS_ADMIN', function ($user) {
             return $user->hasRole('admin');
         });
 
-        Gate::define('UPDATE_ARTICLES', function ($user) {
-            return ($user->hasRole('admin') || $user->hasRole('editor'));
-        });
-
-        Gate::define('UPDATE_CHANNEL', function ($user) {
-            return ($user->hasRole('admin') || $user->hasRole('editor'));
-        });
-
-        Gate::define('UPDATE_VIEW', function ($user) {
-            return ($user->hasRole('admin') || $user->hasRole('editor'));
-        });
-
         Gate::define('UPDATE_TAGS', function ($user) {
+            return ($user->hasRole('admin') || $user->hasRole('editor'));
+        });
+
+        Gate::define('UPDATE_ARTICLES', function ($user) {
+            return $user->hasRole('admin') || $user->hasRole('editor') || $user->canDo('UPDATE_ARTICLES');
+        });
+
+        Gate::define('UPDATE_PRIORITY', function ($user) {
             return ($user->hasRole('admin') || $user->hasRole('editor'));
         });
 
@@ -54,22 +52,36 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('UPDATE_POLLS', function ($user) {
-            return ($user->hasRole('admin') || $user->hasRole('editor'));
+            return $user->hasRole('admin') || $user->hasRole('editor') || $user->canDo('UPDATE_POLLS');
         });
 
         Gate::define('CONFIRMATION_DATA', function ($user) {
+            return ($user->hasRole('admin') || $user->hasRole('editor') || $user->hasRole('journalist'));
+        });
+
+        Gate::define('CONFIRMATION_VIDEO', function ($user) {
+            return ($user->hasRole('admin') || $user->hasRole('video_editor') || $user->hasRole('video_journalist'));
+        });
+
+        Gate::define('UPDATE_VIDEO', function ($user) {
+            return ($user->hasRole('admin') || $user->hasRole('video_editor') || $user->canDo('UPDATE_VIDEO'));
+        });
+
+
+        Gate::define('UPDATE_CHANNEL', function ($user) {
+            return ($user->hasRole('admin') || $user->hasRole('video_editor'));
+        });
+
+        Gate::define('UPDATE_VIEW', function ($user) {
             return ($user->hasRole('admin') || $user->hasRole('editor'));
         });
+
 
         Gate::define('UPDATE_SEO', function ($user) {
             return ($user->hasRole('admin') || $user->hasRole('editor'));
         });
 
         Gate::define('UPDATE_STATIC', function ($user) {
-            return ($user->hasRole('admin') || $user->hasRole('editor'));
-        });
-
-        Gate::define('UPDATE_PRIORITY', function ($user) {
             return ($user->hasRole('admin') || $user->hasRole('editor'));
         });
     }

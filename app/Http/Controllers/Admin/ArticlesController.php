@@ -2,6 +2,7 @@
 
 namespace Fresh\Nashemisto\Http\Controllers\Admin;
 
+use Fresh\Nashemisto\Article;
 use Fresh\Nashemisto\Http\Requests\ArticleRequest;
 use Fresh\Nashemisto\Repositories\ArticlesRepository;
 use Fresh\Nashemisto\Category;
@@ -30,7 +31,8 @@ class ArticlesController extends AdminController
      */
     public function index(ArticleRequest $request)
     {
-        if (Gate::denies('UPDATE_ARTICLES')) {
+//        dd('index');
+        if (Gate::denies('view', new Article())) {
             abort(404);
         }
 
@@ -39,7 +41,7 @@ class ArticlesController extends AdminController
             $data['value'] = $data['value'] ?? null;
             switch ($data['param']) {
                 case 1:
-                    $articles = $this->a_rep->get(['title', 'id', 'alias', 'created_at'],
+                    $articles = $this->a_rep->get(['title', 'id', 'alias', 'created_at', 'user_id'],
                         false, true, [['title', 'like', '%' . $data['value'] . '%']]);
                     if ($articles) $articles->appends(['param' => $data['param']])->links();
                     break;
@@ -47,18 +49,18 @@ class ArticlesController extends AdminController
                     $articles[] = $this->a_rep->one($data['value']);
                     break;
                 case 3:
-                    $articles = $this->a_rep->get(['title', 'id', 'alias', 'created_at'],
-                                 false, true, ['approved' => 0], ['created_at', 'desc']);
+                    $articles = $this->a_rep->get(['title', 'id', 'alias', 'created_at', 'user_id'],
+                        false, true, ['approved' => 0], ['created_at', 'desc']);
                     if ($articles) $articles->appends(['param' => $data['param']])->links();
                     break;
                 default:
-                    $articles = $this->a_rep->get(['alias', 'title', 'created_at', 'id'],
-                            false, true, ['approved' => 0], ['created_at', 'desc']);
+                    $articles = $this->a_rep->get(['alias', 'title', 'created_at', 'id', 'user_id'],
+                        false, true, ['approved' => 0], ['created_at', 'desc']);
                     if ($articles) $articles->appends(['param' => $data['param']])->links();
             }
         } else {
-            $articles = $this->a_rep->get(['alias', 'title', 'created_at', 'id'],
-                                false, true, ['approved' => 1], ['created_at', 'desc']);
+            $articles = $this->a_rep->get(['alias', 'title', 'created_at', 'id', 'user_id'],
+                false, true, ['approved' => 1], ['created_at', 'desc']);
         }
 
         $this->content = view('admin.articles.show')->with(['articles' => $articles])->render();
@@ -72,7 +74,7 @@ class ArticlesController extends AdminController
      */
     public function create(ArticleRequest $request)
     {
-        if (Gate::denies('UPDATE_ARTICLES')) {
+        if (Gate::denies('create', new Article())) {
             abort(404);
         }
 
@@ -112,7 +114,7 @@ class ArticlesController extends AdminController
      */
     public function edit(ArticleRequest $request, $article)
     {
-        if (Gate::denies('UPDATE_ARTICLES')) {
+        if (Gate::denies('update', $article)) {
             abort(404);
         }
 
@@ -155,7 +157,7 @@ class ArticlesController extends AdminController
      */
     public function del($article)
     {
-        if (Gate::denies('CONFIRMATION_DATA')) {
+        if (Gate::denies('delete', $article)) {
             abort(404);
         }
 

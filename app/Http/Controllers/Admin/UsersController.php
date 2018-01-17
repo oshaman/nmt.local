@@ -16,7 +16,7 @@ class UsersController extends AdminController
      */
     public function __construct(UsersRepository $us_rep)
     {
-        $this->title = 'Редактирование пользователей';
+        $this->title = 'Редагування користувачів';
         $this->template = 'admin.admin';
         $this->us_rep = $us_rep;
     }
@@ -56,7 +56,7 @@ class UsersController extends AdminController
             return redirect()->route('users_admin')->with($result);
         }
 
-        $this->title = 'Редактирование пользователя - ' . $user->email;
+        $this->title = 'Редагування користувача - ' . $user->email;
 
         $roles = $this->us_rep->getRoles();
 
@@ -88,7 +88,7 @@ class UsersController extends AdminController
         if (Gate::denies('USERS_ADMIN')) {
             abort(404);
         }
-        $this->title = 'Новый пользователь';
+        $this->title = 'Новий користувач';
 
         if ($request->isMethod('post')) {
             $result = $this->us_rep->addUser($request);

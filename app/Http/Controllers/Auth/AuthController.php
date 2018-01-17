@@ -87,11 +87,11 @@ class AuthController extends Controller
     protected function authenticated($request = null, $user)
     {
 
-        if (('admin' === $user->role->name) || ('editor' === $user->role->name)) {
+        if ($user->hasRole('admin') || $user->hasRole('editor')) {
             return redirect('admin');
         }
 
-        if ('guest' === $user->role->name) {
+        if ($user->hasRole('guest')) {
             return redirect('/');
         }
 

@@ -2,6 +2,7 @@
 
 namespace Fresh\Nashemisto\Http\Controllers\Admin;
 
+use Fresh\Nashemisto\Poll;
 use Gate;
 use Fresh\Nashemisto\Http\Requests\PollRequest;
 use Fresh\Nashemisto\Repositories\PollsRepository;
@@ -26,7 +27,7 @@ class PollsController extends AdminController
      */
     public function index(PollRequest $request)
     {
-        if (Gate::denies('UPDATE_ARTICLES')) {
+        if (Gate::denies('view', new Poll())) {
             abort(404);
         }
 
@@ -35,7 +36,7 @@ class PollsController extends AdminController
             $data['value'] = $data['value'] ?? null;
             switch ($data['param']) {
                 case 1:
-                    $polls = $this->poll_rep->get(['question', 'id', 'alias', 'created_at'],
+                    $polls = $this->poll_rep->get(['question', 'id', 'alias', 'created_at', 'user_id'],
                         false, true, [['question', 'like', '%' . $data['value'] . '%']]);
                     if ($polls) $polls->appends(['param' => $data['param']])->links();
                     break;
@@ -43,17 +44,17 @@ class PollsController extends AdminController
                     $polls[] = $this->poll_rep->one($data['value']);
                     break;
                 case 3:
-                    $polls = $this->poll_rep->get(['question', 'id', 'alias', 'created_at'],
+                    $polls = $this->poll_rep->get(['question', 'id', 'alias', 'created_at', 'user_id'],
                         false, true, ['approved' => 0], ['created_at', 'desc']);
                     if ($polls) $polls->appends(['param' => $data['param']])->links();
                     break;
                 default:
-                    $polls = $this->poll_rep->get(['alias', 'question', 'created_at', 'id'],
+                    $polls = $this->poll_rep->get(['alias', 'question', 'created_at', 'id', 'user_id'],
                         false, true, ['approved' => 0], ['created_at', 'desc']);
                     if ($polls) $polls->appends(['param' => $data['param']])->links();
             }
         } else {
-            $polls = $this->poll_rep->get(['alias', 'question', 'created_at', 'id'],
+            $polls = $this->poll_rep->get(['alias', 'question', 'created_at', 'id', 'user_id'],
                 false, 25, ['approved' => 1], ['created_at', 'desc']);
         }
 
@@ -62,9 +63,13 @@ class PollsController extends AdminController
         return $this->renderOutput();
     }
 
+    /**
+     * @param PollRequest $request
+     * @return $this|\Illuminate\Http\RedirectResponse|mixed
+     */
     public function create(PollRequest $request)
     {
-        if (Gate::denies('UPDATE_POLLS')) {
+        if (Gate::denies('create', new Poll())) {
             abort(404);
         }
 
@@ -87,9 +92,14 @@ class PollsController extends AdminController
         return $this->renderOutput();
     }
 
+    /**
+     * @param PollRequest $request
+     * @param $poll
+     * @return $this|\Illuminate\Http\RedirectResponse|mixed
+     */
     public function edit(PollRequest $request, $poll)
     {
-        if (Gate::denies('UPDATE_POLLS')) {
+        if (Gate::denies('update', $poll)) {
             abort(404);
         }
 

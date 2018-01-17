@@ -11,14 +11,18 @@ class ChannelsController extends AdminController
 {
     protected $c_rep;
 
+    /**
+     * ChannelsController constructor.
+     * @param ChannelsRepository $rep
+     */
     public function __construct(ChannelsRepository $rep)
     {
         $this->c_rep = $rep;
         $this->template = 'admin.admin';
         $this->jss = '
-                <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-                <script src="' . asset('js/translate.js') . '"></script>
-            ';
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <script src="' . asset('js/translate.js') . '"></script>
+        ';
     }
 
     /**

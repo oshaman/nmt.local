@@ -14,7 +14,7 @@ class ChangeUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-//            $table->dropForeign('users_role_id_foreign');
+            $table->dropForeign('users_role_id_foreign');
             $table->dropColumn('role_id');
         });
     }

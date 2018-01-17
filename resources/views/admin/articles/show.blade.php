@@ -43,24 +43,30 @@
             <tbody>
             @foreach ($articles as $article)
                 <tr>
-                    <td class="col-md-4">{{ $article->id }}</td>
-                    <td class="col-md-4">{{ $article->alias }}</td>
+                    <td class="col-md-1">{{ $article->id }}</td>
+                    <td class="col-md-3">{{ $article->alias }}</td>
                     <td class="col-md-3">{{ $article->title }}</td>
                     <td class="col-md-2">{{ $article->created_at }}</td>
                     <td class="col-md-1">
-                        {!! Form::open(['url' => route('admin_article_seo',['article'=> $article->id]),'class'=>'form-horizontal','method'=>'GET']) !!}
-                        {!! Form::button('SEO', ['class' => 'btn btn-warning','type'=>'submit']) !!}
-                        {!! Form::close() !!}
+                        @can('update', $article)
+                            {!! Form::open(['url' => route('admin_article_seo',['article'=> $article->id]),'class'=>'form-horizontal','method'=>'GET']) !!}
+                            {!! Form::button('SEO', ['class' => 'btn btn-warning','type'=>'submit']) !!}
+                            {!! Form::close() !!}
+                        @endcan
                     </td>
                     <td class="col-md-1">
-                        {!! Form::open(['url' => route('edit_article',['article'=> $article->id]),'class'=>'form-horizontal','method'=>'GET']) !!}
-                        {!! Form::button('Редагувати', ['class' => 'btn btn-warning','type'=>'submit']) !!}
-                        {!! Form::close() !!}
+                        @can('update', $article)
+                            {!! Form::open(['url' => route('edit_article',['article'=> $article->id]),'class'=>'form-horizontal','method'=>'GET']) !!}
+                            {!! Form::button('Редагувати', ['class' => 'btn btn-warning','type'=>'submit']) !!}
+                            {!! Form::close() !!}
+                        @endcan
                     </td>
                     <td class="col-md-1">
-                        {!! Form::open(['url' => route('delete_article',['article'=> $article->id]),'class'=>'form-horizontal','method'=>'GET']) !!}
-                        {!! Form::button('Видалити', ['class' => 'btn btn-danger','type'=>'submit']) !!}
-                        {!! Form::close() !!}
+                        @can('delete', $article)
+                            {!! Form::open(['url' => route('delete_article',['article'=> $article->id]),'class'=>'form-horizontal','method'=>'GET']) !!}
+                            {!! Form::button('Видалити', ['class' => 'btn btn-danger','type'=>'submit']) !!}
+                            {!! Form::close() !!}
+                        @endcan
                     </td>
                 </tr>
             @endforeach

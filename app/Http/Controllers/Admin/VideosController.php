@@ -6,6 +6,7 @@ use Fresh\Nashemisto\Http\Requests\VideoRequest;
 use Fresh\Nashemisto\Repositories\VideosRepository;
 use Fresh\Nashemisto\Channel;
 use Fresh\Nashemisto\Repositories\ChannelsRepository;
+use Fresh\Nashemisto\Video;
 use Gate;
 
 class VideosController extends AdminController
@@ -28,7 +29,7 @@ class VideosController extends AdminController
      */
     public function index(VideoRequest $request)
     {
-        if (Gate::denies('UPDATE_CHANNEL')) {
+        if (Gate::denies('view', new Video())) {
             abort(404);
         }
 
@@ -37,22 +38,22 @@ class VideosController extends AdminController
             $data['value'] = $data['value'] ?? null;
             switch ($data['param']) {
                 case 1:
-                    $videos = $this->v_rep->get(['title', 'id', 'created_at'],
+                    $videos = $this->v_rep->get(['title', 'id', 'created_at', 'user_id'],
                         false, true, [['title', 'like', '%' . $data['value'] . '%']]);
                     if ($videos) $videos->appends(['param' => $data['param']])->links();
                     break;
                 case 2:
-                    $videos = $this->v_rep->get(['title', 'id', 'created_at'],
+                    $videos = $this->v_rep->get(['title', 'id', 'created_at', 'user_id'],
                         false, true, ['approved' => 0], ['created_at', 'desc']);
                     if ($videos) $videos->appends(['param' => $data['param']])->links();
                     break;
                 default:
-                    $videos = $this->v_rep->get(['title', 'created_at', 'id'],
+                    $videos = $this->v_rep->get(['title', 'created_at', 'id', 'user_id'],
                         false, true, ['approved' => 0], ['created_at', 'desc']);
                     if ($videos) $videos->appends(['param' => $data['param']])->links();
             }
         } else {
-            $videos = $this->v_rep->get(['title', 'created_at', 'id'],
+            $videos = $this->v_rep->get(['title', 'created_at', 'id', 'user_id'],
                 false, true, ['approved' => 1], ['created_at', 'desc']);
         }
 
@@ -67,7 +68,7 @@ class VideosController extends AdminController
      */
     public function create(VideoRequest $request)
     {
-        if (Gate::denies('UPDATE_CHANNEL')) {
+        if (Gate::denies('create', new Video())) {
             abort(404);
         }
 
@@ -100,7 +101,7 @@ class VideosController extends AdminController
      */
     public function edit(VideoRequest $request, $video)
     {
-        if (Gate::denies('UPDATE_CHANNEL')) {
+        if (Gate::denies('update', $video)) {
             abort(404);
         }
 
@@ -133,7 +134,7 @@ class VideosController extends AdminController
      */
     public function del($video)
     {
-        if (Gate::denies('UPDATE_CHANNEL')) {
+        if (Gate::denies('delete', $video)) {
             abort(404);
         }
 

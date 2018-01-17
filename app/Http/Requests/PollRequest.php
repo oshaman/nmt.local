@@ -13,7 +13,7 @@ class PollRequest extends FormRequest
      */
     public function authorize()
     {
-        return \Auth::user()->canDo('UPDATE_POLLS');
+        return (\Auth::user()->hasRole('admin')) || (\Auth::user()->hasRole('editor')) || \Auth::user()->canDo('UPDATE_POLLS');
     }
 
     /**

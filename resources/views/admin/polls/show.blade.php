@@ -42,9 +42,11 @@
                     <td class="col-md-8">{{ $poll->question }}</td>
                     <td class="col-md-2">{{ $poll->created_at }}</td>
                     <td class="col-md-1">
-                        {!! Form::open(['url' => route('edit_poll',['poll'=> $poll->id]),'class'=>'form-horizontal','method'=>'GET']) !!}
-                        {!! Form::button('Редагувати', ['class' => 'btn btn-warning','type'=>'submit']) !!}
-                        {!! Form::close() !!}
+                        @can('update', $poll)
+                            {!! Form::open(['url' => route('edit_poll',['poll'=> $poll->id]),'class'=>'form-horizontal','method'=>'GET']) !!}
+                            {!! Form::button('Редагувати', ['class' => 'btn btn-warning','type'=>'submit']) !!}
+                            {!! Form::close() !!}
+                        @endcan
                     </td>
                     {{--<td class="col-md-1">
                         {!! Form::open(['url' => route('delete_poll',['poll'=> $poll->id]),'class'=>'form-horizontal','method'=>'GET']) !!}

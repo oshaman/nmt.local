@@ -53,7 +53,7 @@ jQuery(document).ready(function () {
             vert.mCustomScrollbar("destroy");
             scrollInit(true);
             $('.players-block').removeClass('dest');
-    }
+        }
     }
 
     getScroll();
@@ -64,17 +64,17 @@ jQuery(document).ready(function () {
 
 
     $('.upss-aroww').click(function (event) {
-event.preventDefault(event);
-console.log('top');
+        event.preventDefault(event);
+        console.log('top');
         $('.vert').mCustomScrollbar("scrollTo", "+=150", {scrollInertia: 600, scrollEasing: "linear"});
-});
-$('.dowm-aroww').click(function(event) {
-event.preventDefault(event);
+    });
+    $('.dowm-aroww').click(function (event) {
+        event.preventDefault(event);
 
 
-    //console.log('bottom');
-    $('.vert').mCustomScrollbar("scrollTo", "-=150", {scrollInertia: 600, scrollEasing: "linear"});
-});
+        //console.log('bottom');
+        $('.vert').mCustomScrollbar("scrollTo", "-=150", {scrollInertia: 600, scrollEasing: "linear"});
+    });
 
 
     if ($(window).width() > 1024) {
@@ -99,12 +99,6 @@ event.preventDefault(event);
     }
 
 
-
-
-
-
-
-
     if ($('.linky').length) {
         var fixmeTop = $('.linky').offset().top;
 
@@ -119,7 +113,7 @@ event.preventDefault(event);
             if (currentScroll >= fixmeTop - 399) {
                 $('.linky').addClass('runns');
             }
-            else {    
+            else {
                 $('.linky').removeClass('runns');
             }
         });
@@ -131,11 +125,11 @@ event.preventDefault(event);
 
             var city = $('.city-news').offset().top;
             var test = city - last - 399 - 114;
-            console.log(test);    
+            console.log(test);
             if (currentScroll >= test) {
                 $('.linky').addClass('best');
             }
-            else {    
+            else {
                 $('.linky').removeClass('best');
             }
 
@@ -396,18 +390,195 @@ event.preventDefault(event);
     }, 55);
 
 
-    jQuery(function ($) {
-        $(document).mouseup(function (e) { // событие клика по веб-документу
-            var div = $(".linsa"); // тут указываем ID элемента
-            if (!div.is(e.target) // если клик был не по нашему блоку
-                && div.has(e.target).length === 0) { // и не по его дочерним элементам
-                $('.vijen').css({'height': '0', 'transition-delay': '.39s'});
-                $('.vijen-insid').css({'opacity': '0', 'transition-delay': '0s', 'visibility': 'hidden'});
-                $('.hovv-news').removeClass('linsa');
-                ness = '7';
-            }
-        });
+    $(document).mouseup(function (e) { // событие клика по веб-документу
+        var div = $(".linsa"); // тут указываем ID элемента
+        if (!div.is(e.target) // если клик был не по нашему блоку
+            && div.has(e.target).length === 0) { // и не по его дочерним элементам
+            $('.vijen').css({'height': '0', 'transition-delay': '.39s'});
+            $('.vijen-insid').css({'opacity': '0', 'transition-delay': '0s', 'visibility': 'hidden'});
+            $('.hovv-news').removeClass('linsa');
+            ness = '7';
+        }
     });
 
 
+    var mexx = '7';
+    $('.glavn-hover').click(function () {
+
+        if (mexx === '7') {
+            $('.hody').css({'height': '245px', 'transition-delay': '0s'});
+            $('.soloo').css({'opacity': '1', 'transition-delay': '.39s', 'visibility': 'visible'});
+            setTimeout(function () {
+                mexx = '4';
+            }, 99);
+        }
+        if (mexx === '4') {
+            $('.hody').css({'height': '0', 'transition-delay': '.39s'});
+            $('.soloo').css({'opacity': '0', 'transition-delay': '0s', 'visibility': 'hidden'});
+            mexx = '7';
+        }
+    });
+
+
+    $(document).mouseup(function (e) { // событие клика по веб-документу
+        var div4 = $(".glavn-hover"); // тут указываем ID элемента
+        if (!div4.is(e.target) // если клик был не по нашему блоку
+            && div4.has(e.target).length === 0) { // и не по его дочерним элементам
+
+            $('.hody').css({'height': '0', 'transition-delay': '.39s'});
+            $('.soloo').css({'opacity': '0', 'transition-delay': '0s', 'visibility': 'hidden'});
+            mexx = '7';
+        }
+    });
+
+
+    $('.item-efir').click(function () {
+
+        $('.efir-block').addClass('runn-right');
+    });
+
+    $('.back-butt').click(function () {
+        $('.efir-block').removeClass('runn-right');
+    });
+
+    $('.closy7').click(function () {
+        $('.efir-block').addClass('endd');
+        setTimeout(function () {
+            $('.efir-block').removeClass('runn-right endd main-govy');
+        }, 700);
+    });
+
+
+    $(document).mouseup(function (e) { // событие клика по веб-документу
+        var div4 = $(".clik-city"); // тут указываем ID элемента
+        if (!div4.is(e.target) // если клик был не по нашему блоку
+            && div4.has(e.target).length === 0) { // и не по его дочерним элементам
+
+            $('.homr-name').css({'height': '0', 'transition-delay': '.39s'});
+            $('.scrol-city').css({'opacity': '0', 'transition-delay': '0s', 'visibility': 'hidden'});
+            hexx = '7';
+        }
+    });
+
+
+//          var tag = document.createElement('script');
+//      tag.src = "https://www.youtube.com/iframe_api";
+//      var firstScriptTag = document.getElementsByTagName('script')[0];
+//      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    // 3. This function creates an <iframe> (and YouTube player)
+    //    after the API code downloads.
+    
+     
+
 });//and ready
+
+var player5;
+var player;
+var vidos = 'yA30K3z5PSw';
+
+
+$('.newss').click(function () {
+    var videoUrl = $(this).attr("data-token");
+    vidos = videoUrl;
+    console.log(vidos);
+    player5.destroy();
+
+    player.destroy();
+    bigVideo();
+});
+
+
+function onYouTubeIframeAPIReady() {
+    bigVideo()
+}
+
+function bigVideo() {
+    player5 = new YT.Player('player5', {
+        height: '350',
+
+        width: '540',
+
+        videoId: vidos,
+        events: {
+
+            'onReady': onPlayerReady,
+//            'onStateChange': onPlayerStateChange
+        }
+    });
+    player = new YT.Player('playerr', {
+        height: '360',
+        width: '640',
+
+        videoId: vidos,
+        events: {
+            'onReady': onPlayerReady,
+//          'onStateChange': onPlayerStateChange
+        }
+    });
+
+
+}
+
+// 4. The API will call this function when the video player is ready.
+function onPlayerReady(event) {
+    //event.target.playVideo();
+    smallMutePlay();
+    smallMuteStop();
+    biggMuteStop();
+    biggMutePlay();
+    //player.mute();
+}
+
+
+function smallMuteStop() {
+    player.mute();
+}
+
+function smallMutePlay() {
+    player.unMute();
+}
+
+
+function biggMuteStop() {
+    player5.mute();
+}
+
+function biggMutePlay() {
+    player5.unMute();
+}
+
+
+var done = true;
+//      function onPlayerStateChange(event) {
+//        
+//       if (event.data == YT.PlayerState.PLAYING && !done) {
+//          setTimeout(stopVideo, 1000);
+//          done = false;
+//        }
+//      }
+function stopVideo() {
+    player5.stopVideo();
+    player.stopVideo();
+}
+
+
+$(window).scroll(function () {
+    var mainScrol = $(window).scrollTop();
+    var scrolBlock = $('.players-left').offset().top;
+    var contHeigh = $('.players-left').height();
+    if (mainScrol >= scrolBlock + contHeigh) {
+        $('.video-youtube').addClass('yout');
+        smallMutePlay();
+        biggMuteStop();
+
+    } else {
+        $('.video-youtube').removeClass('yout');
+
+        smallMuteStop();
+        biggMutePlay();
+    }
+
+});
+
+     

@@ -13,7 +13,7 @@ class ArticleRequest extends FormRequest
      */
     public function authorize()
     {
-        return \Auth::user()->canDo();
+        return (\Auth::user()->hasRole('admin')) || (\Auth::user()->hasRole('editor')) || \Auth::user()->canDo('UPDATE_ARTICLES');
     }
 
     /**

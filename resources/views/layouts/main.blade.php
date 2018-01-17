@@ -31,7 +31,7 @@
         @if(!empty($seo->seo_title))
             {{ env('APP_NAME') .' - '. $seo->seo_title }}
         @else
-            {{ env('APP_NAME') .' - '. $title }}
+            {{ env('APP_NAME') .' - '. ($title ?? '') }}
         @endif
     </title>
 
@@ -49,7 +49,34 @@
 <script src="{{ asset('/') }}/js/jquery-3.2.1.min.js"></script>
 <script src="{{ asset('/') }}/js/jquery.mCustomScrollbar.min.js"></script>
 <script src="{{ asset('/') }}/js/datepicker.js"></script>
+<script src="https://www.youtube.com/iframe_api"></script>
+
+
+<div class="video-youtube">
+    <div id="playerr"></div>
+</div>
+
+<script>
+    // 2. This code loads the IFrame Player API code asynchronously.
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    // 3. This function creates an <iframe> (and YouTube player)
+    //    after the API code downloads.
+
+
+</script>
+
+
+<script>
+
+</script>
+
+
 <script src="{{ asset('/') }}/js/main.js"></script>
 @yield('jss')
+
 </body>
 </html>

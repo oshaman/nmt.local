@@ -1,4 +1,5 @@
 $('.video-cat').bind('click', switchList);
+$('.a-video-cat').bind('click', switchAList);
 $('.newss').bind('click', switchVideo);
 
 function switchList() {
@@ -32,4 +33,12 @@ function switchVideo() {
     _this.siblings().removeClass('active');
     _this.addClass('active');
     $(".item-players p.main-video").html('<iframe src="//www.youtube.com/embed/' + _this.attr('data-token') + '?&autoplay=1" width="560" height="314"></iframe>');
+}
+
+function switchAList() {
+    _this = $(this);
+    dataid = $(this).attr('data-id');
+    console.log(dataid);
+    _this.closest('.efir-onee').siblings('.efir-twoo').find('.players-phone').hide();
+    _this.closest('.efir-onee').siblings('.efir-twoo').find('.players-phone.chanel-' + dataid).show();
 }

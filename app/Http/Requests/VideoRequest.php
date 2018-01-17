@@ -13,7 +13,7 @@ class VideoRequest extends FormRequest
      */
     public function authorize()
     {
-        return \Auth::user()->canDo('UPDATE_CHANNEL');
+        return \Auth::user()->canDo('UPDATE_VIDEO') || \Auth::user()->hasRole('video_editor') || \Auth::user()->hasRole('admin');
     }
 
     /**

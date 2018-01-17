@@ -55,7 +55,6 @@ class Handler extends ExceptionHandler
                 ->back()
                 ->withInput($request->except('_token'))
                 ->withErrors('Время Вашей сессии истекло, повторите запрос.');
-
         }
 
         if ($this->isHttpException($exception)) {
@@ -86,6 +85,10 @@ class Handler extends ExceptionHandler
                     $footer = view('layouts.footer')->render();
                     return response()->view('errors.404',
                         ['header' => $header, 'footer' => $footer, 'articles' => $articles, 'title' => '404'], 404);
+                    break;
+                case '403':
+                    return response()->redirect()->back()->withErrors(['error', 'Не ']);
+                    break;
             }
         }
 

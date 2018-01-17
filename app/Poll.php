@@ -8,7 +8,7 @@ class Poll extends Model
 {
     protected $fillable = [
         'title', 'alias', 'description', 'question', 'image', 'alt', 'imgtitle',
-        'answer1', 'answer2', 'answer3', 'answer4', 'answer5', 'approved', 'created_at'
+        'answer1', 'answer2', 'answer3', 'answer4', 'answer5', 'approved', 'created_at', 'user_id'
     ];
 
     public function voting($id)

@@ -32,11 +32,11 @@
                         @if($user->hasRole($role))
                             <td>
                                 <input checked name="roles[]" type="checkbox"
-                                       value="{{ $id }}">{{trans('ru.' . $role) }}
+                                       value="{{ $id }}">{{trans('ua.' . $role) }}
                             </td>
                         @else
                             <td>
-                                <input name="roles[]" type="checkbox" value="{{ $id }}">{{ trans('ru.' . $role) }}
+                                <input name="roles[]" type="checkbox" value="{{ $id }}">{{ trans('ua.' . $role) }}
                             </td>
                         @endif
                     @endforeach

@@ -4,8 +4,8 @@
             <h1 class="city-caption"><span>Наше Місто TV</span></h1>
             <div class="straight-block">
                 <div class="straight-left"><img src="{{ asset('/') }}img/play.png" alt=""><span>Прямий эфір</span></div>
-                <div class="straight-right">
-                    @if(!empty($channels))
+                @if(!empty($channels))
+                    <div class="straight-right">
                         @foreach($channels as $channel)
                             @continue($loop->index>6)
                             <div class="news-item video-cat @if($loop->first) active @endif"
@@ -13,10 +13,10 @@
                                 <a href="#!">{{ $channel->title }}<span class="linn"></span></a>
                             </div>
                         @endforeach
-
-
-                        <div class="news-item hovv-news"><a href="javascript:void(0);">Інші категорії<span
-                                        class="linn"></span></a>
+                        <div class="news-item hovv-news">
+                            <a href="javascript:void(0);">
+                                Інші категорії<span class="linn"></span>
+                            </a>
                             @if(count($channels)>7)
                                 <div class="vijen">
                                     <div class="vijen-insid">
@@ -31,30 +31,16 @@
                                 </div>
                             @endif
                         </div>
-
-                    @endif
-                </div>
-                <div class="strai-main">рубріки відео</div>
-
-                <div class="efir-block">
-                    <div class="efir-onee">
-                        <div class="onne-block">
-                            <div class="closy"><img src="{{ asset('/') }}img/krest.png" alt=""></div>
-                            <div class="item-efir"><span>прями ефір</span></div>
-                            <div class="item-efir"><span>обговорення (ток шоу)</span></div>
-                            <div class="item-efir"><span>інтервью дня</span></div>
-
-                            <div class="item-efir"><span>огляд преси</span></div>
-                            <div class="item-efir active"><span>веб-камера нашого міста</span></div>
-
-                            <div class="item-efir"><span>кримінал</span></div>
-                            <div class="item-efir"><span>культура і спорт</span></div>
-                            <div class="item-efir"><span>інші категорії</span></div>
-                        </div>
                     </div>
-                </div>
+                    {{--Adaptive Video--}}
+                    <div class="strai-main">рубріки відео</div>
+                    @include('static.adaptive_video', $channels)
+                @endif
             </div>
-
+            <div class="video-adaptiv">
+                <iframe src="//www.youtube.com/embed/yA30K3z5PSw" width="560" height="314"
+                        allowfullscreen="allowfullscreen"></iframe>
+            </div>
             <div class="players-block">
                 <div class="players-left">
 
@@ -64,14 +50,15 @@
                              <iframe src="//www.youtube.com/embed/T5WCWpRpHDQ?&autoplay=1" width="560" height="314"
                                      allowfullscreen="allowfullscreen"></iframe>
                          </p>--}}
-                        <p class="main-video">
-                            <!--iframe src="//www.youtube.com/embed/yA30K3z5PSw?&autoplay=1" width="560" height="314"
-                                    allowfullscreen="allowfullscreen"></iframe-->
-                            <iframe src="//www.youtube.com/embed/yA30K3z5PSw" width="560" height="314"
-                                    allowfullscreen="allowfullscreen"></iframe>
-                        </p>
 
-                        <div class="line-video"><img src="{{ asset('/') }}img/line-video.png" alt=""></div>
+                        <!--iframe src="//www.youtube.com/embed/yA30K3z5PSw?&autoplay=1" width="560" height="314"
+                                    allowfullscreen="allowfullscreen"></iframe-->
+                            <!--iframe src="//www.youtube.com/embed/yA30K3z5PSw" width="560" height="314"
+                                    allowfullscreen="allowfullscreen"></iframe-->
+                            <div id="player5"></div>
+
+
+                            <div class="line-video"><img src="{{ asset('/') }}img/line-video.png" alt=""></div>
                     </div>
                 </div>
                 <div class="date">
@@ -119,28 +106,19 @@
                         <div class="dowm-aroww"></div>
                     </div>
                 </div>
-
             </div>
-
-
             <div class="city-news">
                 <h3 class="city-caption"><span>Новини Нашого Міста</span></h3>
                 {{--Категории--}}
                 @include('layouts.categories', ['categories'=>$categories])
                 {{--Категории--}}
                 {{--Статьи--}}
-
-
                 <div class="hovy-city">
-
-
                     <div class="city-mainy styl-city">всі новини</div>
                     <div class="city-mainy glavn-hover">рубріки новин</div>
-
                     <div class="hody">
-                        <div class="sect-news">
-                            <div class="news-item
-             switch-cat          active " data-id="1">
+                        <div class="sect-news soloo">
+                            <div class="news-item switch-cat active " data-id="1">
                                 <a href="http://13.j2landing.com/categories">Всі новини<span class="linn"></span></a>
                             </div>
                             <div class="news-item  switch-cat " data-id="2">
@@ -161,11 +139,7 @@
                             <div class="clear"></div>
                         </div>
                     </div>
-
-
                 </div>
-
-
                 <div class="main-news cat-removeble">
                     @if(!empty($articles))
                         @foreach($articles as $article)

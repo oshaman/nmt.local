@@ -79,10 +79,12 @@
 <div class="row">
     <!-- Approved -->
     <div class="col-lg-6">
-        <label>
-            <input type="checkbox" {{ old('confirmed') ? 'checked' : ''}} value="1" name="confirmed">
-            Опублікувати
-        </label>
+        @if(Auth::user()->canDo('CONFIRMATION_DATA'))
+            <label>
+                <input type="checkbox" {{ old('confirmed') ? 'checked' : ''}} value="1" name="confirmed">
+                Опублікувати
+            </label>
+        @endif
     </div>
     <div class="col-lg-6">
         <h4>{!! Form::label('outputtime', 'Дата публікації') !!}</h4>
