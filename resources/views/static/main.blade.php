@@ -56,6 +56,7 @@
                             <!--iframe src="//www.youtube.com/embed/yA30K3z5PSw" width="560" height="314"
                                     allowfullscreen="allowfullscreen"></iframe-->
                             <div id="player5"></div>
+                            <div class="vids" data-token="yA30K3z5PSw"></div>
 
 
                             <div class="line-video"><img src="{{ asset('/') }}img/line-video.png" alt=""></div>

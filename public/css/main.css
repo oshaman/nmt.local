@@ -1,4 +1,7 @@
-body {margin: 0;}
+body {
+    margin: 0;
+    position: relative;
+}
 
 
 .container {width: 1170px;margin: 0 auto;}
@@ -2839,7 +2842,7 @@ input[type=radio]:checked ~ label span:nth-child(2) {
 }
 
 .vijen-insid .news-item:after, .vijen-insid .news-item:before {
-    opacity: 0
+    opacity: 0 !important;
 }
 
 .vijen-insid .news-item a:before {
@@ -2872,7 +2875,7 @@ input[type=radio]:checked ~ label span:nth-child(2) {
 
 .vijen-insid .news-item a:after {
     left: 24px;
-    top: 9px;
+    top: 9px !important;
 }
 
 .vijen-insid .news-item a:hover {
@@ -3327,6 +3330,7 @@ input[type=radio]:checked ~ label span:nth-child(2) {
 
 .main-view .form-inter {
     padding: 59px 0 70px 0;
+    position: relative;
 }
 
 .main-view .hamm .content-news h3 {
@@ -3705,6 +3709,18 @@ input[type=radio]:checked ~ label span:nth-child(2) {
     height: 100%;
     content: '';
     top: 0;
+}
+
+.video-youtube {
+    bottom: 0;
+}
+
+.quest-four .linn:before, .quest-four .linn:after {
+    bottom: 5px;
+}
+
+.quest-four .main-buty .linn:before, .quest-four .main-buty .linn:after {
+    bottom: -1px;
 }
 
 @media (max-width: 1299px) {
@@ -4136,6 +4152,10 @@ input[type=radio]:checked ~ label span:nth-child(2) {
         left: 20px;
         height: 75px;
     }
+
+    .mainy .right-coments span {
+        padding: 0;
+    }
 }
 
 @media (max-width: 950px) {
@@ -4501,7 +4521,7 @@ input[type=radio]:checked ~ label span:nth-child(2) {
     }
 
     .city-name span {
-        width: 200px;
+        width: 229px;
         position: absolute;
         left: -7px;
         bottom: -15px;
