@@ -1,44 +1,56 @@
-$('.video-cat').bind('click', switchList);
-$('.a-video-cat').bind('click', switchAList);
-$('.newss').bind('click', switchVideo);
-
-function switchList() {
-
-    _this = $(this);
-
-    if (_this.parents().hasClass('hovv-news')) {
-        if (_this.siblings('.active').attr('data-id')) {
-            old_id = _this.siblings('.active').attr('data-id');
-        } else {
-            old_id = _this.closest('.hovv-news').siblings('.active').attr('data-id');
-            _this.closest('.hovv-news').siblings().removeClass("active");
-        }
-        _this.closest('.hovv-news').addClass('active');
-    } else {
-        if (_this.siblings('.active').attr('data-id')) {
-            old_id = _this.siblings('.active').attr('data-id');
-        } else {
-            old_id = _this.siblings('.hovv-news').find('.video-cat.active').attr('data-id');
-            _this.siblings('.hovv-news').find('.video-cat').removeClass('active');
-        }
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+var hash = window.location.search
+var obj = {}
+if (hash) {
+    hash = hash.split('&');
+    for (i = 0; i < hash.length; i++) {
+        var temp = hash[i].split('=');
+        obj[temp[0]] = temp[1]
     }
-    _this.addClass('active');
-    _this.siblings('.active').removeClass("active");
-    $(".vert[data-ch='" + old_id + "']").hide();
-    $(".vert[data-ch='" + _this.attr('data-id') + "']").show();
 }
 
-function switchVideo() {
-    _this = $(this);
-    _this.siblings().removeClass('active');
-    _this.addClass('active');
-    $(".item-players p.main-video").html('<iframe src="//www.youtube.com/embed/' + _this.attr('data-token') + '?&autoplay=1" width="560" height="314"></iframe>');
+
+$('body').append('<div id="player5"></div>')
+
+function onYouTubeIframeAPIReady() {
+    allInOne();
+
 }
 
-function switchAList() {
-    _this = $(this);
-    dataid = $(this).attr('data-id');
-    console.log(dataid);
-    _this.closest('.efir-onee').siblings('.efir-twoo').find('.players-phone').hide();
-    _this.closest('.efir-onee').siblings('.efir-twoo').find('.players-phone.chanel-' + dataid).show();
+console.log(obj);
+
+function allInOne() {
+    var player5;
+    var videoStoped = false;
+
+    function bigVideoInit() {
+        // 1 инит большого экрана teamm = 0
+        player5 = new YT.Player('player5', {
+            height: '350',
+            width: '540',
+            videoId: obj.video,
+            events: {
+                'onReady': bigPlayVideo,
+                'onStateChange': changeVid
+            }
+        });
+    }
+
+    bigVideoInit()
+
+    function bigPlayVideo(e) {
+        if (videoStoped) {
+            return
+        }
+        player5.seekTo(obj.time, true);
+        player5.playVideo();
+
+        obj.mute == 'true' ? player5.mute() : player5.unMute();
+    }
+
+    function changeVid(e) {
+    }
 }

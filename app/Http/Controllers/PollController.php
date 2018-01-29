@@ -33,13 +33,16 @@ class PollController extends MainController
 //            dd($poll);
             $this->title = $poll->question;
 
-            if (empty(session('poll_id_' . $poll->id))) {
+            if ((1 != $poll->approved) || !empty(session('poll_id_' . $poll->id))) {
+                $statistic = PollStatistic::select('n1', 'n2', 'n3', 'n4', 'n5')
+                    ->where(['poll_id' => $poll->id])->first();
+                $statistic = $statistic->toArray();
+            } else {
                 $this->jss .= '<script src="' . asset('js/poll.js') . '"></script>';
                 $statistic = null;
-            } else {
-                $statistic = PollStatistic::select('n1', 'n2', 'n3', 'n4', 'n5')->where(['poll_id' => $poll->id])->first();
-                $statistic = $statistic->toArray();
             }
+
+            $poll = $this->poll_rep->cessationHandle($poll);
 
             $polls = $this->poll_rep->getPollsPreview($poll->id);
 
@@ -50,13 +53,10 @@ class PollController extends MainController
         } else {
             $this->title = 'Опитування';
             $this->seo = $this->seo_rep->getSeo('polls');
-            $this->jss = '
-                <script src="' . asset('js/load_more.js') . '"></script>
-            ';
 
             $polls = $this->poll_rep->get(
                 ['question', 'alias', 'description', 'image', 'alt', 'imgtitle', 'created_at', 'id'], false, 12,
-                [['approved', true], ['created_at', '<=', DB::raw('NOW()')]], ['created_at', 'desc']
+                [['created_at', '<=', DB::raw('NOW()')]], ['created_at', 'desc']
             );
 
             $polls = $this->poll_rep->countVoites($polls);
@@ -79,7 +79,7 @@ class PollController extends MainController
             $result = $this->poll_rep->addToPolls($request);
 
             if (false !== $result['stats']) {
-//                $request->session()->put('poll_id_' . $result['poll']['id'], $result['answer']);
+                $request->session()->put('poll_id_' . $result['poll']['id'], $result['answer']);
             }
 
             return view('poll.result')

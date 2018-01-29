@@ -2,7 +2,7 @@
 <!-- START CONTENT -->
 <div class="">
     {!! Form::open(['url' => route('admin_videos'), 'class'=>'form-horizontal','method'=>'GET' ]) !!}
-    <h3>Пошук статті:</h3>
+    <h3>Пошук відео:</h3>
     <div class="">
         {{ Form::label('value', 'Параметр пошуку') }}
         {!! Form::text('value', old('value') ? : '' , ['placeholder'=>'id, link...', 'id'=>'value', 'class'=>'form-control']) !!}

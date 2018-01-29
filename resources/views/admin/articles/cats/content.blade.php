@@ -4,10 +4,16 @@
 {!! Form::open(['url' => route('cats'), 'class'=>'form-horizontal','method'=>'POST' ]) !!}
 <div class="">
     {{ Form::label('name', 'Назва категорії') }}
+    <button type="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="right"
+            title="Обов'язкове до заповнення поле(максимум 255 символів)">?
+    </button>
     <div class="">
         {!! Form::text('name', old('name') ? : '' , ['placeholder'=>'Спорт...', 'id'=>'name', 'class'=>'form-control ru-title']) !!}
     </div>
     {{ Form::label('alias', 'ЧПУ') }}
+    <button type="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="right"
+            title="Обов'язкове до заповнення поле(латинські літери, цифри - максимум 255 символів)">?
+    </button>
     <div class="">
         {!! Form::text('alias', old('alias') ? : '' , ['placeholder'=>'sport...', 'id'=>'alias', 'class'=>'form-control eng-alias']) !!}
     </div>

@@ -66,7 +66,24 @@
                 </div>
             </div>
 
-            <div class="city-news">
+
+        <div id="fb-root"></div>
+        <script>(function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = 'https://connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.11';
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
+
+        <div class="dinn">
+            <div class="fb-comments" data-href="{{ url()->current() }}"></div>
+        </div>
+    </div>
+
+    <div class="city-news">
+        <div class="container">
                 <h3 class="city-caption"><span>Новини Нашого Міста</span></h3>
 
                 {{--Категории--}}
@@ -143,7 +160,7 @@
             </div>
 
         </div>
-
+</div>
 
     </div> <!--Container-->
 

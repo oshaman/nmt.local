@@ -75,21 +75,33 @@
         </div>
     </div>
 </div>
-<hr>
 <div class="row">
     <!-- Approved -->
+    @if(Auth::user()->canDo('CONFIRMATION_DATA'))
+        <label>
+            <input type="checkbox" {{ old('confirmed') ? 'checked' : ''}} value="1" name="confirmed">
+            Опублікувати
+        </label>
+    @endif
+</div>
+<hr>
+<div class="row">
     <div class="col-lg-6">
-        @if(Auth::user()->canDo('CONFIRMATION_DATA'))
-            <label>
-                <input type="checkbox" {{ old('confirmed') ? 'checked' : ''}} value="1" name="confirmed">
-                Опублікувати
-            </label>
-        @endif
-    </div>
-    <div class="col-lg-6">
-        <h4>{!! Form::label('outputtime', 'Дата публікації') !!}</h4>
+        <button type="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="right"
+                title="Не обов'язкове поле. Формат введення Рік-Місяць-Число Години:Хвилини">?
+        </button>
+        <h4>{!! Form::label('outputtime', 'Дата публікації опитування.') !!}</h4>
         <div class="input-prepend"><span class="add-on"><i class="icon-time"></i></span>
             <input type="text" name="outputtime" id="outputtime" value="{{ old('outputtime') ? : date('Y-m-d H:i') }}">
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <button type="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="right"
+                title="Не обов'язкове поле. Формат введення Рік-Місяць-Число Години:Хвилини">?
+        </button>
+        <h4>{!! Form::label('cessation', 'Дата припинення опитування.') !!}</h4>
+        <div class="input-prepend"><span class="add-on"><i class="icon-time"></i></span>
+            <input type="text" name="cessation" id="cessation" value="{{ old('cessation') ? : '' }}">
         </div>
     </div>
 </div>
@@ -116,7 +128,7 @@
             </div>
             {{ Form::label('img', 'Зображення') }}
             <button type="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="right"
-                    title="Не обов'язкове до заповнення поле(файл не більше 5 Мбайт у форматі jpeg, jpg, png; бажаний ширина 340px)">
+                    title="Не обов'язкове до заповнення поле(файл не більше 5 Мбайт у форматі jpeg, jpg, png; бажана ширина 340px)">
                 ?
             </button>
             <div>

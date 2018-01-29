@@ -1,6 +1,6 @@
 <div class="efir-block">
     <div class="efir-onee">
-        <div class="onne-block">
+        <div class="onne-block onny-scrol">
             <div class="closy"><img src="{{ asset('/') }}img/krest.png" alt=""></div>
             @foreach($channels as $channel)
                 <div class="item-efir a-video-cat @if($loop->first) active @endif" data-id="{{ $channel->id }}">
@@ -18,7 +18,9 @@
                     <div class="back-butt">Назад</div>
                     <div class="closy7"><img src="{{ asset('img') }}/krest.png" alt=""></div>
                     <div class="short-name">
-                        <div class="shorr">{{ $channel->title }}</div>
+                        <div class="hard-shor">
+                            <div class="shorr">{{ $channel->title }}</div>
+                        </div>
                     </div>
 
                     {{--Videos--}}
@@ -29,7 +31,6 @@
                                 <div class="newss" data-token="{{ $video->token }}">
                                     <div class="rght">
                                         <img src="{{ asset('img') }}/vidos.png" alt="">
-                                        {{--<iframe src="//www.youtube.com/embed/{{ $video->token }}" width="76" height="43"></iframe>--}}
                                     </div>
                                     <div class="names-neww">{{ $video->title }}</div>
                                     <div class="time-neww">
@@ -37,7 +38,7 @@
 
                                         <img class="loadd mCS_img_loaded" src="{{ asset('/') }}img/play-efir.png"
                                              alt="">
-                                        <span>{{ $video->created_at }}</span>
+                                        <span>{{ date('d-m-Y H:i', strtotime($video->created_at)) }}</span>
                                     </div>
                                 </div>
                             @endforeach

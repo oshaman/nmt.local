@@ -56,7 +56,7 @@ class VideosController extends AdminController
             $videos = $this->v_rep->get(['title', 'created_at', 'id', 'user_id'],
                 false, true, ['approved' => 1], ['created_at', 'desc']);
         }
-
+        $this->title = 'Відео';
         $this->content = view('admin.video.show')->with(['videos' => $videos])->render();
 
         return $this->renderOutput();

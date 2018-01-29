@@ -38,7 +38,8 @@ Route::get('/reklama', 'StaticPagesController@reklama')->name('reklama');
 Route::get('/redakciya', 'StaticPagesController@redakciya')->name('redakciya');
 //  Polls
 Route::get('/polls/{poll_alias?}', 'PollController@index')->name('poll')->where('poll_alias', '[\w-]+');
-
+//Video
+Route::get('/video', 'VideoController@show')->name('video');
 //============================
 Route::view('/welcome', 'index');
 Route::view('/article1', 'article');
@@ -90,7 +91,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     /**
      *   Admin TAGS
      */
-    Route::group(['prefix'=>'tags'], function () {
+    Route::group(['prefix' => 'tags'], function () {
         Route::match(['get', 'post'], '/', ['uses' => 'Admin\TagsController@index', 'as' => 'admin_tags']);
         Route::match(['get', 'post'], 'edit/{tag}', ['uses' => 'Admin\TagsController@edit', 'as' => 'edit_tags'])
             ->where('tag', '[0-9]+');
@@ -114,6 +115,26 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
                     ->name('admin_video_seo')->where('video', '[0-9]+');*/
 
     });
+
+    Route::group(['prefix' => 'cards'], function () {
+        Route::match(['get', 'post'], '/', ['uses' => 'Admin\CardController@show', 'as' => 'admin_card']);
+        Route::match(['get', 'post'], 'edit/{card}', ['uses' => 'Admin\CardController@edit', 'as' => 'edit_card'])
+            ->where('card', '[0-9]+');
+        Route::get('del/{card}', ['uses' => 'Admin\CardController@del', 'as' => 'delete_card'])
+            ->where('card', '[0-9]+');
+    });
+    /**
+     * Admin transmission
+     */
+    Route::group(['prefix' => 'transmission'], function () {
+        //  show transmissions list
+        Route::match(['get', 'post'], '/', ['uses' => 'Admin\TransmissionController@show', 'as' => 'admin_transmissions']);
+        Route::match(['get', 'post'], 'create', ['uses' => 'Admin\TransmissionController@create', 'as' => 'create_transmission']);
+        Route::match(['get', 'post'], 'edit/{transmission}', ['uses' => 'Admin\TransmissionController@edit', 'as' => 'edit_transmission'])
+            ->where('transmission', '[0-9]+');
+        Route::get('del/{transmission}', ['uses' => 'Admin\TransmissionController@del', 'as' => 'delete_transmission'])
+            ->where('transmission', '[0-9]+');
+    });
     /**
      *   Admin CHANNELS
      */
@@ -130,6 +151,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 
         Route::match(['get', 'post'], 'create', ['uses' => 'Admin\PollsController@create', 'as' => 'create_poll']);
         Route::match(['get', 'post'], 'edit/{poll}', ['uses' => 'Admin\PollsController@edit', 'as' => 'edit_poll'])
+            ->where('poll', '[0-9]+');
+        Route::match(['get', 'post'], 'results/{poll}', ['uses' => 'Admin\PollsController@results', 'as' => 'results_poll'])
             ->where('poll', '[0-9]+');
         /* Route::get('delete/{poll}', ['uses' => 'Admin\PollsController@destroy', 'as' => 'delete_poll'])
              ->where('poll', '[0-9]+');*/

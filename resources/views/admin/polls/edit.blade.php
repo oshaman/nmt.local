@@ -1,5 +1,4 @@
 <h1>Редагування опитування</h1>
-
 <div class="">
     {!! Form::open(['url' => route('edit_poll', $poll->id), 'class'=>'form-horizontal','method'=>'POST', 'files'=>true ]) !!}
     <div class="">
@@ -77,23 +76,36 @@
             </div>
         </div>
     </div>
+    <!-- Approved -->
+    <div class="row">
+        @if(Auth::user()->canDo('CONFIRMATION_DATA'))
+            <label>
+                <input type="checkbox" {{ (old('confirmed') || !empty($poll->approved)) ? 'checked' : ''}} value="1"
+                       name="confirmed">
+                Опублікувати
+            </label>
+        @endif
+    </div>
     <hr>
     <div class="row">
-        <!-- Approved -->
         <div class="col-lg-6">
-            @if(Auth::user()->canDo('CONFIRMATION_DATA'))
-                <label>
-                    <input type="checkbox" {{ (old('confirmed') || !empty($poll->approved)) ? 'checked' : ''}} value="1"
-                           name="confirmed">
-                    Опублікувати
-                </label>
-            @endif
-        </div>
-        <div class="col-lg-6">
+            <button type="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="right"
+                    title="Не обов'язкове поле. Формат введення Рік-Місяць-Число Години:Хвилини">?
+            </button>
             <h4>{!! Form::label('outputtime', 'Дата публікації') !!}</h4>
             <div class="input-prepend"><span class="add-on"><i class="icon-time"></i></span>
                 <input type="text" name="outputtime" id="outputtime"
                        value="{{ old('outputtime') ? : ((date('Y-m-d H:i', strtotime($poll->created_at))) ?? date('Y-m-d H:i')) }}">
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <button type="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="right"
+                    title="Не обов'язкове поле. Формат введення Рік-Місяць-Число Години:Хвилини">?
+            </button>
+            <h4>{!! Form::label('cessation', 'Дата припинення опитування.') !!}</h4>
+            <div class="input-prepend"><span class="add-on"><i class="icon-time"></i></span>
+                <input type="text" name="cessation" id="cessation"
+                       value="@if(!empty(old('outputtime'))) {{ old('outputtime') }} @elseif(!empty($poll->cessation)) {{ date('Y-m-d H:i', strtotime($poll->cessation)) }} @else @endif">
             </div>
         </div>
     </div>

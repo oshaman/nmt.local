@@ -19,6 +19,7 @@ return [
     'value' => 'Заголовок',
     'link' => 'URL',
     'outputtime' => 'Дата публікації',
+    'cessation' => 'Дата припинення',
 //    Cтатьи
     'category_id' => 'Категорія',
     'category' => 'Категорія',

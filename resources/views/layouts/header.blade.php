@@ -6,7 +6,7 @@
                     <div class="mainy-line">
                         <div class="main-block">
                             <div class="city-name">
-                                <div class="clik-city"><img src="{{ asset('/') }}img/belg.png" alt=""><span>Білгород-Дністровський</span>
+                                <div class="clik-city"><span>Білгород-Дністровський</span>
                                 </div>
                                 <div class="homr-name">
                                     <div class="scrol-city">
@@ -39,10 +39,11 @@
                         </div>
                         <div class="main-block">
                             @if('main' == Route::currentRouteName())
-                                <img src="{{ asset('/') }}img/ourcity-logo.png" alt="">
+
+                                <img src="{{ asset('/') }}img/our-city-logo.svg" alt="">
                             @else
                                 <a href="{{ route('main') }}">
-                                    <img src="{{ asset('/') }}img/ourcity-logo.png" alt="">
+                                    <img src="{{ asset('/') }}img/our-city-logo.svg" alt="">
                                 </a>
                             @endif
                         </div>
@@ -110,15 +111,7 @@
                                             @endif
                                         </li>
                                         <li>
-                                            @if('kontakty' !== Route::currentRouteName())
-                                                <a href="{{ route('kontakty') }}">
-                                                    Контакти<span class="linn"></span>
-                                                </a>
-                                            @else
-                                                <a href="" onclick="return false" rel="nofollow" class="active">
-                                                    Контакти<span class="linn"></span>
-                                                </a>
-                                            @endif
+                                            <span class="phonn">Повідомити новину</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -147,12 +140,13 @@
     {{--Main Menu--}}
     <div class="main-menu">
         <ul>
+            <li><a href="">Наша громада<span class="linn"></span></a></li>
             <li>
                 @if('main' == Route::currentRouteName())
-                    <a href="" onclick="return false" rel="nofollow" class="active">Наше ТБ<span
+                    <a href="" onclick="return false" rel="nofollow" class="active">Наше TV<span
                                 class="linn"></span></a>
                 @else
-                    <a href="{{ route('main') }}">Наше ТБ<span class="linn"></span></a>
+                    <a href="{{ route('main') }}">Наше TV<span class="linn"></span></a>
                 @endif
             </li>
             <li>
@@ -170,7 +164,6 @@
                     <a href="{{ route('poll') }}">Опитування<span class="linn"></span></a>
                 @endif
             </li>
-            <li><a href="">Наша громада<span class="linn"></span></a></li>
             <li>
                 @if('pro-nas' !== Route::currentRouteName())
                     <a href="{{ route('pro-nas') }}">Про проект<span class="linn"></span></a>
@@ -180,12 +173,7 @@
                 @endif
             </li>
             <li>
-                @if('kontakty' !== Route::currentRouteName())
-                    <a href="{{ route('kontakty') }}">Контакти<span class="linn"></span></a>
-                @else
-                    <a href="" onclick="return false" rel="nofollow" class="active">Контакти<span
-                                class="linn"></span></a>
-                @endif
+                <span class="phonn">Повідомити новину</span>
             </li>
         </ul>
     </div>

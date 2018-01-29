@@ -1,3 +1,4 @@
+@include('admin.articles.nav')
 <h2>Додати в топ</h2>
 <div class="">
     {!! Form::open(['url' => route('admin_priority'), 'class' => 'form-horizontal', 'method' => 'post']) !!}

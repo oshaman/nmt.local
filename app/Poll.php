@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Poll extends Model
 {
     protected $fillable = [
-        'title', 'alias', 'description', 'question', 'image', 'alt', 'imgtitle',
+        'title', 'alias', 'description', 'question', 'image', 'alt', 'imgtitle', 'cessation',
         'answer1', 'answer2', 'answer3', 'answer4', 'answer5', 'approved', 'created_at', 'user_id'
     ];
 
@@ -17,5 +17,10 @@ class Poll extends Model
 
         $stat = $stat ? $stat->toArray() : [];
         return array_sum($stat);
+    }
+
+    public function statistic()
+    {
+        return $this->hasOne('\Fresh\Nashemisto\PollStatistic');
     }
 }

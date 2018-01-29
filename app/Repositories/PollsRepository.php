@@ -51,6 +51,10 @@ class PollsRepository extends Repository
             $poll['created_at'] = date('Y-m-d H:i:s', strtotime($data['outputtime']));
         }
 
+        if (!empty($data['cessation'])) {
+            $poll['cessation'] = date('Y-m-d H:i:s', strtotime($data['cessation']));
+        }
+
         // Main Image handle
         if ($request->hasFile('img')) {
             $path = $this->mainImg($request->file('img'), $poll['alias']);
@@ -100,6 +104,12 @@ class PollsRepository extends Repository
 
         if (!empty($data['outputtime'])) {
             $poll['created_at'] = date('Y-m-d H:i:s', strtotime($data['outputtime']));
+        }
+
+        if (!empty($data['cessation'])) {
+            $poll['cessation'] = date('Y-m-d H:i:s', strtotime($data['cessation']));
+        } else {
+            $poll['cessation'] = null;
         }
 
         // Main Image handle
@@ -241,10 +251,11 @@ class PollsRepository extends Repository
      */
     public function getPollsPreview($id)
     {
+        $where = [['approved', 1], ['created_at', '<=', DB::raw('NOW()')], ['id', '<>', $id]];
+
         $result = $this->get(
-            ['question', 'alias', 'description', 'image', 'alt', 'imgtitle', 'created_at', 'id'], 3, false,
-            [['approved', true], ['created_at', '<=', DB::raw('NOW()')], ['id', '<>', $id]],
-            ['created_at', 'desc']
+            ['question', 'alias', 'description', 'image', 'alt', 'imgtitle', 'created_at', 'id'],
+            3, false, $where, ['created_at', 'desc']
         );
 
         $result = $this->countVoites($result);
@@ -269,5 +280,82 @@ class PollsRepository extends Repository
             });
         }
         return $result;
+    }
+
+    /**
+     * @param $request
+     * @param $poll
+     * @return bool
+     */
+    public function updateResults($request, $poll)
+    {
+        $data = $request->only(['n1', 'n2', 'n3', 'n4', 'n5']);
+
+        $model = new PollStatistic();
+        $statistic = $model->firstOrCreate(['poll_id' => $poll->id]);
+
+        $statistic->n1 = (int)$data['n1'];
+        $statistic->n2 = (int)$data['n2'];
+        $statistic->n3 = (int)$data['n3'];
+        $statistic->n4 = (int)$data['n4'];
+        $statistic->n5 = (int)$data['n5'];
+
+
+        try {
+            $statistic->save();
+        } catch (Exception $e) {
+            \Log::info('Помилка махлювання - ' . $e->getMessage());
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNewest()
+    {
+        $poll = $this->model->where([['approved', 1]])->orderBy('created_at', 'desc')->first();
+
+        if ($poll->cessation) {
+
+            $interval = date_diff(date_create(), date_create($poll->cessation));
+
+            $poll->remains = $interval->format(
+                '%a' . trans_choice('ua.days', '%a') . ', 
+                        %h' . trans_choice('ua.hours', '%h', ['value' => '%a']) . ',
+                         %i' . trans_choice('ua.minutes', '%i'));
+        }
+
+        return $poll;
+    }
+
+    /**
+     * @param $poll
+     * @return mixed
+     */
+    public function cessationHandle($poll)
+    {
+        if ($poll->cessation) {
+
+            $interval = date_diff(date_create(), date_create($poll->cessation));
+
+            $poll->remains = $interval->format(
+                '%a' . trans_choice('ua.days', '%a') . ', 
+                        %h' . trans_choice('ua.hours', '%h', ['value' => '%a']) . ',
+                         %i' . trans_choice('ua.minutes', '%i'));
+        }
+        return $poll;
+    }
+
+    /**
+     * @return bool
+     */
+    public function clearCessation()
+    {
+        DB::statement('UPDATE `polls` SET `approved`=0 WHERE `cessation` <= NOW() AND `cessation` IS NOT NULL;');
+        \Log::info('cessation updated - ' . date("d-m-Y H:i:s"));
+        return true;
     }
 }

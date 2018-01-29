@@ -142,10 +142,6 @@ class ArticleController extends MainController
 
             $this->title = $cat->name;
         }
-        $this->jss = '
-            <script src="' . asset('js/load_more.js') . '"></script>
-            <script src="' . asset('js/categories.js') . '"></script>
-            ';
         return $this->renderOutput();
     }
 
@@ -184,9 +180,6 @@ class ArticleController extends MainController
         });
 
         $this->title = $tag->name;
-        $this->jss = '
-            <script src="' . asset('js/load_more.js') . '"></script>
-            ';
 
         return $this->renderOutput();
     }

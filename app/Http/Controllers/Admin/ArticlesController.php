@@ -62,7 +62,7 @@ class ArticlesController extends AdminController
             $articles = $this->a_rep->get(['alias', 'title', 'created_at', 'id', 'user_id'],
                 false, true, ['approved' => 1], ['created_at', 'desc']);
         }
-
+        $this->title = 'Статті.';
         $this->content = view('admin.articles.show')->with(['articles' => $articles])->render();
 
         return $this->renderOutput();

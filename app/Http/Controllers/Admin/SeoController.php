@@ -20,6 +20,7 @@ class SeoController extends AdminController
             abort(404);
         }
 
+        $this->title = "SEO";
         $seos = $repository->get(['id', 'uri']);
         $this->content = view('admin.seo.show')->with(['seos' => $seos])->render();
         return $this->renderOutput();
@@ -39,6 +40,7 @@ class SeoController extends AdminController
             return redirect()->route('seo_admin')->with($result);
         }
 
+        $this->title = "SEO";
         $this->content = view('admin.seo.edit')->with(['seo' => $seo])->render();
         return $this->renderOutput();
 

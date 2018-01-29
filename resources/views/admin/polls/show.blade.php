@@ -33,6 +33,7 @@
             <th>Запитання</th>
             <th>Дата публикації</th>
             <th></th>
+            <th></th>
         </tr>
         </thead>
         @if (!empty($polls[0]))
@@ -45,6 +46,13 @@
                         @can('update', $poll)
                             {!! Form::open(['url' => route('edit_poll',['poll'=> $poll->id]),'class'=>'form-horizontal','method'=>'GET']) !!}
                             {!! Form::button('Редагувати', ['class' => 'btn btn-warning','type'=>'submit']) !!}
+                            {!! Form::close() !!}
+                        @endcan
+                    </td>
+                    <td class="col-md-1">
+                        @can('delete', $poll)
+                            {!! Form::open(['url' => route('results_poll',['poll'=> $poll->id]),'class'=>'form-horizontal','method'=>'GET']) !!}
+                            {!! Form::button('Підтасовка', ['class' => 'btn btn-warning','type'=>'submit']) !!}
                             {!! Form::close() !!}
                         @endcan
                     </td>

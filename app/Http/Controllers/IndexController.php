@@ -4,6 +4,8 @@ namespace Fresh\Nashemisto\Http\Controllers;
 
 use Cache;
 use DB;
+use Fresh\Nashemisto\Repositories\CardRepository;
+use Fresh\Nashemisto\Repositories\TransmissionRepository;
 use Validator;
 use Fresh\Nashemisto\Repositories\PriorityRepository;
 use Fresh\Nashemisto\Repositories\SeoRepository;
@@ -22,6 +24,8 @@ class IndexController extends MainController
     protected $ch_rep;
     protected $seo_rep;
     protected $p_rep;
+    protected $transmission_rep;
+    protected $card_rep;
 
     /**
      * IndexController constructor.
@@ -36,7 +40,9 @@ class IndexController extends MainController
         CategoriesRepository $cats,
         ChannelsRepository $channelsRepository,
         SeoRepository $seorep,
-        PriorityRepository $priority
+        PriorityRepository $priority,
+        TransmissionRepository $transmission_rep,
+        CardRepository $card
     )
     {
         $this->poll_rep = $poll;
@@ -45,6 +51,8 @@ class IndexController extends MainController
         $this->seo_rep = $seorep;
         $this->ch_rep = $channelsRepository;
         $this->p_rep = $priority;
+        $this->transmission_rep = $transmission_rep;
+        $this->card_rep = $card;
     }
 
     /***
@@ -55,12 +63,9 @@ class IndexController extends MainController
 //        Cache::flush();
 //        session()->flush();
         $this->title = 'Головна';
+//POLL
         $poll = $this->poll_rep->getNewest();
-        $this->jss = '
-            <script src="' . asset('js/video.js') . '"></script>
-            <script src="' . asset('js/categories.js') . '"></script>
-            ';
-
+//        dd($poll);
         if (empty(session('poll_id_' . $poll->id))) {
             $this->jss .= '<script src="' . asset('js/poll.js') . '"></script>';
             $statistic = null;
@@ -68,14 +73,23 @@ class IndexController extends MainController
             $statistic = PollStatistic::select('n1', 'n2', 'n3', 'n4', 'n5')->where(['poll_id' => $poll->id])->first();
             $statistic = $statistic->toArray();
         }
-
+        $this->poll = view('static.poll')->with(['poll' => $poll, 'statistic' => $statistic])->render();
+//POLL
+//VIDEO
         $channels = Cache::remember('main-channels', 60, function () {
             return $this->ch_rep->get('*', false, false, ['approved' => 1], false, ['videos']);
         });
-
+//VIDEO
+//ONLINE
+        $transmission = $this->transmission_rep->getOnline();
+        $cards = $this->card_rep->get(['title', 'created_at'], false, false,
+            [['approved', true], ['created_at', '>=', DB::raw('NOW()')]]);
+//ONLINE
+//SEO
         $this->seo = Cache::remember('seo_main', 24 * 60, function () {
             return $this->seo_rep->getSeo('/');
         });
+//SEO
 
         $top_id = $this->p_rep->getTop(10000);
         $tops = $this->a_rep->getTops(['image', 'category'], [['approved', true], ['created_at', '<=', DB::raw('NOW()')]],
@@ -94,10 +108,15 @@ class IndexController extends MainController
         }
 
         $cats = $this->c_rep->get(['name', 'alias', 'id'], 5, false, ['approved' => 1]);
-        //dd($articles);
-        $this->poll = view('static.poll')->with(['poll' => $poll, 'statistic' => $statistic])->render();
+
         $this->content = view('static.main')
-            ->with(['articles' => $articles, 'categories' => $cats, 'channels' => $channels])
+            ->with([
+                'articles' => $articles,
+                'categories' => $cats,
+                'channels' => $channels,
+                'transmission' => $transmission,
+                'cards' => $cards
+            ])
             ->render();
 
         return $this->renderOutput();

@@ -26,9 +26,9 @@
             @endif
         @endforeach
     @endif
-    <div class="news-item calen"><a class="hasl" href="javascript:void(0);">Архів<span class="dopp"></span><span
-                    class="linn"></span></a>
-
+    <div class="news-item calen">
+        <a class="hasl" href="javascript:void(0);">Архів<span class="dopp">
+            </span><span class="linn"></span></a>
 
         <div class="block-calendar">
             <div class="datepicker-here datepicker-promo">

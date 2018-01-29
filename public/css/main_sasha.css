@@ -1,3 +1,24 @@
+
+.player-administration {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.player-administration > * {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.fa-external-link:before {
+    font-size: 13px;
+}
+
+.fa-sign-in:before {
+    color: #000;
+}
+
+
+
 /*-----------------main styles------------------------------*/
 .tag-item a {
     text-decoration: none;
@@ -67,22 +88,24 @@
     .main-news .mainy {
         margin-bottom: 5vw !important;
     }*/
-    .fresh-logo {
-        font-size: 16px;
-    }
+    /*
+            .fresh-logo {
+                font-size: 16px;
+            }
 
-    .fresh-logo span {
-        width: 18px;
-    }
+            .fresh-logo span {
+                width: 18px;
+            }
 
-    .creative {
-        font-size: 4px;
-    }
+            .creative {
+                font-size: 4px;
+            }
 
-    .created {
-        font-size: 7px;
-        letter-spacing: 1.2px;
-    }
+            .created {
+                font-size: 7px;
+                letter-spacing: 1.2px;
+            }
+    */
 }
 
 @media (max-width: 500px) {
@@ -171,13 +194,13 @@
     }
 
     .city-caption span:before {
-        right: 11px;
+        right: 4vw;
         top: 50%;
         transform: translateY(-50%);
     }
 
     .city-caption span:after {
-        left: 11px;
+        left: 4vw;
         top: 50%;
         transform: translateY(-50%);
     }
@@ -213,6 +236,17 @@
         margin: 3vw 0;
         font-size: 4vw;
         line-height: 4vw;
+    }
+
+    .one_article .linky {
+        position: static;
+        margin-bottom: 7vw;
+        text-align: right;
+    }
+
+    .one_article .linky .link {
+        display: inline-block;
+        margin: 0;
     }
 }
 
@@ -335,9 +369,9 @@
 /*-----------------confidential-page styles-------------------*/
 
 /*-----------------all-polls-page styles-----------------------*/
-.all-polls-page .imgg-news {
+/*.all-polls-page .imgg-news {
     height: 210px;
-}
+}*/
 
 .all-polls-page .playy .content-news {
     height: auto;
@@ -352,10 +386,9 @@
 }
 
 @media (max-width: 1023px) {
-    .all-polls-page .imgg-news {
+    /*.all-polls-page .imgg-news {
         height: auto;
-    }
-
+    }*/
     .all-polls-page .imgg-news img {
         height: 100%;
     }

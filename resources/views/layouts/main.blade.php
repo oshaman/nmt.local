@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ asset('/') }}/css/jquery.mCustomScrollbar.css">
     <link rel="stylesheet" href="{{ asset('/') }}/css/date.css">
     <link rel="stylesheet" href="{{ asset('/') }}/css/main.css">
+    <link rel="stylesheet" href="{{ asset('/') }}/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ asset('/') }}/css/main_sasha.css">
     <link href="{{ asset('favicon.ico') }}" rel="shortcut icon">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
@@ -36,7 +37,8 @@
     </title>
 
 </head>
-<body @if('article' == Route::currentRouteName()) class="one_article" @endif>
+<body @if('article' == Route::currentRouteName()) class="one_article"
+      @elseif('main' == Route::currentRouteName()) class="main-page" @endif>
 
 @yield('header')
 
@@ -49,10 +51,15 @@
 <script src="{{ asset('/') }}/js/jquery-3.2.1.min.js"></script>
 <script src="{{ asset('/') }}/js/jquery.mCustomScrollbar.min.js"></script>
 <script src="{{ asset('/') }}/js/datepicker.js"></script>
+<script src="{{ asset('/') }}/js/main.js"></script>
 <script src="https://www.youtube.com/iframe_api"></script>
 
-
 <div class="video-youtube">
+    <div class="player-administration">
+        <a href="/"><i class="fa fa-sign-in" aria-hidden="true"></i></a>
+        <div class="payer-new-window"><i class="fa fa-external-link" aria-hidden="true"></i></div>
+        <div class="close-video-player"><i class="fa fa-times" aria-hidden="true"></i></div>
+    </div>
     <div id="playerr"></div>
 </div>
 
@@ -70,13 +77,7 @@
 </script>
 
 
-<script>
-
-</script>
-
-
-<script src="{{ asset('/') }}/js/main.js"></script>
 @yield('jss')
-
+<script src="{{ asset('/') }}/js/player.js"></script>
 </body>
 </html>

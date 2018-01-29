@@ -25,6 +25,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->call('\Fresh\Nashemisto\Repositories\SitemapRepository@index')->dailyAt('14:51');
+        $schedule->call('\Fresh\Nashemisto\Repositories\PollsRepository@clearCessation')->everyMinute();
     }
 
     /**

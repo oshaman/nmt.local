@@ -5,7 +5,10 @@
     <h3>Пошук статті:</h3>
     <div class="">
         {{ Form::label('value', 'Параметр пошуку') }}
-        {!! Form::text('value', old('value') ? : '' , ['placeholder'=>'id, link...', 'id'=>'value', 'class'=>'form-control']) !!}
+        <button type="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="right"
+                title="Не обов'язкове до заповнення поле">?
+        </button>
+        {!! Form::text('value', old('value') ? : '' , ['placeholder'=>'title, link...', 'id'=>'value', 'class'=>'form-control']) !!}
         {{ Form::label('param', 'Критерій пошуку') }}
         {!! Form::select('param',
                     [

@@ -3,13 +3,19 @@
 {!! Form::open(['url'=>route('create_video'), 'method'=>'POST', 'class'=>'form-horizontal']) !!}
 <div class="">
     {{ Form::label('title', 'Заголовок відео') }}
+    <button type="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="right"
+            title="Обов'язкове до заповнення поле(<=255 символів)">?
+    </button>
     <div>
         {!! Form::text('title', old('title') ? : '' , ['placeholder'=>'Встановлення новорічної ялинки...',
                     'id'=>'title', 'class'=>'form-control']) !!}
     </div>
 </div>
 <div class="">
-    {{ Form::label('token', 'Токен відео') }}
+    {{ Form::label('token', 'Youtube-токен відео') }}
+    <button type="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="right"
+            title="Обов'язкове до заповнення поле(<=255 символів)">?
+    </button>
     <div>
         {!! Form::text('token', old('token') ? : '',
          ['placeholder'=>'kXYiU_JCYtU', 'id'=>'token', 'class'=>'form-control']) !!}
@@ -17,6 +23,9 @@
 </div>
 <div class="">
     {{ Form::label('channel', 'Канал') }}
+    <button type="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="right"
+            title="Обов'язкове до заповнення поле.">?
+    </button>
     <div>
         {!! Form::select('channel', $channels ?? [],
             old('channel') ? : '' , [ 'class'=>'form-control', 'placeholder'=>'Канал'])
@@ -35,7 +44,12 @@
         @endif
     </div>
     <div class="col-lg-6">
-        <h4>{!! Form::label('outputtime', 'Дата публікації') !!}</h4>
+        <h4>
+            {!! Form::label('outputtime', 'Дата публікації') !!}
+            <button type="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="right"
+                    title="Не обов'язкове до заповнення поле(Формат Рік-Місяць-Число Години:Хвилини)">?
+            </button>
+        </h4>
         <div class="input-prepend"><span class="add-on"><i class="icon-time"></i></span>
             <input type="text" name="outputtime" id="outputtime" value="{{ old('outputtime') ? : date('Y-m-d H:i') }}">
         </div>

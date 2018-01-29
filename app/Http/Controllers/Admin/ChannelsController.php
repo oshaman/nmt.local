@@ -17,6 +17,7 @@ class ChannelsController extends AdminController
      */
     public function __construct(ChannelsRepository $rep)
     {
+        $this->title = 'Канали відео.';
         $this->c_rep = $rep;
         $this->template = 'admin.admin';
         $this->jss = '

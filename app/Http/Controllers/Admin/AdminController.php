@@ -55,7 +55,7 @@ class AdminController extends Controller
             }
 
             if (Gate::allows('UPDATE_ARTICLES')) {
-                $menu->add('Редагування статей',array('route' => 'admin_articles'));
+                $menu->add('Статті', array('route' => 'admin_articles'));
             }
 
             if (Gate::allows('UPDATE_TAGS')) {
@@ -78,12 +78,10 @@ class AdminController extends Controller
                 $menu->add('Статичні сторінки', array('route' => 'admin_static'));
             }
 
-            /*
-
-            if (Gate::allows('MAIN_ADMIN')) {
-                $menu->add('Главная страница', array('route' => 'main_admin'));
+            if (Gate::allows('UPDATE_CHANNEL')) {
+                $menu->add('Трансляції', array('route' => 'admin_transmissions'));
             }
-
+            /*
             if (Gate::allows('STATIC_ADMIN')) {
                 $menu->add('Статичные страницы', 'admin/static');
             }

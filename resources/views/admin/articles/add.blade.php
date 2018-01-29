@@ -52,7 +52,7 @@
     </div>
     {{ Form::label('img', 'Основне зображення') }}
     <button type="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="right"
-            title="Обов'язкове до заповнення поле(файл не більше 5 Мбайт у форматі jpeg, jpg, png; бажаний ширина 1170px)">
+            title="Обов'язкове до заповнення поле(файл не більше 5 Мбайт у форматі jpeg, jpg, png; бажана ширина 1170px)">
         ?
     </button>
     <div>

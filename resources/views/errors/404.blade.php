@@ -17,6 +17,7 @@
             <h3 class="city-caption"><span>Можливо Вас зацікавить</span></h3>
 
             <div class="main-news">
+                @if(!empty($articles) && count($articles)>0)
                 @forelse($articles as $article)
                     <div class="mainy">
                         <div class="hovvy"></div>
@@ -72,6 +73,7 @@
                 @empty
                     404
                 @endforelse
+                @endif
                 <div class="clear"></div>
 
                 <div class="main-buty">

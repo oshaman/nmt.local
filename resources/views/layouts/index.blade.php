@@ -12,10 +12,10 @@
     {!! $poll ?? ''!!}
 @endsection
 
-@section('jss')
-    {!! $jss !!}
-@endsection
-
 @section('footer')
     {!! $footer !!}
+@endsection
+
+@section('jss')
+    {!! $jss !!}
 @endsection

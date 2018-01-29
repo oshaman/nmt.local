@@ -6,11 +6,13 @@ use Fresh\Nashemisto\Poll;
 use Gate;
 use Fresh\Nashemisto\Http\Requests\PollRequest;
 use Fresh\Nashemisto\Repositories\PollsRepository;
+use Illuminate\Http\Request;
 
 class PollsController extends AdminController
 {
     public function __construct(PollsRepository $rep)
     {
+        $this->title = 'Опитування.';
         $this->poll_rep = $rep;
         $this->areaH = 350;
         $this->areaW = 310;
@@ -136,4 +138,27 @@ class PollsController extends AdminController
         return redirect()->route('admin_polls')->with($result);
 
     }*/
+
+    public function results(Request $request, $poll)
+    {
+        if (Gate::denies('delete', $poll)) {
+            abort(404);
+        }
+
+        if ($request->isMethod('post')) {
+//dd($request->all());
+            $result = $this->poll_rep->updateResults($request, $poll);
+
+            if ($result) {
+                return redirect()->route('results_poll', $poll->id)->with(['status' => 'Результати оновлені.']);
+            } else {
+                return redirect()->back()
+                    ->withErrors(['message' => 'Помилка оновлення опитування, повторіть спробу пізніше.']);
+            }
+        }
+        $poll->load('statistic');
+//dd($poll);
+        $this->content = view('admin.polls.results')->with('poll', $poll);
+        return $this->renderOutput();
+    }
 }

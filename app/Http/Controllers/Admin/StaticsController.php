@@ -22,6 +22,7 @@ class StaticsController extends AdminController
             abort(404);
         }
 
+        $this->title = "Статичні сторінки";
         $pages = $this->repository->get(['id', 'title', 'text', 'own']);
         $this->content = view('admin.statics.show')->with(['pages' => $pages])->render();
         return $this->renderOutput();
@@ -40,6 +41,7 @@ class StaticsController extends AdminController
             }
             return redirect()->route('admin_static')->with($result);
         }
+        $this->title = "Статичні сторінки";
         $this->tiny = true;
         $this->areaW = 770;
         $this->content = view('admin.statics.edit')->with(['page' => $static_page])->render();

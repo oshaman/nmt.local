@@ -64,6 +64,7 @@ class PollRequest extends FormRequest
 
                 'confirmed' => 'boolean|nullable',
                 'outputtime' => 'date_format:"Y-m-d H:i"|nullable',
+                'cessation' => 'date_format:"Y-m-d H:i"|nullable',
             ];
 
 

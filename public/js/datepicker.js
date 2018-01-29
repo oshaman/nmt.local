@@ -1,8 +1,12 @@
+jQuery(document).ready(function ($) {
+
+});
+
 ;(function (window, $, undefined) {
     ;(function () {
         var VERSION = '2.2.3',
             pluginName = 'datepicker',
-            autoInitSelector = '.datepicker-here',
+            autoInitSelector = '.none',
             $body, $datepickersContainer,
             containerBuilt = false,
             baseTemplate = '' +

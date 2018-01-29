@@ -11,8 +11,13 @@ class TagsController extends AdminController
 {
     protected $tag_rep;
 
+    /**
+     * TagsController constructor.
+     * @param TagsRepository $rep
+     */
     public function __construct(TagsRepository $rep)
     {
+        $this->title = 'Теги.';
         $this->tag_rep = $rep;
         $this->template = 'admin.admin';
         $this->jss = '

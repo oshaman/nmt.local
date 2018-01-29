@@ -1,3 +1,4 @@
+<div class="animate"></div>
 <footer class="footers">
     <div class="container">
 
@@ -30,13 +31,14 @@
         </div>
         <div class="foter-right">
             <div class="foter-news">
+                <div class="news-item"><a href="/">НАША ГРОМАДА<span class="linn"></span></a></div>
                 <div class="news-item">
                     @if('main' == Route::currentRouteName())
                         <a href="" onclick="return false" rel="nofollow" class="active">
-                            Наше ТБ<span class="linn"></span>
+                            Наше TV<span class="linn"></span>
                         </a>
                     @else
-                        <a href="{{ route('main') }}">Наше ТБ<span class="linn"></span></a>
+                        <a href="{{ route('main') }}">Наше TV<span class="linn"></span></a>
                     @endif
                 </div>
                 <div class="news-item">
@@ -53,8 +55,6 @@
                         <a href="{{ route('poll') }}">ОПИТУВАННЯ<span class="linn"></span></a>
                     @endif
                 </div>
-                <div class="news-item"><a href="/">НАША ГРОМАДА<span class="linn"></span></a></div>
-
                 <div class="news-item">
                     @if('pro-nas' !== Route::currentRouteName())
                         <a href="{{ route('pro-nas') }}">ПРО ПРОЕКТ<span class="linn"></span></a>
