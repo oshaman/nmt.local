@@ -20,6 +20,21 @@
                 {title: 'follow', value: 'follow'},
                 {title: 'nofollow', value: 'nofollow'}
             ],
+            {{--importcss_file_filter: "{{asset('css')}}/stati-vnutrennaya.css",--}}
+            importcss_append: true,
+            style_formats: [
+                {
+                    title: 'Шаблоны', items: [
+                    {
+                        title: 'Цитата',
+                        block: 'div',
+                        classes: 'comen',
+                        exact: true,
+                        wrapper: 1
+                    },
+                ]
+                },
+            ],
             toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media",
             relative_urls: false,
             file_browser_callback: function (field_name, url, type, win) {

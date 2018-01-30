@@ -23,6 +23,7 @@
                             @if(count($channels)>7)
                                 <div class="vijen">
                                     <div class="vijen-insid">
+                                        <div class="closd"><img src="{{ asset('/') }}/img/krest.png" alt=""></div>
                                         @foreach($channels as $channel)
                                             @continue($loop->index<7)
                                             <div class="news-item video-cat"
@@ -61,6 +62,7 @@
                     </div>
                 </div>--}}
                 <div class="players-right">
+                    <div class="tenka"></div>
                     <div class="short-name">
                         <div class="shorr">Прямий ефір</div>
                     </div>

@@ -12,16 +12,12 @@ if (hash) {
     }
 }
 
-
-$('body').append('<div id="player5"></div>')
+$('body').append('<div id="player5"></div>');
 
 function onYouTubeIframeAPIReady() {
     allInOne();
 
 }
-
-console.log(obj);
-
 function allInOne() {
     var player5;
     var videoStoped = false;
@@ -29,8 +25,8 @@ function allInOne() {
     function bigVideoInit() {
         // 1 инит большого экрана teamm = 0
         player5 = new YT.Player('player5', {
-            height: '350',
-            width: '540',
+            height: '100vh',
+            width: '100%',
             videoId: obj.video,
             events: {
                 'onReady': bigPlayVideo,

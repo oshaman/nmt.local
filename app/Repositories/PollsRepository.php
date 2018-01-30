@@ -322,10 +322,7 @@ class PollsRepository extends Repository
 
             $interval = date_diff(date_create(), date_create($poll->cessation));
 
-            $poll->remains = $interval->format(
-                '%a' . trans_choice('ua.days', '%a') . ', 
-                        %h' . trans_choice('ua.hours', '%h', ['value' => '%a']) . ',
-                         %i' . trans_choice('ua.minutes', '%i'));
+            $poll->remains = $interval->format('%a дн., %h г., %i хв.');
         }
 
         return $poll;
@@ -341,10 +338,7 @@ class PollsRepository extends Repository
 
             $interval = date_diff(date_create(), date_create($poll->cessation));
 
-            $poll->remains = $interval->format(
-                '%a' . trans_choice('ua.days', '%a') . ', 
-                        %h' . trans_choice('ua.hours', '%h', ['value' => '%a']) . ',
-                         %i' . trans_choice('ua.minutes', '%i'));
+            $poll->remains = $interval->format('%a дн., %h г., %i хв.');
         }
         return $poll;
     }

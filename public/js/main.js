@@ -100,7 +100,7 @@ jQuery(document).ready(function () {
                 }, 699);
         }
     };
-
+   
 
     $(function () {
         $('.switch-cat').bind('click', switchCat);
@@ -109,8 +109,8 @@ jQuery(document).ready(function () {
 
     $('.datepicker--nav-action').click(function () {
         changeMounYear()
-    })
-
+    })  
+    
     $('.datepicker-here').datepicker({
         onChangeMonth: changeMounYear,
         onChangeYear: changeMounYear,
@@ -122,7 +122,6 @@ jQuery(document).ready(function () {
             $('.datepicker--cell').bind('click', switchCatByDay);
         }, 500)
     }
-
     function switchCat(e) {
         _this = $(this);
         e.preventDefault();
@@ -144,7 +143,7 @@ jQuery(document).ready(function () {
                         $('.main-hover').bind('mouseenter', hoverEl);
                         $('.main-hover').bind('mouseleave', mouseleveEl)
                     }, 50)
-
+                    
                 }
             })
         } else {
@@ -426,11 +425,6 @@ jQuery(document).ready(function () {
     });
 
 
-    $('.video-cat').click(function () {
-        var lisen = $(this).find('a').html();
-
-        $('.shorr').html(lisen);
-    });
 
 
     $('.scrol-city, .onny-scrol').mCustomScrollbar({
@@ -666,11 +660,33 @@ jQuery(document).ready(function () {
 
     $('.quest-four ul li input[type=radio]').click(function () {
         $(this).prop("checked", true);
-
-
+        
+        
     });
 
 
+    $('.slosd').click(function () {
+        $('.vijen').css({'height': '0', 'transition-delay': '.39s'});
+        $('.vijen-insid').css({'opacity': '0', 'transition-delay': '0s', 'visibility': 'hidden'});
+        $('.hovv-news').removeClass('linsa');
+        ness = '7';
+    });
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
 //     var conty = $('.comm').height() + 30;
 //setInterval(function() { 
 //     

@@ -29,7 +29,6 @@ class StaticPagesController extends MainController
         $this->repository = $repository;
         $this->seo_rep = $seo_rep;
         $this->a_rep = $a_rep;
-        Cache::flush();
     }
 
     /**
@@ -115,7 +114,7 @@ class StaticPagesController extends MainController
             return $model;
         });
 //            Last Modify
-        /*$LastModified_unix = strtotime($page->updated_at); // время последнего изменения страницы
+        $LastModified_unix = strtotime($page->updated_at); // время последнего изменения страницы
         $this->lastModified = gmdate("D, d M Y H:i:s \G\M\T", $LastModified_unix);
         $IfModifiedSince = false;
         if ($request->server('HTTP_IF_MODIFIED_SINCE')) {
@@ -123,7 +122,7 @@ class StaticPagesController extends MainController
         }
         if ($IfModifiedSince && $IfModifiedSince >= $LastModified_unix) {
             return response('304 Not Modified', 304);
-        }*/
+        }
 //            Last Modify
         $this->seo = $page->seo;
 

@@ -35,7 +35,7 @@ class ArticleRequest extends FormRequest
             return !empty($input->alias);
         });
 
-        $validator->sometimes('img', 'mimes:jpg,bmp,png,jpeg|max:5120|required', function ($input) {
+        $validator->sometimes('img', 'mimes:jpg,png,jpeg|max:5120|required', function ($input) {
 //  bind article in RouteServiceProvider
             if ($this->route()->named('create_article') && $this->isMethod('post')) {
                 return true;

@@ -80,7 +80,6 @@ if ($('.item-players').length || $('.video-youtube').length) {
             if (videoStoped || playerBigPlay || vidos == null) {
                 return
             }
-
             if (!mainPage) {
                 otherPage();
                 return
@@ -209,13 +208,6 @@ if ($('.item-players').length || $('.video-youtube').length) {
         });
 
 
-        $('.close-video-player').click(function () {
-            player.pauseVideo();
-            $('.video-youtube').removeClass('yout');
-            videoStop(true)
-        })
-
-
         function changeVid(e) {
             if (e.data === 1) {
                 videoStop(false)
@@ -276,30 +268,52 @@ if ($('.item-players').length || $('.video-youtube').length) {
             player5.mute();
         }
     });
+    $('.close-video-player').click(function () {
+        player.pauseVideo();
+        $('.video-youtube').removeClass('yout');
+        videoStop(true)
+    })
 
     $('.payer-new-window').click(function () {
-        var params = 'width=500, height=500, menubar=no, location=no, status=no, scrollbars=no, resizable=no';
+        var params = 'width=565, height=365, menubar=no, location=no, status=no, scrollbars=no, resizable=no';
         var str = '?p=0&time=' + sessionStorage.getItem('video-time') +
             '&muted=' + sessionStorage.getItem('video-muted') +
             '&video=' + sessionStorage.getItem('video-current');
-        window.open('/video' + str, '_blank', params)
+        window.open('/video' + str, '_blank', params);
+        player.pauseVideo();
+        $('.video-youtube').removeClass('yout');
     })
 
 
-}
+    $('.video-cat').bind('click', switchList);
+    $('.newss').bind('click', switchVideo);
 
 
-$('.video-cat').bind('click', switchList);
-$('.a-video-cat').bind('click', switchAList);
-$('.newss').bind('click', switchVideo);
+    function switchList() {
+        var _this = $(this);
+        $('.video-cat').removeClass("active");
+        _this.addClass('active');
+        if (_this.attr('data-id') == 'online') {
+            $('.shorr').html(_this.find('span').html());
+            vidos = $('.vids').attr('data-token');
+            videoRecord(vidos)
+            player.loadVideoById({
+                videoId: vidos,
+                startSeconds: 0
+            })
+            player5.loadVideoById({
+                videoId: vidos,
+                startSeconds: 0
+            })
+            muted ? player.mute() : player.unMute();
+            if (!timer) {
+                timer++;
+                getTimeVideo()
+            }
 
-function switchList() {
-
-    _this = $(this);
-    if (_this.attr('data-id') == 'online') {
-        $('.vert').css({display: 'none'});
-        $('.vert[data-ch="online"]').css({display: 'block'});
-        return;
+            $(".vert").hide();
+            $('.vert[data-ch="online"]').css({display: 'block'});
+            return;
     }
     if (_this.parents().hasClass('hovv-news')) {
         if (_this.siblings('.active').attr('data-id')) {
@@ -317,13 +331,12 @@ function switchList() {
             _this.siblings('.hovv-news').find('.video-cat').removeClass('active');
         }
     }
-    _this.addClass('active');
-    _this.siblings('.active').removeClass("active");
+        $('.shorr').html(_this.find('a').html());
     $(".vert").hide();
     $(".vert[data-ch='" + _this.attr('data-id') + "']").show();
-}
+    }
 
-function switchVideo() {
+    function switchVideo() {
     _this = $(this);
     if (_this.hasClass('newss-online')) {
         console.log('---------');
@@ -332,11 +345,9 @@ function switchVideo() {
         _this.siblings().removeClass('active');
         _this.addClass('active');
     }
+    }
+
+
 }
 
-// function switchAList() {
-//   _this = $(this);
-//   dataid = $(this).attr('data-id');
-//   _this.closest('.efir-onee').siblings('.efir-twoo').find('.players-phone').hide();
-//   _this.closest('.efir-onee').siblings('.efir-twoo').find('.players-phone.chanel-' + dataid).show();
-// }
+

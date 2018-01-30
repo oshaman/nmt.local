@@ -100,7 +100,6 @@ class ArticleController extends MainController
      */
     public function cats(Request $request, $cat_alias = false)
     {
-        Cache::flush();
 //  Last Modified
         $lastM = DB::select('SELECT MAX(`updated_at`) as last FROM `articles` WHERE `approved`=1');
 

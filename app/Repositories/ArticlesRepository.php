@@ -130,8 +130,7 @@ class ArticlesRepository extends Repository
                 }
             }
 
-            $cat = $new->category->alias;
-            $this->clearArticlesCache(false, $cat);
+            $this->clearArticlesCache(false, $new->category_id);
             return ['status' => 'Статтю додано', 'id' => $new->id];
         }
         return ['error' => $error];
@@ -235,7 +234,7 @@ class ArticlesRepository extends Repository
                 $error[] = ['tag' => 'Помилка збереження тегів'];
             }
 
-            $this->clearArticlesCache($article->alias, $article->category_id . $article->id);
+            $this->clearArticlesCache($article->alias, $article->category_id);
 
             return ['status' => 'Статтю оновлено', $error];
         }
@@ -295,9 +294,18 @@ class ArticlesRepository extends Repository
     {
         if ($image->isValid()) {
 
-            $path = substr($alias, 0, 64) . '-' . time() . '.jpeg';
-
             $img = Image::make($image);
+            $mime = $img->mime();
+
+            switch ($mime) {
+                case 'image/png':
+                    $extention = '.png';
+                    break;
+                default:
+                    $extention = '.jpeg';
+            }
+
+            $path = substr($alias, 0, 64) . '-' . time() . $extention;
 
             /*$img->fit(Config::get('settings.articles_img')['main']['width'], Config::get('settings.articles_img')['main']['height'], function ($constraint) {
                 $constraint->upsize();
@@ -362,7 +370,9 @@ class ArticlesRepository extends Repository
     {
         Cache::forget('article_' . $alias);
         Cache::forget('404');
-        !empty($cat) ? Cache::forget('articles_' . $cat) : null;;
+        !empty($cat) ? Cache::forget('articles_' . $cat) : null;
+        !empty($cat) ? Cache::forget('article-cat-' . $cat . '1') : null;
+        !empty($cat) ? Cache::forget('article-cat-all1') : null;
         /*
         !empty($id) ? Cache::store('file')->forget('patients_article-' . $id) : null;
         */

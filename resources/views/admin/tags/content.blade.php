@@ -9,7 +9,7 @@
     </div>
     <div class="">
         {!! Form::text('alias', old('alias') ? : '',
-                    ['placeholder'=>'psihiatriya...', 'id'=>'alias', 'class'=>'form-control eng-alias']) !!}
+                    ['placeholder'=>'sport...', 'id'=>'alias', 'class'=>'form-control eng-alias']) !!}
     </div>
     <div class="">
         {!! Form::button('Додати', ['class' => 'btn btn-primary','type'=>'submit']) !!}

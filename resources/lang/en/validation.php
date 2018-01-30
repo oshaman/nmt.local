@@ -53,7 +53,7 @@ return [
     'max' => [
         'numeric' => 'Поле :attribute не може містити число більше :max.',
         'file' => 'Файл :attribute має бути не більше :max кілобайт.',
-        'string' => 'The :attribute may not be greater than :max characters.',
+        'string' => 'В полі :attribute не може міститися більше :max символів.',
         'array' => 'The :attribute may not have more than :max items.',
     ],
     'mimes' => 'Поле :attribute має містити файл у форматі :values.',
