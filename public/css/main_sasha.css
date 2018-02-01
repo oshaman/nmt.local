@@ -1,12 +1,14 @@
-
+.drag-layout {
+    width: 100%;
+}
 .player-administration {
     display: flex;
     justify-content: flex-end;
-    background-color: #5cb85c;
-    border-color: #4cae4c;
-    padding: 2px 12px;
+    background-color: #fcfc02;
+    border-color: #8c8585;
+    padding: 1px 12px 0px;
     margin-bottom: 0;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 400;
     line-height: 1.42857143;
     text-align: center;

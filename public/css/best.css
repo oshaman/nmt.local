@@ -1,0 +1,101 @@
+
+.searchh input {
+    border-radius: 0px;
+    border: 1px solid #999999;
+    padding: 2px 0 2px 30px;
+    outline: none;
+    width: 100%;
+    height: 17px;
+}
+
+.searchh {
+    position: absolute;
+    right: -5px;
+    top: 0px;
+    width: 170px;
+    transition: .25s ease-in-out;
+}
+
+.poisk {
+    position: relative;
+    height: 23px
+}
+
+.poisk .links {
+    z-index: 5;
+    float: right;
+}
+
+.poisk .links:after {
+    transition: .25s ease-in-out;
+}
+
+.govv .links:after {
+    right: 197px;
+}
+
+.poisk {
+    display: inline-block;
+    width: 199px;
+    overflow: initial;
+}
+
+.searchh {
+    right: 32px;
+}
+
+.searchh input {
+    border: 0;
+    transition: 0s;
+    transition-delay: .2s;
+    opacity: 0;
+    width: 127px;
+    color: #999999;
+}
+
+.govv .searchh input {
+    opacity: .5;
+}
+
+.links:before {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    top: 0;
+    background: #999999;
+    content: '';
+    width: 1px;
+}
+
+.poisk {
+    width: 44px;
+}
+
+.govv {
+    width: 199px;
+}
+
+.y {
+    overflow: initial;
+}
+
+.mutte {
+    display: none;
+}
+
+.q h5 {
+    -webkit-animation: blink2 1s linear infinite;
+    animation: blink2 1s linear infinite;
+}
+
+@-webkit-keyframes blink2 {
+    100% {
+        color: rgba(34, 34, 34, 0);
+    }
+}
+
+@keyframes blink2 {
+    100% {
+        color: rgba(34, 34, 34, 0);
+    }
+}

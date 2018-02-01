@@ -92,8 +92,14 @@ class IndexController extends MainController
 //SEO
 
         $top_id = $this->p_rep->getTop(10000);
-        $tops = $this->a_rep->getTops(['image', 'category'], [['approved', true], ['created_at', '<=', DB::raw('NOW()')]],
-            $top_id, false, ['created_at', 'desc']);
+
+        if (count($top_id) > 0) {
+            $tops = $this->a_rep->getTops(['image', 'category'], [['approved', true], ['created_at', '<=', DB::raw('NOW()')]],
+                $top_id, false, ['created_at', 'desc']);
+        } else {
+            $tops = [];
+        }
+
         if ($tops) {
             $take = 12 - count($tops);
         } else {

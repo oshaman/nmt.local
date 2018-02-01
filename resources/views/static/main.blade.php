@@ -22,6 +22,7 @@
                             </a>
                             @if(count($channels)>7)
                                 <div class="vijen">
+                                    <div class="tenka"></div>
                                     <div class="vijen-insid">
                                         <div class="closd"><img src="{{ asset('/') }}/img/krest.png" alt=""></div>
                                         @foreach($channels as $channel)

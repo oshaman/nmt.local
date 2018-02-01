@@ -42,8 +42,12 @@ function pollAjax() {
             })
 
         } else {
-            _this.closest('.quest-four').siblings('.quest-five')
-                .html('Выберите вариант ответа');
+            _this.closest('.quest-four').siblings('.quest-five');
+            $('.quest-four').addClass('q');
+            setTimeout(function () {
+                $('.quest-four').removeClass('q');
+            }, 2099);
+            /*.html('Выберите вариант ответа');*/
         }
     } else {
         console.log('----------------------')

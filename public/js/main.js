@@ -127,6 +127,8 @@ jQuery(document).ready(function () {
         e.preventDefault();
         _this.siblings('.active').removeClass("active");
         _this.addClass('active');
+        $('.date-time-selected').html(' ');
+        $('.archive').css({display: 'block'});
 
         cat_id = _this.attr('data-id');
         if (("undefined" !== typeof cat_id) && $.isNumeric(cat_id)) {
@@ -510,37 +512,28 @@ jQuery(document).ready(function () {
 
             if (+osnv >= '10') {
                 if (+dates <= '9') {
-                    $('.hasl').css({'font-family': 'SFUIDisplay-Bold'}).html('0' + dates + '.' + osnv + '.' + year);
-                    $('.calen').css({'padding': '0 0 0 40px'});
+                    $('.hasl').css({'font-family': 'SFUIDisplay-Bold'}).find('.date-time-selected').html('0' + dates + '.' + osnv + '.' + year);
                 } else {
-                    $('.hasl').css({'font-family': 'SFUIDisplay-Bold'}).html(dates + '.' + osnv + '.' + year);
-                    $('.calen').css({'padding': '0 0 0 40px'});
+                    $('.hasl').css({'font-family': 'SFUIDisplay-Bold'}).find('.date-time-selected').html(dates + '.' + osnv + '.' + year);
                 }
             }
-
-
             if (+osnv <= '9') {
                 if (+osnv <= '9') {
-                    $('.hasl').css({'font-family': 'SFUIDisplay-Bold'}).html('0' + dates + '.' + '0' + osnv + '.' + year);
-                    $('.calen').css({'padding': '0 0 0 40px'});
+                    $('.hasl').css({'font-family': 'SFUIDisplay-Bold'}).find('.date-time-selected').html('0' + dates + '.' + '0' + osnv + '.' + year);
                 } else {
-                    $('.hasl').css({'font-family': 'SFUIDisplay-Bold'}).html('0' + dates + '.' + osnv + '.' + year);
-                    $('.calen').css({'padding': '0 0 0 40px'});
+                    $('.hasl').css({'font-family': 'SFUIDisplay-Bold'}).find('.date-time-selected').html('0' + dates + '.' + osnv + '.' + year);
                 }
             }
-
-
             if (+osnv <= '9') {
                 if (+dates <= '9') {
-                    $('.hasl').css({'font-family': 'SFUIDisplay-Bold'}).html('0' + dates + '.' + '0' + osnv + '.' + year);
-                    $('.calen').css({'padding': '0 0 0 40px'});
+                    $('.hasl').css({'font-family': 'SFUIDisplay-Bold'}).find('.date-time-selected').html('0' + dates + '.' + '0' + osnv + '.' + year);
                 } else {
 
-                    $('.hasl').css({'font-family': 'SFUIDisplay-Bold'}).html(dates + '.' + '0' + osnv + '.' + year);
-                    $('.calen').css({'padding': '0 0 0 40px'});
+                    $('.hasl').css({'font-family': 'SFUIDisplay-Bold'}).find('.date-time-selected').html(dates + '.' + '0' + osnv + '.' + year);
                 }
             }
-
+            $('.archive').css({'display': 'none'})
+            $('.calen').css({'padding': '0 0 0 40px'});
 
         });
     }, 55);
@@ -671,21 +664,20 @@ jQuery(document).ready(function () {
         $('.hovv-news').removeClass('linsa');
         ness = '7';
     });
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
+
+
+    var hshka = $('.quest-one h5').height();
+    var h = hshka + 70;
+    $('.comm').css({'height': 'calc(100% - ' + h + 'px)'});
+
+    var b = $('.rezz').height();
+    var c = $('.morr').height();
+    var a = b + c + 15;
+    $('.pagee').css({'height': 'calc(100% - ' + a + 'px)'})
+    var u = $('.quest-four ul').height() + $('.poll').height() + $('.quest-four h5').height();
+    var m = u + 130;
+
+    $('.inter-quest').css({'height': m});
      
 //     var conty = $('.comm').height() + 30;
 //setInterval(function() { 
@@ -708,7 +700,21 @@ jQuery(document).ready(function () {
 
     // 3. This function creates an <iframe> (and YouTube player)
     //    after the API code downloads.
-    
+
+
+    $('.poisk').hover(
+        function () {
+            $('.poisk').addClass('govv y');
+        },
+        function () {
+            $('.poisk').removeClass('govv');
+            setTimeout(function () {
+                $('.poisk').removeClass('y');
+            }, 199);
+        });
+     
+
+     
      
 
 });//and ready

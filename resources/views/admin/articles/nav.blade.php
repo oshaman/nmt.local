@@ -1,22 +1,22 @@
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <ul class="nav navbar-nav">
+<nav class="panel panel-info col-xs-12 custom-nav-tabs">
+    <div class="panel-body clearfix">
+        <ul class="nav nav-tabs nav-justified panel-title">
             @if(Auth::user()->canDo('UPDATE_CATS') || Auth::user()->canDo('UPDATE_ARTICLES'))
                 @if('admin_articles' == Route::currentRouteName())
-                    <li><a class="btn btn-default">Редагування статей</a></li>
+                    <li class="active"><a>Редагування статей</a></li>
                 @else
                     <li><a href="{{ route('admin_articles') }}">Редагування статей</a></li>
                 @endif
                 @if(Auth::user()->canDo('UPDATE_CATS'))
                     @if('cats' == Route::currentRouteName())
-                        <li><a class="btn btn-default">Категорії</a></li>
+                        <li class="active"><a>Категорії</a></li>
                     @else
                         <li><a href="{{ route('cats') }}">Категорії</a></li>
                     @endif
                 @endif
                 @if(Auth::user()->canDo('UPDATE_PRIORITY'))
                     @if('admin_priority' == Route::currentRouteName())
-                        <li><a class="btn btn-default">В топ</a></li>
+                        <li class="active"><a>В топ</a></li>
                     @else
                         <li><a href="{{ route('admin_priority') }}">В топ</a></li>
                     @endif

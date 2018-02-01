@@ -49,7 +49,14 @@
                         </div>
                         <div class="main-block">
                             <div class="link-block">
-                                <div class="links"></div>
+                                <div class="poisk">
+                                    <div class="links l"></div>
+                                    <div class="searchh">
+                                        <form action="">
+                                            <input class="sear" type="text" name="value" placeholder="Искать...">
+                                        </form>
+                                    </div>
+                                </div>
                                 <div class="links">
                                     <a href="{{ env('FB_LINK') }}" target="_blank">
 
@@ -65,6 +72,7 @@
                                 <span class="menu-global menu-top"></span>
                                 <span class="menu-global menu-middle"></span>
                                 <span class="menu-global menu-bottom"></span>
+                            </div>
                             </div>
                         </div>
                         {{---- Mobile Menu ----}}

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('/') }}/css/main.css">
     <link rel="stylesheet" href="{{ asset('/') }}/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ asset('/') }}/css/main_sasha.css">
+    <link rel="stylesheet" href="{{ asset('/') }}/css/best.css">
     <link href="{{ asset('favicon.ico') }}" rel="shortcut icon">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -56,11 +57,15 @@
 
 <div class="video-youtube">
     <div class="player-administration">
-        <a href="/"><i class="fa fa-sign-in" aria-hidden="true"></i></a>
-        <div class="payer-new-window"><i class="fa fa-external-link" aria-hidden="true"></i></div>
-        <div class="close-video-player"><i class="fa fa-times" aria-hidden="true"></i></div>
+        <div class="drag-layout"></div>
+        <a href="/"><i class="fa fa-sign-in" aria-hidden="true" title="на головну"></i></a>
+        <div class="payer-new-window"><i class="fa fa-external-link" aria-hidden="true" title="вiдкрити окремо"></i>
+        </div>
+        <div class="close-video-player"><i class="fa fa-times" aria-hidden="true" title="закрити"></i></div>
     </div>
-    <div id="playerr"></div>
+    <div class="playerr-wrap">
+        <div id="playerr"></div>
+    </div>
 </div>
 
 <script>
@@ -75,6 +80,38 @@
 
 
 </script>
+
+<!-- BEGIN JIVOSITE CODE {literal} -->
+<script type='text/javascript'>
+    (function () {
+        var widget_id = 'R406vZB40r';
+        var d = document;
+        var w = window;
+
+        function l() {
+
+            var s = document.createElement('script');
+            s.type = 'text/javascript';
+            s.async = true;
+            s.src = '//code.jivosite.com/script/widget/' + widget_id;
+            var ss = document.getElementsByTagName('script')[0];
+            ss.parentNode.insertBefore(s, ss);
+        }
+
+        if (d.readyState == 'complete') {
+            l();
+        } else {
+            if (w.attachEvent) {
+                w.attachEvent('onload', l);
+            } else {
+                w.addEventListener('load', l, false);
+            }
+        }
+    })();
+
+    //    setInterval(function(){$('.jivo-no-transition').css({'display':'flex    '}); },55);
+</script>
+<!-- {/literal} END JIVOSITE CODE -->
 
 
 @yield('jss')

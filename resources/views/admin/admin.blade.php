@@ -65,9 +65,7 @@
 
 @section('navbar')
     @isset($nav)
-        <div class="navbar-header">
-            {!! Menu::get('adminMenu')->asUl(array('class' => 'nav nav-pills')) !!}
-        </div>
+        {!! Menu::get('adminMenu')->asUl(array('class' => 'nav navbar-nav custom-nav-panel-top_navbar-links container')) !!}
     @endisset
 @endsection
 @section('content')

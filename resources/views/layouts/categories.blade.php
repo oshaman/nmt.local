@@ -27,8 +27,14 @@
         @endforeach
     @endif
     <div class="news-item calen">
-        <a class="hasl" href="javascript:void(0);">Архів<span class="dopp">
-            </span><span class="linn"></span></a>
+        <a class="hasl" href="javascript:void(0);">
+            <span class="archive">
+                Архів
+                <span class="dopp"></span>
+                <span class="linn"></span>
+            </span>
+            <span class="date-time-selected"></span>
+        </a>
 
         <div class="block-calendar">
             <div class="datepicker-here datepicker-promo">

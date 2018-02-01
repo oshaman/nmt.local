@@ -21,6 +21,7 @@
         {{--<=============== Main Poll ===============>--}}
         <div class="form-inter">
             <div class="inter-quest quest-one">
+                <div class="g"></div>
                 <h5>{{ $poll->title }}</h5>
                 <div class="comm onny-scrol">
                     <div class="unit">
@@ -82,10 +83,11 @@
             {{--<---- Poll results ---->--}}
             <div class="inter-quest quest-five">
                 @if(empty($statistic))
-                    <h5>Довідайтеся про результат після того, як залишите свій голос</h5>
-                    <img src="{{ asset('img') }}/why.png" alt="" style="margin: 79px auto;display: block;">
+                    <h5 class="rezz">Довідайтеся про результат після того, як залишите свій голос</h5>
+                    <div class="pagee"><img src="{{ asset('img') }}/why.png" alt=""
+                                            style="margin: 79px auto;display: block;"></div>
                     @if(!empty($poll->remains))
-                        <h5>До кінця опитування залишилося {{ $poll->remains }}</h5>
+                        <h5 class="morr">До кінця опитування залишилося {{ $poll->remains }}</h5>
                     @endif
                 @else
                     <div class="vote soon">

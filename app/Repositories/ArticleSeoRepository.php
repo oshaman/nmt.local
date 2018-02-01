@@ -34,15 +34,18 @@ class ArticleSeoRepository extends Repository
             $result = $article->seo()
                 ->create(['seo_title' => $data['seo_title'], 'seo_keywords' => $data['seo_keywords'],
                     'seo_description' => $data['seo_description'], 'og_image' => $data['og_image'],
+                    'og_title' => $data['og_title'],
                     'og_description' => $data['og_description'], 'seo_text' => $data['seo_text']]);
         } else {
             $result = $article->seo()
                 ->update(['seo_title' => $data['seo_title'], 'seo_keywords' => $data['seo_keywords'],
                     'seo_description' => $data['seo_description'], 'og_image' => $data['og_image'],
+                    'og_title' => $data['og_title'],
                     'og_description' => $data['og_description'], 'seo_text' => $data['seo_text']]);
         }
 
         if (false != $result) {
+            Cache::forget('article_' . $article->alias);
             return ['status' => 'Дані оновлені'];
         } else {
             return ['error' => 'Помилка оновлення'];

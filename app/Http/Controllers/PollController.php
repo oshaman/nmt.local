@@ -36,7 +36,8 @@ class PollController extends MainController
             if ((1 != $poll->approved) || !empty(session('poll_id_' . $poll->id))) {
                 $statistic = PollStatistic::select('n1', 'n2', 'n3', 'n4', 'n5')
                     ->where(['poll_id' => $poll->id])->first();
-                $statistic = $statistic->toArray();
+
+                $statistic = $statistic ? $statistic->toArray() : null;
             } else {
                 $this->jss .= '<script src="' . asset('js/poll.js') . '"></script>';
                 $statistic = null;

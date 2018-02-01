@@ -249,6 +249,7 @@ class ArticlesRepository extends Repository
     public function deleteArticle($article)
     {
         // $article->comments()->delete();
+        $alias = $article->alias;
         if (!empty($article->image->path)) {
             $old_img = $article->image->path;
         }
@@ -258,7 +259,7 @@ class ArticlesRepository extends Repository
             if (!empty($old_img)) {
                 $this->deleteOldImage('articles', $old_img);
             }
-            $this->clearArticlesCache();
+            $this->clearArticlesCache($alias);
 
             return ['status' => 'Cтаттю видалено'];
         }

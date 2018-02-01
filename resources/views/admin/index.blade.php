@@ -23,9 +23,17 @@
 </head>
 <body>
 <div id="app">
-    <nav class="navbar navbar-default navbar-static-top">
-        <div class="app-menu">
+    <nav class="navbar navbar-default custom-nav-panel-top">
+        <div class="app-menu container-fluid">
             <div class="navbar-header navbar-header-background">
+
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#app-navbar-collapse" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -36,7 +44,7 @@
                 <!-- Left Side Of Navbar -->
 
                 <!-- Right Side Of Navbar -->
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right custom-nav-panel-top_login-box">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
                         <li><a href="{{ route('login') }}">Вхід</a></li>
@@ -65,9 +73,9 @@
                         </li>
                     @endif
                 </ul>
-                <ul class="nav navbar-nav">
+
                     @yield('navbar')
-                </ul>
+
             </div>
         </div>
     </nav>
