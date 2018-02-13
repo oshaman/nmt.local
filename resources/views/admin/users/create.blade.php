@@ -1,26 +1,42 @@
-<h2>Створення нового користувача:</h2>
-{!! Form::open(['url'=>route('users_create'), 'class'=>'contact-form', 'method'=>'post']) !!}
-<fieldset>
-    <ul list-group>
-        <li>
-            <h4>{!! Form::label('name', 'Им\'я') !!}</h4>
+<div class="panel panel-info col-xs-12">
+    <h3 class="panel-heading">Створення нового користувача</h3>
+
+    {!! Form::open(['url'=>route('users_create'), 'class'=>'contact-form panel-body', 'method'=>'post']) !!}
+    <div class="form-group">
+        {!! Form::label('name', 'Им\'я') !!}
+
             {!! Form::text('name', old('name') ? : '', ['class'=>'form-control', 'required'=>'required']) !!}
-        </li>
-        <li>
-            <h4>{!! Form::label('email', 'Электронна пошта') !!}</h4>
+    </div>
+
+    <hr>
+
+    <div class="form-group">
+        {!! Form::label('email', 'Электронна пошта') !!}
+
             {!! Form::email('email', old('email') ? : '', ['class'=>'form-control', 'required'=>'required']) !!}
-        </li>
-        <li>
-            <h4>{!! Form::label('pass', 'Пароль') !!}</h4>
+    </div>
+
+    <hr>
+
+    <div class="form-group">
+        {!! Form::label('pass', 'Пароль') !!}
+
             {!! Form::password('password') !!}
-        </li>
-        <li>
-            <h4>{!! Form::label('cpass', 'Підтвердження пароля') !!}</h4>
+    </div>
+
+    <hr>
+
+    <div class="form-group">
+        {!! Form::label('cpass', 'Підтвердження пароля') !!}
+
             {!! Form::password('password_confirmation') !!}
-        </li>
-        <li>
-            <h4>{!! Form::label('role', 'Роль') !!}</h4>
-            <table class="table">
+    </div>
+
+    <hr>
+
+    <div class="form-group">
+        {!! Form::label('role', 'Роль') !!}
+        <table class="table table-striped table-bordered table-hover">
                 @foreach($roles as $id=>$role)
                     <td>
                         <input name="roles[]" {{ $id == old('role') ? 'checked' : '' }}
@@ -28,9 +44,13 @@
                     </td>
                 @endforeach
             </table>
-        </li>
-    </ul>
-</fieldset>
-<!-- Submit -->
-{!! Form::button('Додати', ['class' => 'btn btn-success','type'=>'submit']) !!}
-{!! Form::close() !!}
+    </div>
+
+    <hr>
+    <!-- Submit -->
+    <div class="form-group">
+        {!! Form::button('Додати', ['class' => 'btn btn-primary','type'=>'submit']) !!}
+    </div>
+
+    {!! Form::close() !!}
+</div>

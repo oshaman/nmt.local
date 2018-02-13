@@ -40,6 +40,11 @@ Route::get('/redakciya', 'StaticPagesController@redakciya')->name('redakciya');
 Route::get('/polls/{poll_alias?}', 'PollController@index')->name('poll')->where('poll_alias', '[\w-]+');
 //Video
 Route::get('/video', 'VideoController@show')->name('video');
+//Search
+Route::get('/search', 'SearchController@showResult')->name('search');
+//AddNews
+Route::match(['post', 'get'], 'add-news', 'InformController@show')->name('inform');
+
 //============================
 Route::view('/welcome', 'index');
 Route::view('/article1', 'article');

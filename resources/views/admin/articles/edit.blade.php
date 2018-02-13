@@ -54,8 +54,7 @@
     </div>
 
     <div class="form-group">
-            <textarea name="preview" class="form-control myPreview">
-                {!! old('preview') ? : ($article->preview ?? '') !!}
+            <textarea name="preview" class="form-control myPreview">{!! old('preview') ? : ($article->preview ?? '') !!}
             </textarea>
     </div>
 </div>

@@ -3,7 +3,7 @@
     <div class="container">
 
         <div class="foter-left">
-            <div class="foter-logo"><img src="{{ asset('/') }}img/logo-foter.png" alt=""></div>
+            <div class="foter-logo"><img src="{{ asset('/') }}img/logo-fote.svg" alt=""></div>
             <ul>
                 @if('ugoda' !== Route::currentRouteName())
                     <li><a href="{{ route('ugoda') }}">Угода про конфіденційність</a></li>

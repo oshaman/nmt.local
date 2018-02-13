@@ -355,6 +355,7 @@ jQuery(document).ready(function () {
             $('.headers').addClass('runny');
             $('.menu').addClass('clikk');
             $('body').addClass('overr');
+            $('#jivo-iframe-container').addClass('zett');
             $('html, body').bind('touchmove', function (e) {
                 e.preventDefault(e);
             });
@@ -368,6 +369,7 @@ jQuery(document).ready(function () {
             $('.headers').removeClass('runny');
             $('.menu').removeClass('clikk');
             $('body').removeClass('overr');
+            $('#jivo-iframe-container').removeClass('zett');
             $('html, body').unbind('touchmove');
             setTimeout(function () {
                 $('.headers').removeClass('setup');
@@ -448,6 +450,7 @@ jQuery(document).ready(function () {
         if (hexx === '7') {
             $('.homr-name').css({'height': '599px', 'transition-delay': '0s'});
             $('.scrol-city').css({'opacity': '1', 'transition-delay': '.39s', 'visibility': 'visible'});
+            $('body').addClass('ggwp');
             setTimeout(function () {
                 hexx = '4';
             }, 99);
@@ -455,6 +458,7 @@ jQuery(document).ready(function () {
         if (hexx === '4') {
             $('.homr-name').css({'height': '0', 'transition-delay': '.39s'});
             $('.scrol-city').css({'opacity': '0', 'transition-delay': '0s', 'visibility': 'hidden'});
+            $('body').removeClass('ggwp');
             hexx = '7';
         }
     });
@@ -702,6 +706,7 @@ jQuery(document).ready(function () {
     //    after the API code downloads.
 
 
+    if ($(window).width() > 1024) {
     $('.poisk').hover(
         function () {
             $('.poisk').addClass('govv y');
@@ -712,12 +717,87 @@ jQuery(document).ready(function () {
                 $('.poisk').removeClass('y');
             }, 199);
         });
-     
+    }
 
-     
-     
 
+    $('.lisa7').click(function () {
+
+        $('.hovv-news').removeClass('active');
+    });
+
+    $('.a-video-cat').click(function () {
+        var k = $(this).attr('data-id');
+        $('.players-phone').css({'display': 'none'});
+        $('.chanel-' + k).css({'display': 'block'});
+    });
+
+
+    setInterval(function () {
+        $('.inlineBlock').css({'position': 'absolute'});
+    }, 55);
+
+
+    if ($('.bread-crumbs').height() > 40) {
+        $('.bread-crumbs').addClass('miss');
+    }
+
+
+    $('.newss').click(function () {
+        $('.newss').removeClass('active');
+        $(this).addClass('active');
+    });
+
+
+    $('.senn').click(function () {
+
+
+        $('.form-page input').each(function () {
+            var u = $(this);
+            if (u.val().length) {
+                u.parent().addClass('here');
+            }
+            if (u.val().length < 7) {
+                u.parent().addClass('lose');
+                setTimeout(function () {
+                    u.parent().removeClass('lose');
+                }, 1000);
+            } else {
+            }
+//             else {
+//                 u.parent().addClass('lose');setTimeout(function(){u.parent().removeClass('lose'); }, 1000);
+//             }
+
+        });
+        $('.form-page textarea').each(function () {
+            var p = $(this);
+            if (p.val().length) {
+                p.parent().addClass('here');
+            } else {
+                p.parent().addClass('lose');
+                setTimeout(function () {
+                    p.parent().removeClass('lose');
+                }, 1000);
+            }
+        });
+
+
+        if (!$('.form-page .lose').length) {
+            $('.form-horizontal').trigger('submit');
+        }
+
+//         if($('.name0').val().length){
+//        $('.form-horizontal').trigger('submit');
+//         }else {}
+
+    });
+     
+     
+     
+     
 });//and ready
+
+
+
 
 
 

@@ -1,46 +1,61 @@
-<h1>Cтворення \ Редагування тегів</h1>
+<div class="panel panel-info col-xs-12">
+    <h3 class="panel-heading">Cтворення \ Редагування тегів</h3>
 
-{!! Form::open(['url' => route('admin_tags'), 'class'=>'form-horizontal','method'=>'POST' ]) !!}
-<div class="">
-    {{ Form::label('tag', 'Назва') }}
-    <div class="">
+    {!! Form::open(['url' => route('admin_tags'), 'class'=>'form-horizontal panel-body','method'=>'POST' ]) !!}
+    <div class="form-group">
+        {{ Form::label('tag', 'Назва') }}
+
         {!! Form::text('tag', old('tag') ? : '',
                     ['placeholder'=>'Спорт...', 'id'=>'tag', 'class'=>'form-control ru-title']) !!}
     </div>
-    <div class="">
+
+    <div class="form-group">
         {!! Form::text('alias', old('alias') ? : '',
                     ['placeholder'=>'sport...', 'id'=>'alias', 'class'=>'form-control eng-alias']) !!}
     </div>
-    <div class="">
+
+    <div class="form-group">
         {!! Form::button('Додати', ['class' => 'btn btn-primary','type'=>'submit']) !!}
     </div>
+
     {!! Form::close() !!}
 </div>
 
 @if(!empty($tags))
-    <table class="table">
-        <thead>
-        <tr><th>Им'я</th><th>ЧПУ</th><th>Редагувати</th><th></th></tr>
-        </thead>
-        <tbody>
-        @foreach($tags as $tag)
-            <tr>
-                <td>{{ $tag->name }}</td>
-                <td>{{ $tag->alias }}</td>
-                <td>
-                    {!! Form::open(['url' => route('edit_tags',['cat'=> $tag->id]),'class'=>'form-horizontal','method'=>'GET']) !!}
-                    {!! Form::button('Редагувати', ['class' => 'btn btn-warning','type'=>'submit']) !!}
-                    {!! Form::close() !!}
-                </td>
-                <td>
-                    {!! Form::open(['url' => route('delete_tag',['tag'=> $tag->id]),'class'=>'form-horizontal','method'=>'GET']) !!}
-                    {!! Form::button('Видалити', ['class' => 'btn btn-danger','type'=>'submit']) !!}
-                    {!! Form::close() !!}
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
+    <div class="col-xs-12">
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                    <tr class="info">
+                        <th>Им'я</th>
+                        <th>ЧПУ</th>
+                        <th>Редагувати</th>
+                        <th>Видалити</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($tags as $tag)
+                        <tr>
+                            <td>{{ $tag->name }}</td>
+                            <td>{{ $tag->alias }}</td>
+                            <td>
+                                {!! Form::open(['url' => route('edit_tags',['cat'=> $tag->id]),'class'=>'form-horizontal','method'=>'GET']) !!}
+                                {!! Form::button('Редагувати', ['class' => 'btn btn-warning','type'=>'submit']) !!}
+                                {!! Form::close() !!}
+                            </td>
+                            <td>
+                                {!! Form::open(['url' => route('delete_tag',['tag'=> $tag->id]),'class'=>'form-horizontal','method'=>'GET']) !!}
+                                {!! Form::button('Видалити', ['class' => 'btn btn-danger','type'=>'submit']) !!}
+                                {!! Form::close() !!}
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
     <!--PAGINATION-->
 

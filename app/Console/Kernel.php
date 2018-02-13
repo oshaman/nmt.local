@@ -26,6 +26,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->call('\Fresh\Nashemisto\Repositories\SitemapRepository@index')->dailyAt('14:51');
         $schedule->call('\Fresh\Nashemisto\Repositories\PollsRepository@clearCessation')->everyMinute();
+        $schedule->call('\Fresh\Nashemisto\Repositories\InformRepository@clearNews')->hourly();
     }
 
     /**

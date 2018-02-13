@@ -52,8 +52,9 @@
                                 <div class="poisk">
                                     <div class="links l"></div>
                                     <div class="searchh">
-                                        <form action="">
+                                        <form action="{{ route('search') }}" method="get">
                                             <input class="sear" type="text" name="value" placeholder="Искать...">
+                                            <input type="hidden" name="stats">
                                         </form>
                                     </div>
                                 </div>
@@ -119,14 +120,22 @@
                                             @endif
                                         </li>
                                         <li>
-                                            <span class="phonn">Повідомити новину</span>
+                                            @if('pro-nas' !== Route::currentRouteName())
+                                                <a href="{{ route('inform') }}">Повідомити новину<span
+                                                            class="linn"></span></a>
+                                            @else
+                                                <a href="" onclick="return false" rel="nofollow" class="active">
+                                                    Повідомити новину<span class="linn"></span></a>
+                                            @endif
                                         </li>
                                     </ul>
                                 </div>
 
                                 <div class="link-block neww-link">
                                     <div class="links">
-                                        <a href="{{ env('FB_LINK') }}" target="_blank">
+                                        <a class="fb-xfbml-parse-ignore open-face-sharer" target="_blank"
+                                           href="https://www.facebook.com/sharer/sharer.php?u=http://13.j2landing.com/article/v-belgorode-dnestrovskom-proydet-blagotvoritelnaya-yarmarka"
+                                           src="http://13.j2landing.com/img/face-black.png">
 
                                         </a>
                                     </div>
@@ -181,7 +190,12 @@
                 @endif
             </li>
             <li>
-                <span class="phonn">Повідомити новину</span>
+                @if('inform' !== Route::currentRouteName())
+                    <a href="{{ route('inform') }}">Повідомити новину<span class="linn"></span></a>
+                @else
+                    <a href="" onclick="return false" rel="nofollow" class="active">Повідомити новину<span
+                                class="linn"></span></a>
+                @endif
             </li>
         </ul>
     </div>

@@ -12,7 +12,7 @@
                     <div class="straight-right">
                         @foreach($channels as $channel)
                             @continue($loop->index>6)
-                            <div class="news-item video-cat" data-id="{{ $channel->id }}">
+                            <div class="news-item video-cat lisa7" data-id="{{ $channel->id }}">
                                 <a href="#!">{{ $channel->title }}<span class="linn"></span></a>
                             </div>
                         @endforeach
@@ -154,7 +154,7 @@
                                         <div class="imgg-news">
                                             <img src="{{ asset('/asset/images/articles/middle').'/'.$article->image->path }}"
                                                  alt="{{ $article->image->alt }}" title="{{ $article->image->title }}">
-                                            <div class="yelow-line">{{ $article->category->name }}</div>
+                                            <div class="yelow-line @if($article->hasvideo) line-play @endif">{{ $article->category->name }}</div>
                                             <div class="coments-news">
                                                 <div class="left-coments">
 
@@ -243,3 +243,4 @@
         </div>
     </div>
 </div>
+

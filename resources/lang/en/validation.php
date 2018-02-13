@@ -103,6 +103,13 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'file.*' => [
+            'mimes' => 'Поле Файл має містити файл у форматі jpg,jpeg,png, doc, docx, txt, avi, flv, mp4, 3gp, mov, zip, rar, 7z.',
+            'between' => 'Поле Файл має містити файл розміром від 50кБ до 20МБ',
+        ],
+        'file' => [
+            'max' => 'Ви не можете надіслати більше 5 файлів',
+        ],
     ],
 
     /*

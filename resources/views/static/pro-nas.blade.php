@@ -15,6 +15,7 @@
             </div>
             {{--breadcrumbs--}}
             <div class="part">
+                <div class="pro"></div>
                 <h4>Про проект</h4>
 
                 <div class="conty">

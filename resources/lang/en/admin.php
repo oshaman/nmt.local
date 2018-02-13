@@ -51,5 +51,9 @@ return [
     'reklama' => 'Реклама',
     'redakciya' => 'Редакція',
     'polls' => 'Опитування',
+    //Add news
+    'phone' => 'Телефон',
+    'city' => 'Місто',
+    'file' => 'Файл',
 
 ];

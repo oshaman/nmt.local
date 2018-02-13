@@ -130,10 +130,12 @@ class ArticleController extends MainController
                 abort(404);
             }
             $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-
+//Cache::flush();
             $this->content = Cache::remember('article-cat-' . $cat->id . $currentPage, 60, function () use ($cat) {
                 $articles = $this->a_rep->get('*', false, 12,
-                    ['category_id' => $cat->id, 'approved' => 1], ['created_at', 'desc'], ['image', 'tags'], true);
+                    [['category_id', (int)$cat->id], ['approved', true], ['created_at', '<=', DB::raw('NOW()')]],
+                    ['created_at', 'desc'], ['image', 'tags'], true);
+//dd($articles);
                 $cats = $this->c_rep->get(['name', 'alias'], 5, false, ['approved' => 1]);
                 return view('articles.category')->with(['articles' => $articles, 'cat' => $cat, 'categories' => $cats])
                     ->render();

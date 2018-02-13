@@ -55,7 +55,6 @@ abstract class Repository
      */
     protected function check($result, $crop = false)
     {
-
         if ($result->isEmpty()) {
             return FALSE;
         }

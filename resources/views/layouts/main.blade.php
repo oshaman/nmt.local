@@ -109,8 +109,56 @@
         }
     })();
 
+    $(document).ready(function () {
+        $('.opee').click(function () {
+            jivo_api.open();
+            $('.opee').css({'z-index': '-1'});
+            $('.cloo').css({'z-index': '9'});
+            $('jdiv, .jivo_shadow').removeClass('opaa');
+            indd = '5';
+            $('#jivo-iframe-container').removeClass('zett');
+        });
+        $('.cloo').click(function () {
+            jivo_api.close();
+            $('.opee').css({'z-index': '9'});
+            $('.cloo').css({'z-index': '-1'});
+            $('jdiv, .jivo_shadow').addClass('opaa');
+            indd = '4';
+            $('#jivo-iframe-container').addClass('zett');
+        });
+    })
+    var indd = '4';
+    setInterval(function () {
+        if (indd === '4') {
+            $('jdiv, .jivo_shadow').addClass('opaa');
+        }
+    }, 55);
+    setInterval(function () {
+        $('#jivo_close_button').click(function () {
+            indd = '4';
+            $('.opee').css({'z-index': '9'});
+            $('.cloo').css({'z-index': '-1'});
+        });
+    }, 55);
+    //jivo-iframe-container-bottom(0) jivo-state-widget jivo-collapsed jivo_shadow(0) jivo_rounded_corners(0) jivo_gradient(0)
+    //jivo_shadow(0) jivo_rounded_corners(0) jivo_gradient(0) jivo-expanded jivo-iframe-container-bottom(0)
     //    setInterval(function(){$('.jivo-no-transition').css({'display':'flex    '}); },55);
 </script>
+
+<div id="fb-root"></div>
+<script>(function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = 'https://connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.12';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+
+<script> $('.pro').html($(window).width() + ' X ' + $(window).height()) </script>
+
+
 <!-- {/literal} END JIVOSITE CODE -->
 
 

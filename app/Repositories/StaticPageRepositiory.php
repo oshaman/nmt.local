@@ -45,7 +45,8 @@ class StaticPageRepositiory extends Repository
         }
 
         Cache::forget('pro-nas');
-        Cache::forget('ugoda');
+        Cache::forget('pro-nas');
+        Cache::forget('redakciya');
         return ['status' => 'Сторінку збережено.'];
     }
 }

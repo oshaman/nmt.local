@@ -118,6 +118,14 @@ body {
     font-style: normal
 }
 
+@font-face {
+    font-family: 'MinionPro-Bold';
+    src: url(../fonts/MinionPro-Bold.eot);
+    src: url(../fonts/MinionPro-Bold.eot?iefix) format('eot'), url(../fonts/MinionPro-Bold.woff) format('woff'), url(../fonts/MinionPro-Bold.ttf) format('truetype'), url(../fonts/MinionPro-Bold.svg#webfont) format('svg');
+    font-weight: 400;
+    font-style: normal
+}
+
 .link-block {
     display: flex;
     align-items: center;
@@ -1538,8 +1546,9 @@ input[type=radio]:checked ~ .check {
 .ital {
     color: #2e2e2e;
     font-family: 'MinionPro-It';
-    line-height: 24px;
-    margin: 9px 0 0 0;
+    line-height: 24px !important;
+    font-size: 1em !important;
+    margin: 9px 0 0 0 !important;
 }
 
 .conty {
@@ -1943,6 +1952,7 @@ input[type=radio]:checked ~ .check {
 
 .dest .newss {
     width: 235px;
+    padding: 10px 15px;
 }
 
 .dest .mCSB_container {
@@ -2119,12 +2129,12 @@ input[type=radio]:checked ~ .check {
 }
 
 .playy {
-    z-index: 77;
+    z-index: 55555;
 }
 
 .libo {
     opacity: 1;
-    z-index: 55;
+    z-index: 5555;
     transition-duration: 3s;
     transition-delay: 3.5s;
 }
@@ -2537,7 +2547,6 @@ input[type=radio]:checked ~ .check {
     right: 0;
     height: 100%;
     top: -2px;
-    content: '/';
     font-family: 'SF-UI-Display-Thin';
     font-size: 20px;
     color: #212121;
@@ -3383,7 +3392,6 @@ input[type=radio]:checked ~ .check {
 .main-view .content-news {
     height: 170px;
 }
-
 /*.main-view .main-buty {margin: 25px auto;}*/
 .links:nth-child(1) {
     background: url(../img/searc.png) no-repeat center;
@@ -3998,8 +4006,9 @@ a, img {
 }
 
 .fb_iframe_widget {
-    width: 777px;
+    width: 770px;
     margin: 0 auto;
+    padding: 0;
 }
 
 .dinn {
@@ -4293,6 +4302,291 @@ a, img {
     transition-delay: .5s;
 }
 
+.phonn {
+    cursor: pointer;
+}
+
+.submi {
+    opacity: 1 !important;
+    visibility: visible !important;
+    width: 300px !important;
+    height: 410px !important;
+    right: 30px !important;
+    padding-top: 0px !important;
+    bottom: 0% !important;
+    top: auto !important;
+    margin-bottom: 0px !important;
+    margin-right: 0px !important;
+    background-color: transparent !important;
+}
+
+.cloo {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.opee {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 7;
+}
+
+.opaa {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: .5s !important;
+}
+
+.curtail {
+    display: none;
+}
+
+.runny .new-menu {
+    width: calc(100% - -20px);
+    width: -moz-calc(100% - -20px);
+    width: -webkit-calc(100% - -20px);
+}
+
+.neww-link .links:nth-child(2):before {
+    opacity: 0;
+}
+
+.dest .mCS-rounded.mCSB_scrollTools .mCSB_draggerRail {
+    width: 100%;
+    height: 1px;
+    position: relative;
+    top: -5px;
+    left: 5px;
+}
+
+.domm .block-menu {
+    transition: 0s !important;
+    transition-delay: 0s !important;
+    box-shadow: 0 0 0 !important;
+}
+
+.runny .block-menu {
+    transition: .5s !important;
+}
+
+.setup .block-menu {
+    transition: .5s !important;
+}
+
+.conty ul li {
+    color: rgba(33, 33, 33, .7);
+    font-family: 'MinionPro-Semibold';
+    font-size: 19px;
+    line-height: 24px;
+    margin: 27px 0;
+}
+
+.fb-share-button .link {
+    position: absolute;
+    bottom: 500px;
+    left: 50px;
+    z-index: 555;
+}
+
+/*.linky .fb_iframe_widget {width: 69px;height: 55px;}.linky .fb_iframe_widget span {width: 69px!important;height: 55px!important;}.linky .fb_iframe_widget iframe {width: 69px;height: 55px;}.linky ._2vmz {width: 69px;height: 55px;}.linky ._2vmz>div {width: 69px;height: 55px;}.linky .plugin {width: 69px;height: 55px;}#facebook {opacity: .5;}.inlineBlock {width: 500px;}.pluginSkinLight {width: 5px;}*/
+.link:nth-child(1) a {
+    position: relative;
+}
+
+.link:nth-child(1) a:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../img/face-black.png) center no-repeat;
+    content: '';
+}
+
+.left-forr {
+    width: 50%;
+}
+
+.right-forr {
+    width: 50%;
+}
+
+.forj {
+    display: flex;
+    margin: 99px 0;
+}
+
+.right-forr p {
+    font-family: 'MinionPro-Semibold';
+    font-size: 18px;
+    line-height: 24px;
+    color: rgba(33, 33, 33, .7);
+}
+
+.left-forr form input {
+    outline: none;
+    width: calc(100% - 20px);
+    padding: 0;
+    height: 37px;
+    border: 1px solid #d5dae5;
+    padding: 0 0 0 15px;
+    font-size: 14px;
+    color: #999999;
+    transition: .3s;
+}
+
+.left-forr form textarea {
+    outline: none;
+    width: calc(100% - 20px);
+    padding: 0;
+    border: 1px solid #d5dae5;
+    padding: 0 0 0 15px;
+    padding: 5px 0 0 15px;
+    font-size: 14px;
+    color: #999999;
+    transition: .3s;
+}
+
+.left-forr form inpu {
+    margin: 0 0 20px 0;
+}
+
+.left-forr form {
+    width: 507px;
+}
+
+.left-forr label {
+    display: block;
+    width: 100%;
+    font-family: 'MinionPro-Semibold';
+    font-size: 18px;
+    line-height: 24px;
+    color: rgba(33, 33, 33, .7);
+}
+
+.left-forr .file input {
+    margin: 20px 0 20px 0;
+    padding: 0;
+    border: 0;
+    height: auto;
+    border: 1px solid #d5dae5;
+}
+
+.right-forr p:nth-child(1) {
+    margin-top: 0;
+}
+
+.left-forr .file .add-new {
+    border: 1px solid #d5dae5;
+    background: #fcfc00;
+}
+
+.senn {
+    padding: 0;
+    cursor: pointer;
+    font-family: 'SFUIDisplay-Semibold';
+    color: #212121;
+    line-height: 24px;
+    text-transform: uppercase;
+    position: relative;
+    text-decoration: none;
+    height: auto;
+    background: transparent;
+    border: 0;
+    margin: 0 auto;
+    outline: none;
+}
+
+.senn:hover .linn:after, .senn:hover .linn:before {
+    width: 50%;
+}
+
+.divv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 19px 0 0 0;
+}
+
+.senn .linn:before, .senn .linn:after {
+    bottom: 2px;
+}
+
+.inpu {
+    margin: 0 0 20px 0;
+}
+
+.inpu p {
+    font-family: 'MinionPro-Semibold';
+    font-size: 14px;
+    line-height: 24px;
+    color: rgba(33, 33, 33, .7);
+    margin: 25px 0 0 0;
+}
+
+.lose input {
+    border: 1px solid #d94431 !important;
+}
+
+.lose textarea {
+    border: 1px solid #d94431 !important;
+}
+
+.file.lose input {
+    border: 1px solid #d5dae5 !important;
+}
+
+.line-play:after {
+    position: absolute;
+    left: 7px;
+    height: 18px;
+    width: 18px;
+    background: url(../img/play.png) no-repeat center;
+    content: '';
+    top: 3px;
+}
+
+.line-play {
+    padding: 0 10px 0 32px;
+}
+
+.conty p strong {
+    font-family: 'MinionPro-Bold';
+}
+
+.mercy {
+    position: relative;
+    background: url(../img/graf.png) center no-repeat;
+    width: 17px;
+    height: 17px;
+    left: -7px;
+    bottom: 4px;
+}
+
+.class-mercy {
+    background: url(../img/graf-hover.png) center no-repeat;
+    width: 17px;
+    height: 17px;
+    position: relative;
+    left: -7px;
+    bottom: 4px;
+}
+
+.fb_iframe_widget span {
+    width: 770px !important;
+}
+
+.fb_iframe_widget iframe {
+    width: 770px !important;
+}
+
 @media (max-width: 1299px) {
     .container {
         width: calc(100% - 40px);
@@ -4441,6 +4735,12 @@ a, img {
     .vijen {
         left: -45px;
     }
+
+    .linky .link:nth-child(1) {
+        position: relative;
+        top: 20px;
+        left: 0;
+    }
 }
 
 @media (max-width: 1099px) {
@@ -4466,7 +4766,7 @@ a, img {
         display: block;
         position: absolute;
         right: 0;
-        top: 90px;
+        top: 75px;
         opacity: 0;
         visibility: hidden;
         transition: .5s;
@@ -4635,7 +4935,7 @@ a, img {
     }
 
     .main-menu {
-        margin: 0;
+        margin: 0 0 14px 0;
     }
 
     .runny .neww-link {
@@ -4767,6 +5067,7 @@ a, img {
 
     .bread-crumbs {
         z-index: 3;
+        flex-wrap: wrap;
     }
 
     .main-view .hamm .content-news h3 {
@@ -4789,6 +5090,55 @@ a, img {
 
     .straight-right .news-item {
         width: 33.33%;
+    }
+
+    .block-menu {
+        width: calc(100% - -20px);
+    }
+
+    .vert .newss:nth-child(1) {
+        padding-top: 10px;
+    }
+
+    .ggwp {
+        overflow: hidden;
+    }
+
+    .upss-aroww {
+        display: block;
+    }
+
+    .noth .vote:after {
+        position: absolute;
+        left: -59px;
+        top: 0;
+        background: #d7d5e4;
+        content: '';
+        width: 1px;
+        height: 85%;
+    }
+
+    .main-page .quest-five {
+        top: 95px;
+    }
+
+    .dest .mCSB_scrollTools.mCSB_scrollTools_horizontal {
+        width: calc(100% - 10px);
+        width: -moz-calc(100% - 10px);
+        width: -webkit-calc(100% - 10px);
+        top: 85px;
+    }
+
+    .quest-four {
+        margin-left: 70px;
+    }
+
+    .quest-four:before {
+        left: -59px;
+    }
+
+    .zett {
+        z-index: -1 !important;
     }
 }
 
@@ -4824,6 +5174,7 @@ a, img {
 
     .fb_iframe_widget {
         width: 100%;
+        padding: 0 !important;
     }
 
     .straight-right {
@@ -4832,6 +5183,14 @@ a, img {
 
     .straight-right .news-item {
         width: 50%;
+    }
+
+    .dinn .fb_iframe_widget span {
+        width: 100% !important;
+    }
+
+    .dinn .fb_iframe_widget iframe {
+        width: 100% !important;
     }
 }
 
@@ -4850,7 +5209,7 @@ a, img {
         opacity: 1;
         visibility: visible;
         transition-delay: 0s;
-        top: -10px;
+        top: -17px;
     }
 
     .goon .block-menu {
@@ -5066,7 +5425,7 @@ a, img {
         width: -webkit-calc(100% - 40px);
         margin: 0 20px 0;
         bottom: 45px;
-        top: auto;
+        top: auto !important;
         left: 0;
         border: 0;
     }
@@ -5374,6 +5733,73 @@ a, img {
     .g {
         display: none;
     }
+
+    .centr ul li .active:before, .centr ul li .active:after {
+        opacity: 0;
+    }
+
+    .noth .soon {
+        margin: 27px 0 0 0;
+    }
+
+    .main-view .quest-five:before {
+        opacity: 0;
+    }
+
+    .inter-news .city-caption {
+        width: calc(100% - 40px);
+        width: -moz-calc(100% - 40px);
+        width: -webkit-calc(100% - 40px);
+        left: 20px;
+        top: 0;
+    }
+
+    .goon .block-menu:after, .goon .block-menu:before {
+        left: 40px;
+        width: calc(100% - 38px);
+        width: -moz-calc(100% - 38px);
+        width: -webkit-calc(100% - 59px);
+    }
+
+    .homr-name .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+        width: 9px !important;
+        left: -2px;
+    }
+
+    /*    .main-view .bread-crumbs div:nth-last-child(2) a:after {content: "...";}.main-view .bread-crumbs div:last-child {display: none;}*/
+    .button:nth-child(1) a {
+        padding: 0 17px 0 20px;
+    }
+
+    .miss div:last-child {
+        margin: 0 0 0 18px;
+    }
+
+    .miss div:last-child span {
+        padding: 0;
+    }
+
+    .menu-middle {
+        top: 8px;
+    }
+
+    .menu-bottom {
+        top: 16px;
+    }
+
+    .menu {
+        top: -17.3px;
+    }
+
+    .main-block:nth-child(2) {
+        left: -5px;
+        justify-content: flex-start;
+    }
+
+    .city-name span {
+        margin-left: 0;
+        left: 0;
+    }
 }
 
 @media (max-width: 700px) {
@@ -5445,6 +5871,35 @@ a, img {
     .players-phone .verty {
         height: 70vh;
     }
+
+    .main-block:nth-child(2) {
+        top: 10px;
+    }
+
+    .goon .main-block:nth-child(2) img {
+        margin: -1px 0 0 0;
+    }
+
+    .city-name span {
+        bottom: -19px;
+    }
+
+    .city-name span {
+        margin-left: 0;
+        left: 0;
+    }
+
+    .main-block:nth-child(2) {
+        top: 15px;
+    }
+
+    .city-name span {
+        bottom: -23px;
+    }
+
+    .menu {
+        top: -12.3px;
+    }
 }
 
 @media (max-width: 500px) {
@@ -5466,11 +5921,33 @@ a, img {
     .name-menu {
         top: 25px;
     }
+
+    .city-caption span:after {
+        left: 7% !important;
+    }
+
+    .city-caption span:before {
+        right: 7% !important
+    }
+
+    .dest .players-left {
+        height: 49vw;
+    }
 }
 
 @media (max-width: 400px) {
     .fresh {
         right: -17px;
+    }
+
+    .main-block:nth-child(2) {
+        left: -5px;
+        justify-content: flex-start;
+    }
+
+    .city-name span {
+        margin-left: 0;
+        left: 0;
     }
 }
 
@@ -5510,5 +5987,13 @@ a, img {
 
     .creative {
         letter-spacing: 1.1px;
+    }
+
+    .main-block:nth-child(2) {
+        left: 0;
+    }
+
+    .city-name span {
+        left: 30px;
     }
 }

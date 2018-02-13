@@ -172,7 +172,8 @@
                                                 <div class="times-newws">{{ $poll->time }}</div>
                                             </div>
                                             <div class="right-coments">
-                                                <img src="{{ asset('/') }}img/wath5.png" alt="">
+                                                <div class="class-mercy"></div>
+                                            <!--                                                <img src="{{ asset('/') }}img/wath5.png" alt="">-->
                                                 <span>{{ $poll->voited }}</span>
                                             </div>
 
@@ -200,7 +201,8 @@
                                             <div class="times-newws">{{ $poll->time }}</div>
                                         </div>
                                         <div class="right-coments">
-                                            <img src="{{ asset('/') }}img/wath.png" alt="">
+                                            <div class="mercy"></div>
+                                        <!--                                            <img src="{{ asset('/') }}img/wath.png" alt="">-->
                                             <span>{{ $poll->voited }}</span>
                                         </div>
                                     </div>
@@ -211,5 +213,5 @@
                 @endif
             </div>
         </div>
-    </div><!--end container--->
+    </div><!--end container-->
 </div><!--end content-->

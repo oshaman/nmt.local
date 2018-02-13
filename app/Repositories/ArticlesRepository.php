@@ -314,7 +314,7 @@ class ArticlesRepository extends Repository
             })->save(public_path() . '/asset/images/articles/main/' . $path, 100);*/
             $img->resize(Config::get('settings.articles_img')['main']['width'], null, function ($constraint) {
                 $constraint->aspectRatio();
-            })->save(public_path() . '/asset/images/articles/main/' . $path, 80);
+            })->save(public_path() . '/asset/images/articles/main/' . $path, 70);
             $img->fit(Config::get('settings.articles_img')['middle']['width'], Config::get('settings.articles_img')['middle']['height'])
                 ->save(public_path() . '/asset/images/articles/middle/' . $path, 80);
             $img->fit(Config::get('settings.articles_img')['small']['width'], Config::get('settings.articles_img')['small']['height'])
