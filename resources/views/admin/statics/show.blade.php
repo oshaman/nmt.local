@@ -9,8 +9,17 @@
                     <th>Редагувати</th>
                 </tr>
                 </thead>
+                <tbody>
+                <tr>
+                    <td>Повідомити новину</td>
+                    <td>Повідомити новину</td>
+                    <td>
+                        {!! Form::open(['url' => route('update_informer'),'class'=>'form-horizontal','method'=>'GET']) !!}
+                        {!! Form::button('Редагувати', ['class' => 'btn btn-warning','type'=>'submit']) !!}
+                        {!! Form::close() !!}
+                    </td>
+                </tr>
                 @if (!empty($pages[0]))
-                    <tbody>
                     @foreach ($pages as $page)
                         <tr>
                             <td>{{ $page->title }}</td>
@@ -22,8 +31,8 @@
                             </td>
                         </tr>
                     @endforeach
-                    </tbody>
                 @endif
+                </tbody>
             </table>
         </div>
     </div>

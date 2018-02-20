@@ -30,7 +30,8 @@ class SearchController extends MainController
         if (is_array($result) && !empty($result['error'])) {
             $this->content = view('static.search')->render();
         } else {
-            $this->content = view('static.search')->with(['articles' => $result])->render();
+            $this->content = view('static.search')
+                ->with(['articles' => $result['result'], 'query' => $result['query']])->render();
         }
         return $this->renderOutput();
     }

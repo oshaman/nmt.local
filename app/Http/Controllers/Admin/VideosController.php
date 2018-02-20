@@ -21,6 +21,7 @@ class VideosController extends AdminController
     {
         $this->template = 'admin.admin';
         $this->v_rep = $repository;
+        $this->mark = 'admin_videos';
     }
 
     /**

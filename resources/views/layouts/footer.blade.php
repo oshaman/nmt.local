@@ -89,7 +89,7 @@
                 <a href="{{ env('IG_LINK') }}" target="_blank"><img src="{{ asset('/') }}img/instt.png" alt=""></a>
             </div>
 
-            <div class="foot-item">МІСТО 2017. Все права захищені.</div>
+            <div class="foot-item">МІСТО 2017. Всі права захищені.</div>
             <div class="foot-item">
                 <div class="fresh">
                     <div class="created">САЙТ РАЗРАБОТАН</div>

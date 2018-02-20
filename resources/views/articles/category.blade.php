@@ -22,7 +22,7 @@
                                     <div class="imgg-news">
                                         <img src="{{ asset('asset') }}/images/articles/middle/{{ $article->image->path }}"
                                              alt="{{ $article->image->alt }}" title="{{ $article->image->title }}">
-                                        <div class="yelow-line @if($article->hasvideo) line-play @endif">{{ $article->category->name }}</div>
+                                        <div class="yelow-line @if($article->hasvideo) line-play @endif @if($article->hasimage) line-photo @endif">{{ $article->category->name }}</div>
                                         <div class="coments-news">
                                             <div class="left-coments">
 

@@ -48,7 +48,7 @@
 
                     <img src="{{ asset('/') }}img/news.png" alt="">
                     <div class="item-players video-removable">
-                            <div id="player5"></div>
+                        <div id="player5"></div>
                         <div class="vids" data-token="{{ $transmission->token ?? 'yA30K3z5PSw' }}"></div>
                         <div class="curtail"></div>
                         <div class="bakkk"></div>
@@ -65,7 +65,7 @@
                 <div class="players-right">
                     <div class="tenka"></div>
                     <div class="short-name">
-                        <div class="shorr">Прямий ефір</div>
+                        <div class="shorr">Анонси прямих ефірів</div>
                     </div>
                     {{--ONLINE--}}
                     <div class="vert" data-ch="online">
@@ -154,7 +154,9 @@
                                         <div class="imgg-news">
                                             <img src="{{ asset('/asset/images/articles/middle').'/'.$article->image->path }}"
                                                  alt="{{ $article->image->alt }}" title="{{ $article->image->title }}">
-                                            <div class="yelow-line @if($article->hasvideo) line-play @endif">{{ $article->category->name }}</div>
+                                            <div class="yelow-line @if($article->hasvideo) line-play @endif @if($article->hasimage) line-photo @endif">
+                                                {{ $article->category->name }}
+                                            </div>
                                             <div class="coments-news">
                                                 <div class="left-coments">
 

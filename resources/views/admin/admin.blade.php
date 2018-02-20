@@ -74,6 +74,12 @@
     </div>
 @endsection
 
+@section('mark')
+    @if(!empty($mark))
+        <span class="mark-menu" data-class="{{ $mark }}"></span>
+    @endif
+@endsection
+
 @section('jss')
     @isset($jss)
         {!! $jss !!}

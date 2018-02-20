@@ -23,6 +23,7 @@ class ArticlesController extends AdminController
     {
         $this->template = 'admin.admin';
         $this->a_rep = $repository;
+        $this->mark = 'admin_articles';
     }
 
     /**

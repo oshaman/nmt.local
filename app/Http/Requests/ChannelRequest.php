@@ -54,8 +54,9 @@ class ChannelRequest extends FormRequest
     {
         if ($this->isMethod('post')) {
             $rules = [
-                'title' => ['required', 'between:5, 32', 'regex:#^[а-яА-ЯІіЇїЄє\s\'-\(\)]+$#u'],
+                'title' => ['required', 'between:5, 32', 'regex:#^[a-zA-Zа-яА-ЯІіЇїЄє\s\'\-\(\)]+$#u'],
                 'confirmed' => 'boolean|nullable',
+                'priority' => 'required|numeric|between:1,255',
             ];
             return $rules;
         }

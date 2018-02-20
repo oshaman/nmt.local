@@ -27,6 +27,13 @@
             value="1" name="confirmed">
             Вивести в меню
         </label>
+        <label>
+            {!! Form::number('priority', old('alias') ? : ($channel->priority ?? ''), ['min'=>1, 'max'=>255]) !!}
+            Пріоритет.
+        </label>
+        <button type="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="right"
+                title="Обов'язкове до заповнення поле, меньше число - більший пріоритет(число від 1 до 255)">?
+        </button>
     </div>
 
     <hr>

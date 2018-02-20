@@ -15,4 +15,7 @@ return [
     'paginate_tags' => 12,
     'slider' => ['width' => 1170, 'height' => 496],
     'poll' => ['width' => 340, 'height' => 240],
+//    Captcha
+    'captcha_secret' => env('GL_SECRET_CAPTCHA', '6LffgkYUAAAAALjFTsDfhPi9CJmjzotTEV42Q9Jw'),
+    'captcha_site_key' => env('GL_CAPTCHA', '6LffgkYUAAAAAJ6ubssIzd6snneSgU8JuHcmzWxY'),
 ];

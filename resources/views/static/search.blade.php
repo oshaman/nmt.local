@@ -10,7 +10,7 @@
                     <meta itemprop="position" content="1"/>
                 </div>
                 <div itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="button">
-                    <div itemprop="name" class="label1 tag">Пошук</div>
+                    <div itemprop="name" class="label1 tag">Пошук по запиту - {{ $query ?? '' }}</div>
                     <meta itemprop="position" content="2"/>
                 </div>
             </div>
@@ -25,7 +25,9 @@
                                     <div class="imgg-news">
                                         <img src="{{ asset('asset') }}/images/articles/middle/{{ $article->image->path }}"
                                              alt="{{ $article->image->alt }}" title="{{ $article->image->title }}">
-                                        <div class="yelow-line">{{ $article->category->name }}</div>
+                                        <div class="yelow-line @if($article->hasvideo) line-play @endif @if($article->hasimage) line-photo @endif">
+                                            {{ $article->category->name }}
+                                        </div>
                                         <div class="coments-news">
                                             <div class="left-coments">
 

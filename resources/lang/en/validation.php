@@ -24,7 +24,7 @@ return [
     'before' => 'The :attribute must be a date before :date.',
     'before_or_equal' => 'The :attribute must be a date before or equal to :date.',
     'between' => [
-        'numeric' => 'The :attribute must be between :min and :max.',
+        'numeric' => 'Число в полі :attribute має бути в межах від :min до :max.',
         'file' => 'The :attribute must be between :min and :max kilobytes.',
         'string' => 'Поле :attribute має містити від :min до :max символів.',
         'array' => 'The :attribute must have between :min and :max items.',

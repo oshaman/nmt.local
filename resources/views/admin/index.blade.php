@@ -98,7 +98,7 @@
     </div>
 
 </div>
-
+@yield('mark')
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
 @yield('jss')

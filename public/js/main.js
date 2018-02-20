@@ -62,7 +62,7 @@ jQuery(document).ready(function () {
 
     $('.upss-aroww').click(function (event) {
         event.preventDefault(event);
-        console.log('top');
+        //console.log('top');
         $('.vert').mCustomScrollbar("scrollTo", "+=150", {scrollInertia: 600, scrollEasing: "linear"});
     });
     $('.dowm-aroww').click(function (event) {
@@ -178,17 +178,18 @@ jQuery(document).ready(function () {
 
     function loadAjax() {
         _this = $(this);
-
         if (_this.siblings('input[name="stats"]').val().length == 0) {
 
             var source = _this.attr('data-source');
             var source_id = _this.attr('data-id');
             var page = $('.active-pagin-number').last().text();
-            var cnt_page = $('.pagin-number').last().text();
-            // console.log(page);
+            var cnt_page = $('.pagin-number').eq($('.pagin-number').length - 1).text();
+            console.log(+page, +cnt_page);
             // return false;
+            if (+page >= +cnt_page) {
+                return false;
+            }
 
-            if (page >= cnt_page) return false;
             if ((("undefined" !== typeof source) && $.isNumeric(source)) && (("undefined" == typeof source_id) || $.isNumeric(source_id))) {
                 $.ajax({
                     headers: {
@@ -211,7 +212,10 @@ jQuery(document).ready(function () {
                         setTimeout(function () {
                             $('.main-hover').bind('mouseenter', hoverEl);
                             $('.main-hover').bind('mouseleave', mouseleveEl)
-                        }, 50)
+                        }, 50);
+                        $('.load-more').unbind('click');
+                        $('.load-more').bind('click', loadAjax);
+
                     }
                 })
 
@@ -250,8 +254,8 @@ jQuery(document).ready(function () {
             var bodyy = $('body').height();
             console.log(bodyy);
             var city = $('.dinn').offset().top;
-            var test = city - last - 399 - 159;
-            console.log(test);
+            var test = city - last - 399 - 129;
+            //console.log(test);
             if (currentScroll >= test) {
                 $('.linky').addClass('best');
             }
@@ -259,7 +263,7 @@ jQuery(document).ready(function () {
                 $('.linky').removeClass('best');
             }
 
-            console.log(currentScroll);
+            //console.log(currentScroll);
         });
     }
 
@@ -407,7 +411,7 @@ jQuery(document).ready(function () {
     });
     var ness = '7';
     var heyt = $('.vijen').height();
-    console.log(heyt);
+
 
 
     $('.hovv-news').click(function () {
@@ -753,21 +757,39 @@ jQuery(document).ready(function () {
 
         $('.form-page input').each(function () {
             var u = $(this);
+            if (u.attr('name') === ('phone')) {
+
+                u.val().length >= 7 ? u.parent().addClass('trep') : u.parent().addClass('lose');
+
+
+            }
+            if (u.attr('name') === ('name')) {
+                u.val().length >= 3 ? '' : u.parent().addClass('lose');
+            }
+            if (u.attr('name') == 'email') {
+                validateEmail(u.val()) ? '' : u.parent().addClass('lose');
+            }
+
             if (u.val().length) {
                 u.parent().addClass('here');
             }
-            if (u.val().length < 7) {
-                u.parent().addClass('lose');
-                setTimeout(function () {
-                    u.parent().removeClass('lose');
-                }, 1000);
-            } else {
-            }
-//             else {
-//                 u.parent().addClass('lose');setTimeout(function(){u.parent().removeClass('lose'); }, 1000);
-//             }
 
+
+            else {
+                u.parent().addClass('lose');
+            }
+
+            setTimeout(function () {
+                u.parent().removeClass('lose');
+            }, 1000);
         });
+
+        function validateEmail(email) {
+            var re = /\S+@\S+\.\S+/;
+            return re.test(email);
+        }
+
+
         $('.form-page textarea').each(function () {
             var p = $(this);
             if (p.val().length) {
@@ -784,23 +806,106 @@ jQuery(document).ready(function () {
         if (!$('.form-page .lose').length) {
             $('.form-horizontal').trigger('submit');
         }
-
+         
 //         if($('.name0').val().length){
 //        $('.form-horizontal').trigger('submit');
 //         }else {}
 
+
     });
-     
-     
-     
-     
+
+
+//     t.attr('placeholder').val('gost');
+
+    /*     setInterval(function(){
+             var t = document.getElementById('form-control').files.item(0).name;
+             $('.test').attr('placeholder', t);
+
+
+         }, 55);*/
+
+
+    window.requestAnimFrame = (function () {
+        return window.requestAnimationFrame ||
+            window.webkitRequestAnimationFrame ||
+            window.mozRequestAnimationFrame ||
+            window.oRequestAnimationFrame ||
+            window.msRequestAnimationFrame ||
+            function (/* function */ callback, /* DOMElement */ element) {
+                window.setTimeout(callback, 1000 / 60);
+            };
+    })();
+
+    function step() {
+        requestAnimationFrame(step);
+
+
+        $('#form-control').on('change', function () {
+            var t = document.getElementById('form-control').files.item(0).name;
+
+            $(this).parent().find('.texx').html(t);
+        });
+
+        $('#form-control-1').on('change', function () {
+            var t1 = document.getElementById('form-control-1').files.item(0).name;
+            $(this).parent().find('.texx').html(t1);
+        });
+
+
+        $('#form-control-2').on('change', function () {
+            var t2 = document.getElementById('form-control-2').files.item(0).name;
+            $(this).parent().find('.texx').html(t2);
+        });
+
+
+        $('#form-control-3').on('change', function () {
+            var t3 = document.getElementById('form-control-3').files.item(0).name;
+            $(this).parent().find('.texx').html(t3);
+        });
+
+        $('#form-control-4').on('change', function () {
+            var t4 = document.getElementById('form-control-4').files.item(0).name;
+
+            $(this).parent().find('.texx').html(t4);
+        });
+
+
+    }
+
+    step();
+
+
+    setTimeout(function () {
+        $('.alert').addClass('blink');
+    }, 500);
+
+    setTimeout(function () {
+        $('.alert').removeClass('blink').css({'display': 'none'});
+    }, 2399);
+            
+
+         
+
+         
+
+
+    
 });//and ready
 
 
+$(document).ready(function () {
+    if ($('.numbb5').length) {
+        $('.numbb5').inputmask({mask: "+380 (99) 999-99-99"});
+    }
+});
 
 
+var d = $('.linky').height() + 37;
 
-
+if ($('.conty').height() < d) {
+    $('.conty').css({'min-height': d});
+} else {
+}
 
 
 

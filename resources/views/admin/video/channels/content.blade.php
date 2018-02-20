@@ -35,6 +35,7 @@
                     <thead>
                     <tr class="info">
                         <th>В меню</th>
+                        <th>Пріоритет</th>
                         <th>Им'я</th>
                         <th>ЧПУ</th>
                         <th>Редагувати</th>
@@ -44,6 +45,7 @@
                     @foreach($channels as $channel)
                         <tr>
                             <td>{!! $channel->approved ? '<a><span class="glyphicon glyphicon-plus"></span></a>' : '' !!}</td>
+                            <td>{{ $channel->priority }}</td>
                             <td>{{ $channel->title }}</td>
                             <td>{{ $channel->alias }}</td>
                             <td>

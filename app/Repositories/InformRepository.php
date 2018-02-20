@@ -2,12 +2,18 @@
 
 namespace Fresh\Nashemisto\Repositories;
 
+use Fresh\Nashemisto\Informer;
 use Fresh\Nashemisto\Jobs\AddNews;
 use Validator;
 use Storage;
 
-class InformRepository
+class InformRepository extends Repository
 {
+    public function __construct(Informer $informer)
+    {
+        $this->model = $informer;
+    }
+
     /**
      * @param $request
      * @return array
@@ -43,9 +49,35 @@ class InformRepository
         return ['status' => 'Новину відправлено!'];
     }
 
+    /**
+     *
+     */
     public function clearNews()
     {
         Storage::deleteDirectory('public/news');
         \Log::info('clearNews');
+    }
+
+    /**
+     * @param $request
+     * @return array
+     */
+    public function updateInformer($request)
+    {
+        $informer = $this->model->find(1);
+
+        $informer->text = $request->get('text');
+
+        try {
+            $result = $informer->save();
+        } catch (Exception $e) {
+            \Log::info('Помилка збереження "Повідомити новину" - ') . $e->getMessage();
+        }
+
+        if ($result) {
+            return ['status' => 'Сторінку оновлено'];
+        } else {
+            return ['error' => 'Помилка збереження'];
+        }
     }
 }

@@ -20,6 +20,7 @@ class TransmissionController extends AdminController
         $this->title = 'Online - трансляції.';
         $this->transmission_rep = $rep;
         $this->template = 'admin.admin';
+        $this->mark = 'admin_transmissions';
     }
 
     /**

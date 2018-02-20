@@ -97,6 +97,8 @@ class ArticlesRepository extends Repository
         $article['content'] = preg_replace('/{{.*}}/', '', $data['content'] ?? null);
 
         $article['hasvideo'] = $this->hasVideo($article['content']);
+        $article['hasimage'] = $this->hasImage($article['content']);
+
 
 //        END Content
         $new = $this->model->firstOrCreate($article);
@@ -196,6 +198,7 @@ class ArticlesRepository extends Repository
 
         $new['content'] = preg_replace('/{{.*}}/', '', $data['content'] ?? null);
         $article['hasvideo'] = $this->hasVideo($new['content']);
+        $article['hasimage'] = $this->hasImage($new['content']);
 
         $updated = $article->fill($new)->save();
 
@@ -308,10 +311,6 @@ class ArticlesRepository extends Repository
 
             $path = substr($alias, 0, 64) . '-' . time() . $extention;
 
-            /*$img->fit(Config::get('settings.articles_img')['main']['width'], Config::get('settings.articles_img')['main']['height'], function ($constraint) {
-                $constraint->upsize();
-                $constraint->aspectRatio();
-            })->save(public_path() . '/asset/images/articles/main/' . $path, 100);*/
             $img->resize(Config::get('settings.articles_img')['main']['width'], null, function ($constraint) {
                 $constraint->aspectRatio();
             })->save(public_path() . '/asset/images/articles/main/' . $path, 70);
@@ -371,6 +370,7 @@ class ArticlesRepository extends Repository
     {
         Cache::forget('article_' . $alias);
         Cache::forget('404');
+        Cache::forget('articles_last');
         !empty($cat) ? Cache::forget('articles_' . $cat) : null;
         !empty($cat) ? Cache::forget('article-cat-' . $cat . '1') : null;
         !empty($cat) ? Cache::forget('article-cat-all1') : null;
@@ -383,6 +383,17 @@ class ArticlesRepository extends Repository
     public function hasVideo($content)
     {
         $re = '/<iframe src="\/\/www\.youtube\.com/';
+        preg_match_all($re, $content, $matches, PREG_SET_ORDER, 0);
+        if (count($matches) > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function hasImage($content)
+    {
+        $re = '/<img [^>]+>/';
         preg_match_all($re, $content, $matches, PREG_SET_ORDER, 0);
         if (count($matches) > 0) {
             return true;

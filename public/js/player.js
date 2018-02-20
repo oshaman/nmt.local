@@ -266,21 +266,23 @@ if ($('.item-players').length || $('.video-youtube').length) {
         }
     }
 
-
-    $('.mutte').click(function () {
-        if ($(this).hasClass('warr')) {
-            $(this).addClass('warr');
-            muted = false;
-            sessionStorage.setItem('video-muted', false)
-            player5.unMute();
-        }
-        if (promo === '7') {
-            muted = true;
-            sessionStorage.setItem('video-muted', true)
-            $(this).removeClass('warr');
-            player5.mute();
-        }
+    $(document).ready(function () {
+        $('.mutte').click(function () {
+            if (muted) {
+                $('.city-caption').html('3424324')
+                $(this).addClass('warr');
+                muted = false;
+                sessionStorage.setItem('video-muted', false)
+                player5.unMute();
+            } else {
+                muted = true;
+                sessionStorage.setItem('video-muted', true)
+                $(this).removeClass('warr');
+                player5.mute();
+            }
     });
+    })
+
     $('.close-video-player').click(function () {
         player.pauseVideo();
         $('.video-youtube').removeClass('yout');

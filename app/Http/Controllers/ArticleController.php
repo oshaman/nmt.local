@@ -80,7 +80,7 @@ class ArticleController extends MainController
 
         $articles = Cache::remember('articles_' . $article->category_id . $article->id, 24 * 60, function () use ($article) {
             $where = [['category_id', $article->category_id], ['approved', 1], ['id', '<>', $article->id]];
-            $articles = $this->a_rep->get('*', 3, false, $where, false, ['category', 'image'], true);
+            $articles = $this->a_rep->get('*', 3, false, $where, ['created_at', 'desc'], ['category', 'image'], true);
             return $articles;
         });
 //        dd($articles);

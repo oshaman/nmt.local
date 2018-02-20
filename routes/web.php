@@ -183,7 +183,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
         Route::match(['post', 'get'], '/', 'Admin\PriorityController@index')->name('admin_priority');
         Route::post('edit/{priority}', 'Admin\PriorityController@edit')->name('update_priority')->where('priority', '[0-9]+');
     });
-
+//    Admin Informer
+    Route::match(['post', 'get'], 'informer', 'Admin\InformerController@edit')->name('update_informer');
 });
 //================================================= ADMIN ============================================================
 //Auth

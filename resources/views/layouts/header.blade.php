@@ -39,8 +39,8 @@
                         </div>
                         <div class="main-block">
                             @if('main' == Route::currentRouteName())
-
-                                <img src="{{ asset('/') }}img/our-city-logo.svg" alt="">
+                                <a>
+                                    <img src="{{ asset('/') }}img/our-city-logo.svg" alt=""></a>
                             @else
                                 <a href="{{ route('main') }}">
                                     <img src="{{ asset('/') }}img/our-city-logo.svg" alt="">

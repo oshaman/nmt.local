@@ -20,6 +20,7 @@ class PriorityController extends AdminController
     {
         $this->p_rep = $p_rep;
         $this->template = 'admin.admin';
+        $this->mark = 'admin_articles';
     }
 
     /**

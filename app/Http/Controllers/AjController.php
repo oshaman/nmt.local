@@ -8,6 +8,7 @@ use Fresh\Nashemisto\Repositories\PollsRepository;
 use Fresh\Nashemisto\Tag;
 use Illuminate\Http\Request;
 use Cache;
+use DB;
 use Illuminate\Pagination\Paginator;
 
 class AjController extends Controller
@@ -74,8 +75,11 @@ class AjController extends Controller
                 Paginator::currentPathResolver(function () use ($cat) {
                     return route('category', $cat->alias);
                 });
+
+                $where = [['approved', true], ['created_at', '<=', DB::raw('NOW()')], 'category_id' => $cat->id];
+
                 $articles = $this->a_rep->get('*', false, 12,
-                    ['approved' => 1, 'category_id' => $cat->id], ['created_at', 'desc'], ['image'], true);
+                    $where, ['created_at', 'desc'], ['image'], true);
 
                 return view('articles.get_more')->with(['articles' => $articles])
                     ->render();

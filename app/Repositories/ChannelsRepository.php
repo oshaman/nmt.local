@@ -45,6 +45,10 @@ class ChannelsRepository extends Repository
             $channel->alias = $request->alias;
         }
 
+        if ($channel->priority != $request->priority) {
+            $channel->priority = $request->priority;
+        }
+
         if ($request->filled('confirmed')) {
             $channel->approved = 1;
         } else {

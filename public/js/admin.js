@@ -175,3 +175,13 @@ $('.myPreview').keyup(function () {
     if ($this.val().length > 600)
         $this.val($this.val().substr(0, 600));
 });
+// set active menu
+$(document).ready(function () {
+    cl = $('.mark-menu').attr('data-class');
+    if ("undefined" !== typeof cl) {
+        menu = $('.' + cl);
+        if ("undefined" !== typeof menu) {
+            menu.addClass('active');
+        }
+    }
+})

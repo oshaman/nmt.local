@@ -19,6 +19,7 @@ class CardController extends AdminController
         $this->title = 'Анонси трансляцій.';
         $this->card_rep = $rep;
         $this->template = 'admin.admin';
+        $this->mark = 'admin_transmissions';
     }
 
     /**

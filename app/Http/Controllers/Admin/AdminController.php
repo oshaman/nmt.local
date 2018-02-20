@@ -18,6 +18,7 @@ class AdminController extends Controller
     protected $tiny = false;
     protected $areaH = false;
     protected $areaW = false;
+    protected $mark = false;
     /**
      * @return mixed
      */
@@ -28,6 +29,7 @@ class AdminController extends Controller
         $this->vars = array_add($this->vars, 'jss', $this->jss);
         $this->vars = array_add($this->vars, 'tiny', $this->tiny);
         $this->vars = array_add($this->vars, 'css', $this->css);
+        $this->vars = array_add($this->vars, 'mark', $this->mark);
 
         if (!empty($this->areaH)) $this->vars = array_add($this->vars, 'areaH', $this->areaH);
         if (!empty($this->areaW)) $this->vars = array_add($this->vars, 'areaW', $this->areaW);
@@ -51,35 +53,35 @@ class AdminController extends Controller
         return Menu::make('adminMenu', function ($menu) {
 
             if (Gate::allows('USERS_ADMIN')) {
-                $menu->add('Користувачі', array('route' => 'users_admin'));
+                $menu->add('Користувачі', array('route' => 'users_admin', 'class' => 'users'));
             }
 
             if (Gate::allows('UPDATE_ARTICLES')) {
-                $menu->add('Статті', array('route' => 'admin_articles'));
+                $menu->add('Статті', array('route' => 'admin_articles', 'class' => 'admin_articles'));
             }
 
             if (Gate::allows('UPDATE_TAGS')) {
-                $menu->add('Теги',array('route' => 'admin_tags'));
+                $menu->add('Теги', array('route' => 'admin_tags', 'class' => 'admin_tags'));
             }
 
             if (Gate::allows('UPDATE_POLLS')) {
-                $menu->add('Опитування', array('route' => 'admin_polls'));
+                $menu->add('Опитування', array('route' => 'admin_polls', 'class' => 'admin_polls'));
             }
 
             if (Gate::allows('UPDATE_VIDEO')) {
-                $menu->add('Відео', array('route' => 'admin_videos'));
+                $menu->add('Відео', array('route' => 'admin_videos', 'class' => 'admin_videos'));
             }
 
             if (Gate::allows('UPDATE_SEO')) {
-                $menu->add('SEO', array('route' => 'seo_admin'));
+                $menu->add('SEO', array('route' => 'seo_admin', 'class' => 'seo_admin'));
             }
 
             if (Gate::allows('UPDATE_STATIC')) {
-                $menu->add('Статичні сторінки', array('route' => 'admin_static'));
+                $menu->add('Статичні сторінки', array('route' => 'admin_static', 'class' => 'admin_static'));
             }
 
             if (Gate::allows('UPDATE_CHANNEL')) {
-                $menu->add('Трансляції', array('route' => 'admin_transmissions'));
+                $menu->add('Трансляції', array('route' => 'admin_transmissions', 'class' => 'admin_transmissions'));
             }
             /*
             if (Gate::allows('STATIC_ADMIN')) {

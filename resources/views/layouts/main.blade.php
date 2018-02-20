@@ -36,7 +36,7 @@
             {{ env('APP_NAME') .' - '. ($title ?? '') }}
         @endif
     </title>
-
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body @if('article' == Route::currentRouteName()) class="one_article"
       @elseif('main' == Route::currentRouteName()) class="main-page" @endif>
@@ -52,6 +52,8 @@
 <script src="{{ asset('/') }}/js/jquery-3.2.1.min.js"></script>
 <script src="{{ asset('/') }}/js/jquery.mCustomScrollbar.min.js"></script>
 <script src="{{ asset('/') }}/js/datepicker.js"></script>
+<script src="{{ asset('/') }}/js/mask.js"></script>
+
 <script src="{{ asset('/') }}/js/main.js"></script>
 <script src="https://www.youtube.com/iframe_api"></script>
 
@@ -83,63 +85,63 @@
 
 <!-- BEGIN JIVOSITE CODE {literal} -->
 <script type='text/javascript'>
-    (function () {
-        var widget_id = 'R406vZB40r';
-        var d = document;
-        var w = window;
+    /*    (function () {
+            var widget_id = 'R406vZB40r';
+            var d = document;
+            var w = window;
 
-        function l() {
+            function l() {
 
-            var s = document.createElement('script');
-            s.type = 'text/javascript';
-            s.async = true;
-            s.src = '//code.jivosite.com/script/widget/' + widget_id;
-            var ss = document.getElementsByTagName('script')[0];
-            ss.parentNode.insertBefore(s, ss);
-        }
-
-        if (d.readyState == 'complete') {
-            l();
-        } else {
-            if (w.attachEvent) {
-                w.attachEvent('onload', l);
-            } else {
-                w.addEventListener('load', l, false);
+                var s = document.createElement('script');
+                s.type = 'text/javascript';
+                s.async = true;
+                s.src = '//code.jivosite.com/script/widget/' + widget_id;
+                var ss = document.getElementsByTagName('script')[0];
+                ss.parentNode.insertBefore(s, ss);
             }
-        }
-    })();
 
-    $(document).ready(function () {
-        $('.opee').click(function () {
-            jivo_api.open();
-            $('.opee').css({'z-index': '-1'});
-            $('.cloo').css({'z-index': '9'});
-            $('jdiv, .jivo_shadow').removeClass('opaa');
-            indd = '5';
-            $('#jivo-iframe-container').removeClass('zett');
-        });
-        $('.cloo').click(function () {
-            jivo_api.close();
-            $('.opee').css({'z-index': '9'});
-            $('.cloo').css({'z-index': '-1'});
-            $('jdiv, .jivo_shadow').addClass('opaa');
-            indd = '4';
-            $('#jivo-iframe-container').addClass('zett');
-        });
-    })
-    var indd = '4';
-    setInterval(function () {
-        if (indd === '4') {
-            $('jdiv, .jivo_shadow').addClass('opaa');
-        }
-    }, 55);
-    setInterval(function () {
-        $('#jivo_close_button').click(function () {
-            indd = '4';
-            $('.opee').css({'z-index': '9'});
-            $('.cloo').css({'z-index': '-1'});
-        });
-    }, 55);
+            if (d.readyState == 'complete') {
+                l();
+            } else {
+                if (w.attachEvent) {
+                    w.attachEvent('onload', l);
+                } else {
+                    w.addEventListener('load', l, false);
+                }
+            }
+        })();
+
+        $(document).ready(function () {
+            $('.opee').click(function () {
+                jivo_api.open();
+                $('.opee').css({'z-index': '-1'});
+                $('.cloo').css({'z-index': '9'});
+                $('jdiv, .jivo_shadow').removeClass('opaa');
+                indd = '5';
+                $('#jivo-iframe-container').removeClass('zett');
+            });
+            $('.cloo').click(function () {
+                jivo_api.close();
+                $('.opee').css({'z-index': '9'});
+                $('.cloo').css({'z-index': '-1'});
+                $('jdiv, .jivo_shadow').addClass('opaa');
+                indd = '4';
+                $('#jivo-iframe-container').addClass('zett');
+            });
+        })
+        var indd = '4';
+        setInterval(function () {
+            if (indd === '4') {
+                $('jdiv, .jivo_shadow').addClass('opaa');
+            }
+        }, 55);
+        setInterval(function () {
+            $('#jivo_close_button').click(function () {
+                indd = '4';
+                $('.opee').css({'z-index': '9'});
+                $('.cloo').css({'z-index': '-1'});
+            });
+        }, 55);*/
     //jivo-iframe-container-bottom(0) jivo-state-widget jivo-collapsed jivo_shadow(0) jivo_rounded_corners(0) jivo_gradient(0)
     //jivo_shadow(0) jivo_rounded_corners(0) jivo_gradient(0) jivo-expanded jivo-iframe-container-bottom(0)
     //    setInterval(function(){$('.jivo-no-transition').css({'display':'flex    '}); },55);
@@ -154,14 +156,7 @@
         js.src = 'https://connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.12';
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
-
-
-<script> $('.pro').html($(window).width() + ' X ' + $(window).height()) </script>
-
-
 <!-- {/literal} END JIVOSITE CODE -->
-
-
 @yield('jss')
 <script src="{{ asset('/') }}/js/player.js"></script>
 </body>

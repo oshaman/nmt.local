@@ -57,7 +57,7 @@ class PollController extends MainController
 
             $polls = $this->poll_rep->get(
                 ['question', 'alias', 'description', 'image', 'alt', 'imgtitle', 'created_at', 'id'], false, 12,
-                [['created_at', '<=', DB::raw('NOW()')]], ['created_at', 'desc']
+                [['created_at', '<=', DB::raw('NOW()')], ['approved', true]], ['created_at', 'desc']
             );
 
             $polls = $this->poll_rep->countVoites($polls);

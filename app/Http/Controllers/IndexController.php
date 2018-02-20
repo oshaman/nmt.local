@@ -60,7 +60,7 @@ class IndexController extends MainController
      */
     public function show()
     {
-//        Cache::flush();
+        Cache::flush();
 //        session()->flush();
         $this->title = 'Головна';
 //POLL
@@ -77,7 +77,7 @@ class IndexController extends MainController
 //POLL
 //VIDEO
         $channels = Cache::remember('main-channels', 60, function () {
-            return $this->ch_rep->get('*', false, false, ['approved' => 1], false, ['videos']);
+            return $this->ch_rep->get('*', false, false, ['approved' => 1], ['priority', 'ASC'], ['videos']);
         });
 //VIDEO
 //ONLINE

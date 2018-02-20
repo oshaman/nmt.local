@@ -24,6 +24,8 @@ class ChannelsController extends AdminController
             <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
             <script src="' . asset('js/translate.js') . '"></script>
         ';
+        $this->mark = 'admin_videos';
+
     }
 
     /**
@@ -50,7 +52,7 @@ class ChannelsController extends AdminController
 
         }
 
-        $channels = $this->c_rep->get(['title', 'id', 'alias', 'approved'], false, true);
+        $channels = $this->c_rep->get(['title', 'id', 'alias', 'approved', 'priority'], false, true);
         $this->content = view('admin.video.channels.content')->with('channels', $channels);
 
         return $this->renderOutput();
@@ -82,7 +84,6 @@ class ChannelsController extends AdminController
                 return redirect()->back()->withErrors(['message' => 'Помилка оновлення каналу, повторіть спробу пізніше.']);
             }
         }
-
         $this->content = view('admin.video.channels.edit')->with('channel', $channel);
         return $this->renderOutput();
     }

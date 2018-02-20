@@ -57,6 +57,6 @@ class SearchRepository extends Repository
             $result = false;
         }
 
-        return $result;
+        return ['result' => $result, 'query' => $query];
     }
 }

@@ -79,10 +79,6 @@
     overflow: initial;
 }
 
-.mutte {
-    display: none;
-}
-
 .q h5 {
     -webkit-animation: blink2 1s linear infinite;
     animation: blink2 1s linear infinite;

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Channel extends Model
 {
-    protected $fillable = ['title', 'alias', 'approved'];
+    protected $fillable = ['title', 'alias', 'approved', 'priority'];
 
     public function videos()
     {
