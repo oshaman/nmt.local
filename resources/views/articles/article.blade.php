@@ -14,7 +14,7 @@
                     <meta itemprop="position" content="2"/>
                 </div>
                 <div itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="button">
-                    <span itemprop="name" class="label1">{{ $article->title ?? '' }}</span>
+                    <span itemprop="name" class="label1">{{ str_limit($article->title, 100) ?? '' }}</span>
                     <meta itemprop="position" content="3"/>
                 </div>
             </div>
@@ -45,7 +45,7 @@
 
                     {!! $article->content !!}
 
-                    @include('layouts.socials')
+                    @include('layouts.socials', ['title'=>($article->title ?? '')])
 
                     <div class="widd"></div>
                     </div>

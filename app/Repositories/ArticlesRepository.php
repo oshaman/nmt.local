@@ -382,7 +382,7 @@ class ArticlesRepository extends Repository
 
     public function hasVideo($content)
     {
-        $re = '/<iframe src="\/\/www\.youtube\.com/';
+        $re = '/<iframe /';
         preg_match_all($re, $content, $matches, PREG_SET_ORDER, 0);
         if (count($matches) > 0) {
             return true;

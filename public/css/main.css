@@ -2129,7 +2129,7 @@ input[type=radio]:checked ~ .check {
 }
 
 .playy {
-    z-index: 55555;
+    z-index: 555;
 }
 
 .libo {
@@ -3669,7 +3669,7 @@ input[type=radio]:checked ~ .check {
     position: fixed;
     bottom: -3px;
     right: 0;
-    z-index: 99;
+    z-index: 9999;
     width: 370px;
     opacity: 0;
     visibility: hidden;
@@ -4716,7 +4716,7 @@ a, img {
     font-family: 'MinionPro-Semibold';
     font-size: 18px;
     line-height: 24px;
-    color: rgba(33, 33, 33, .7);
+    color: #d9422f;
     transition: .5s;
 }
 
@@ -4728,6 +4728,7 @@ a, img {
 .btn i {
     display: none;
 }
+
 
 #sochknop {
 
@@ -4757,6 +4758,14 @@ a, img {
 .menu-global {
     display: block;
 }
+
+.aten {
+    display: none
+}
+
+/*.aten {background: #fff;width: 370px;height: 185px;position: absolute;top: -207px;box-shadow: -1px 10px 15px 0 rgba(0,0,0,.12);-moz-box-shadow: -1px 10px 15px 0 rgba(0,0,0,.12);-webkit-box-shadow: -1px 10px 15px 0 rgba(0,0,0,.12);border-bottom-left-radius: 5px;border-top-left-radius: 5px;overflow: hidden;}.video-youtube {opacity: 1;visibility: visible;}.down {height: 49px;background: #ebebeb;display: flex;align-items: center;border-bottom: 1px solid #edf1f5;}.down-text {font-family: 'SFUIDisplay-Bold';font-size: 20px;line-height: 21px;margin: 0 0 0 30px;display: flex;align-items: center;}.down-text img {display: block;margin: 0 10px 0 0;}.down-close {height: 48px;width: 98px;right: 0;position: absolute;top: 1px;display: flex;align-items: center;justify-content: center;cursor: pointer;background: #fff;}
+
+.aten-text p {font-family: 'SF-UI-Display-Regular';color: rgba(33, 33, 33, .8);font-size: 14px;line-height: 20px;position: relative;width: 300px;height: 70px;margin: 21px 0 0 31px;border-bottom: 1px solid #e1e8ee;}.bigg {font-family: 'SFUIDisplay-Semibold';color: #212121;text-transform: uppercase;position: absolute;bottom: 12px;right: 42px;cursor: pointer;}.bigg:after {position: absolute;content: '';bottom: -2px;width: 100%;height: 1px;background: #424242;left: 0;}*/
 
 @media (max-width: 1299px) {
     .container {

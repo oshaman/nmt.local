@@ -57,6 +57,12 @@ class Handler extends ExceptionHandler
                 ->withErrors('Время Вашей сессии истекло, повторите запрос.');
         }
 
+        if ($exception instanceof \Illuminate\Http\Exceptions\PostTooLargeException) {
+            return redirect()->back()->withInput($request->except('_token'))
+                ->withErrors(['error', 'File too large!']);
+//            return response('File too large!', 422);
+        }
+
         if ($this->isHttpException($exception)) {
             $statusCode = $exception->getStatusCode();
             switch ($statusCode) {
@@ -87,7 +93,7 @@ class Handler extends ExceptionHandler
                         ['header' => $header, 'footer' => $footer, 'articles' => $articles, 'title' => '404'], 404);
                     break;
                 case '403':
-                    return response()->redirect()->back()->withErrors(['error', 'Не ']);
+                    return redirect()->back()->withErrors(['error', 'Не ']);
                     break;
             }
         }

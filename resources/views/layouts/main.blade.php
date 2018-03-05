@@ -58,6 +58,19 @@
 <script src="https://www.youtube.com/iframe_api"></script>
 
 <div class="video-youtube">
+
+
+    <div class="aten">
+        <div class="down">
+            <div class="down-text"><img src="./img/loggy.png" alt=""><span>Увага!</span></div>
+            <div class="down-close"><img src="./img/cloo.png" alt=""></div>
+        </div>
+        <div class="aten-text">
+            <p>На головній сторінці "Наше місто" почалася трансляція "Название трансляции". Бажаєте переключити
+                канал</p>
+            <div class="bigg">Так</div>
+        </div>
+    </div>
     <div class="player-administration">
         <div class="drag-layout"></div>
         <a href="/"><i class="fa fa-sign-in" aria-hidden="true" title="на головну"></i></a>
