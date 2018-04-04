@@ -11,8 +11,8 @@
                              alt="{{ $article->image->alt }}" title="{{ $article->image->title }}">
                         <div class="yelow-line @if($article->hasvideo) line-play @endif @if($article->hasimage) line-photo @endif">{{ $article->category->name }}</div>
                         <div class="coments-news">
+                            <div class="title-block"><h3><span>{{ str_limit($article->title, 96) }}</span></h3></div>
                             <div class="left-coments">
-
                                 <img src="{{ asset('/') }}img/time-efir5.png" alt="">
                                 <div class="date-neww">{{ $article->date }}</div>
                                 <div class="times-newws">{{ $article->time }}</div>

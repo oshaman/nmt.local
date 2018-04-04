@@ -1,12 +1,13 @@
 <div class="content">
     <div class="container">
         <div class="city-tv">
-            <h1 class="city-caption"><span>Наше Місто TV</span></h1>
+            <h1 class="city-caption"><span>Наше місто TV</span></h1>
             <div class="straight-block">
                 <div class="straight-left video-cat" data-id="online">
-                    <img class="black" src="{{ asset('/') }}img/play.png" alt="">
-                    <img class="redd" src="{{ asset('/') }}img/play-red.png" alt="">
-                    <span>Прямий ефір</span>
+                <!--<img class="black" src="{{ asset('/') }}img/play.png" alt="">-->
+                    <img class="black" src="{{ asset('/') }}img/play-red-new.png" alt="">
+                    <img class="redd" src="{{ asset('/') }}img/play-red-new.png" alt="">
+                    <span>Наживо</span>
                 </div>
                 @if(!empty($channels))
                     <div class="straight-right">
@@ -65,7 +66,7 @@
                 <div class="players-right">
                     <div class="tenka"></div>
                     <div class="short-name">
-                        <div class="shorr">Анонси прямих ефірів</div>
+                        <div class="shorr">Анонси</div>
                     </div>
                     {{--ONLINE--}}
                     <div class="vert" data-ch="online">
@@ -111,7 +112,7 @@
                 </div>
             </div>
             <div class="city-news">
-                <h3 class="city-caption"><span>Новини Нашої Громади</span></h3>
+                <h3 class="city-caption"><span>Новини Нашого міста</span></h3>
                 {{--Категории--}}
                 @include('layouts.categories', ['categories'=>$categories])
                 {{--Категории--}}
@@ -158,8 +159,9 @@
                                                 {{ $article->category->name }}
                                             </div>
                                             <div class="coments-news">
+                                                <div class="title-block"><h3>
+                                                        <span>{{ str_limit($article->title, 96) }}</span></h3></div>
                                                 <div class="left-coments">
-
                                                     <img src="{{ asset('/') }}img/time-efir5.png" alt="">
                                                     <div class="date-neww">{{ $article->date }}</div>
                                                     <div class="times-newws">{{ $article->time }}</div>
@@ -175,7 +177,7 @@
                                         </div>
                                         <div class="content-news">
 
-                                            <h3><span>{{ str_limit($article->title, 64) }}</span></h3>
+                                            <h3><span>{{ str_limit($article->title, 96) }}</span></h3>
                                             <div class="block-text neww">
                                                 <p>{{ $article->content }}</p>
                                                 <div class="main-buty">
@@ -215,7 +217,7 @@
                                         </div>
 
                                         <div class="right-other">
-                                            <h4>{{ str_limit($article->title, 64) }}</h4>
+                                            <h4>{{ str_limit($article->title, 96) }}</h4>
                                             <div class="left-coments">
                                                 <img src="{{ asset('/') }}img/time-efir.png" alt="">
                                                 <div class="date-neww">{{ $article->date }}</div>
@@ -226,7 +228,7 @@
                             @endforeach
                     </div>
                     <div class="main-buty">
-                        <a href="{{ route('category') }}">всі новини<span
+                        <a href="{{ route('category') }}">Всі новини<span
                                     class="linn"></span></a>
                     </div>
                     @endif

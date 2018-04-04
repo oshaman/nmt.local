@@ -82,15 +82,17 @@
 .q h5 {
     -webkit-animation: blink2 1s linear infinite;
     animation: blink2 1s linear infinite;
+    font-size: 1.1875vw;
+    transition: 1s;
 }
 @-webkit-keyframes blink2 {
     100% {
-        color: rgba(34, 34, 34, 0);
+        color: #FF0000;
     }
 }
 
 @keyframes blink2 {
     100% {
-        color: rgba(34, 34, 34, 0);
+        color: #FF0000;
     }
 }

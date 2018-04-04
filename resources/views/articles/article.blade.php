@@ -86,7 +86,7 @@
 
     <div class="city-news">
         <div class="container">
-                <h3 class="city-caption"><span>Новини Нашого Міста</span></h3>
+            <h3 class="city-caption"><span>Опитування Нашого міста</span></h3>
 
                 {{--Категории--}}
                 @include('layouts.categories', ['categories'=>$categories, 'cat'=>$article->category->name])

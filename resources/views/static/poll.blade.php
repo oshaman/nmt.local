@@ -1,6 +1,6 @@
 {{--Опрос--}}
 <div class="inter-news">
-    <h1 class="city-caption"><span>Опитування</span></h1>
+    <h1 class="city-caption"><span>Опитування Нашого міста</span></h1>
     @if(!empty($poll))
         <form action="{{ route('polls') }}" method="post">
             {{ csrf_field() }}

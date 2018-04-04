@@ -4,6 +4,10 @@
 
         <div class="foter-left">
             <div class="foter-logo"><img src="{{ asset('/') }}img/logo-fote.svg" alt=""></div>
+            <!--       <div class="pxWindow">
+                       <p class="pxWindow1"></p>
+                       <p class="pxWindow2"></p>
+                   </div>-->
             <ul>
                 @if('ugoda' !== Route::currentRouteName())
                     <li><a href="{{ route('ugoda') }}">Угода про конфіденційність</a></li>
@@ -85,8 +89,13 @@
         <div class="foter-bott">
             <div class="foot-item">
 
-                <a href="{{ env('FB_LINK') }}" target="_blank"><img src="{{ asset('/') }}img/facce.png" alt=""></a>
-                <a href="{{ env('IG_LINK') }}" target="_blank"><img src="{{ asset('/') }}img/instt.png" alt=""></a>
+                <a href="{{ env('FB_LINK') }}" class="icon" target="_blank"><img src="{{ asset('/') }}img/f.png" alt=""></a>
+                <a href="https://twitter.com/intent/tweet?original_referer={{ url()->current() }}&ref_src=twsrc%5Etfw&text=NasheMisto%20-{{ $title ?? '' }}&tw_p=tweetbutton&url={{ url()->current() }}&via=%D0%92%D0%B0%D1%88%20%D0%BD%D0%B8%D0%BA"
+                   class="icon"><img src="{{ asset('/') }}img/tw.png" alt=""></a>
+                <a href="{{ env('IG_LINK') }}" class="icon" target="_blank"><img src="{{ asset('/') }}img/telg.png"
+                                                                                 alt=""></a>
+                <a href="{{ env('IG_LINK') }}" class="icon" target="_blank"><img src="{{ asset('/') }}img/inst.png"
+                                                                                 alt=""></a>
             </div>
 
             <div class="foot-item">МІСТО 2017. Всі права захищені.</div>
@@ -106,7 +115,15 @@
 </footer>
 
 
-
+<script>!function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (!d.getElementById(id)) {
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }
+    }(document, "script", "twitter-wjs");</script>
 
 
 

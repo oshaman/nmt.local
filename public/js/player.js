@@ -44,6 +44,12 @@ if ($('.item-players').length || $('.video-youtube').length) {
                 height: '350',
                 width: '540',
                 videoId: vidos,
+                playerVars: {
+                    'showinfo': 0,
+                    'modestbranding': 0,
+                    'controls': 1,
+                    'frameborder': 0
+                },
                 events: {
                     'onReady': bigPlayVideo,
                     'onStateChange': changeVid
@@ -74,6 +80,11 @@ if ($('.item-players').length || $('.video-youtube').length) {
                 height: '350',
                 width: '540',
                 videoId: vidos,
+                playerVars: {
+                    // 'showinfo': 0,
+                    'modestbranding': 1,
+                    'frameborder': 0
+                },
                 events: {
                     'onReady': smallPlayVideo,
                     'onStateChange': changeVid

@@ -417,7 +417,7 @@ jQuery(document).ready(function () {
     $('.hovv-news').click(function () {
         if (ness === '7') {
 
-            $('.vijen').css({'height': heyt, 'transition-delay': '0s'});
+            $('.vijen').css({'height': heyt, 'transition-delay': '.39s'});
             $('.vijen-insid').css({'opacity': '1', 'transition-delay': '.39s', 'visibility': 'visible'});
             $('.hovv-news').addClass('linsa');
             setTimeout(function () {
@@ -426,7 +426,7 @@ jQuery(document).ready(function () {
         }
         if (ness === '4') {
             $('.vijen').css({'height': '0', 'transition-delay': '.39s'});
-            $('.vijen-insid').css({'opacity': '0', 'transition-delay': '0s', 'visibility': 'hidden'});
+            $('.vijen-insid').css({'opacity': '0', 'transition-delay': '.39s', 'visibility': 'hidden'});
             $('.hovv-news').removeClass('linsa');
             ness = '7';
         }
@@ -564,14 +564,14 @@ jQuery(document).ready(function () {
 
         if (mexx === '7') {
             $('.hody').css({'height': '245px', 'transition-delay': '0s'});
-            $('.soloo').css({'opacity': '1', 'transition-delay': '.39s', 'visibility': 'visible'});
+            $('.soloo').css({'opacity': '1', 'transition-delay': '.39s', 'visibility': 'visible', 'display': 'block'});
             setTimeout(function () {
                 mexx = '4';
             }, 99);
         }
         if (mexx === '4') {
             $('.hody').css({'height': '0', 'transition-delay': '.39s'});
-            $('.soloo').css({'opacity': '0', 'transition-delay': '0s', 'visibility': 'hidden'});
+            $('.soloo').css({'opacity': '0', 'transition-delay': '0s', 'visibility': 'hidden', 'display': 'none'});
             mexx = '7';
         }
     });
@@ -882,12 +882,14 @@ jQuery(document).ready(function () {
     setTimeout(function () {
         $('.alert').removeClass('blink').css({'display': 'none'});
     }, 2399);
-            
 
-         
 
-         
+    /*
+        var innerWidth = $(window).innerWidth(); // Width PX minus scrollbar
+        var innerHeight = $(window).innerHeight(); // Width PX minus scrollbar
 
+        $('.pxWindow1').append(innerWidth);
+        $('.pxWindow2').append(innerHeight);*/
 
     
 });//and ready
@@ -906,20 +908,3 @@ if ($('.conty').height() < d) {
     $('.conty').css({'min-height': d});
 } else {
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

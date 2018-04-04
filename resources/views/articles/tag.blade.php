@@ -2,7 +2,7 @@
     <div class="container">
 
         <div class="city-news">
-            <h1 class="city-caption"><span>Новини Нашого Міста</span></h1>
+            <h1 class="city-caption"><span>Опитування Нашого міста</span></h1>
             {{--breadcrumbs--}}
             <div class="bread-crumbs breadcrumbs mobile-display-none" id="breadcrumbs" itemscope
                  itemtype="http://schema.org/BreadcrumbList">

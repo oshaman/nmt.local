@@ -54,7 +54,7 @@
 
 
             <div class="straight-block">
-                <div class="straight-left"><img src="./img/play.png" alt=""><span>Прямой эфир</span></div>
+                <div class="straight-left"><img src="./img/play.png" alt=""><span>Нажево</span></div>
                 <div class="straight-right">
                     <div class="news-item active"><a href="/">Обсуждение(ток шоу)<span class="linn"></span></a></div>
                     <div class="news-item"><a href="/">Короткие новости дня<span class="linn"></span></a></div>

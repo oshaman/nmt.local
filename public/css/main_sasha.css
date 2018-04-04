@@ -4,11 +4,13 @@
 .player-administration {
     display: flex;
     justify-content: flex-end;
-    background-color: #fcfc02;
+    background-color: transparent;
     border-color: #8c8585;
     padding: 1px 12px 0px;
     margin-bottom: 0;
+    position: absolute;
     font-size: 16px;
+    right: 0;
     font-weight: 400;
     line-height: 1.42857143;
     text-align: center;
@@ -26,16 +28,25 @@
     border-radius: 4px 4px 0 0;
 }
 .player-administration > * {
-    margin-left: 10px;
+    margin-left: 15px;
+    margin-top: 10px;
     cursor: pointer;
 }
 .fa-external-link:before {
+    color: #fff;
     font-size: 13px;
 }
+
+.fa-sign-in {
+    display: none;
+}
 .fa-sign-in:before {
-    color: #000;
+    color: #fff;
 }
 
+.fa-times:before {
+    color: #fff;
+}
 
 
 /*-----------------main styles------------------------------*/
@@ -48,7 +59,7 @@
 }
 
 .foter-text p {
-    color: white;
+    /*color: white;*/
 }
 
 .conty {
@@ -208,8 +219,8 @@
         font-size: 5vw;
         height: 8vw;
         line-height: 8vw;
-        padding-left: 7vw;
-        padding-right: 7vw;
+        padding-left: 15px;
+        padding-right: 15px;
     }
 
     .city-caption span:before {
